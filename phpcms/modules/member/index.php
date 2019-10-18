@@ -18,6 +18,11 @@ class index extends foreground {
 	}
 
 	public function init() {
+		//跳到我的控制器里去
+		$url= APP_PATH.'index.php?m=zymember&c=index&a=init';
+		header("Location: ".$url."");
+		//跳到我的控制器里去
+
 		$memberinfo = $this->memberinfo;
 		
 		//初始化phpsso
@@ -31,6 +36,12 @@ class index extends foreground {
 	}
 	
 	public function register() {
+		//跳到我的控制器里去
+		$url= APP_PATH.'index.php?m=zymember&c=index&a=register';
+		header("Location: ".$url."");
+		//跳到我的控制器里去
+
+
 		$this->_session_start();
 		//获取用户siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
@@ -594,6 +605,14 @@ class index extends foreground {
 	}
 	
 	public function login() {
+
+		//跳到我的控制器里去
+		$url= APP_PATH.'index.php?m=zymember&c=index&a=login';
+		header("Location: ".$url."");
+		//跳到我的控制器里去
+
+
+
 		$this->_session_start();
 		//获取用户siteid
 		$siteid = isset($_REQUEST['siteid']) && trim($_REQUEST['siteid']) ? intval($_REQUEST['siteid']) : 1;
@@ -744,6 +763,8 @@ class index extends foreground {
 			$cookietime = $_cookietime ? SYS_TIME + $_cookietime : 0;
 			
 			$phpcms_auth = sys_auth($userid."\t".$password, 'ENCODE', get_auth_key('login'));
+			var_dump($phpcms_auth);
+			exit;
 			
 			param::set_cookie('auth', $phpcms_auth, $cookietime);
 			param::set_cookie('_userid', $userid, $cookietime);

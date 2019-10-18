@@ -56,6 +56,33 @@
 <?php exit;?>08-13 11:25:59 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
 <?php exit;?>08-13 11:28:09 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
 <?php exit;?>08-13 11:28:33 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
+<?php exit;?>10-17 09:10:24 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:10:24 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:10:54 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:10:54 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:14:36 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:14:36 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:20:26 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-17 09:20:26 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 08:18:54 | 2 | mysqli::mysqli(): (HY000/2002): ��һ���޷����ӵ���糢���һ���׽��ֲ����
+ | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-18 08:18:54 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-18 08:18:54 | 2 | mysqli::mysqli(): (HY000/2002): ��һ���޷����ӵ���糢���һ���׽��ֲ����
+ | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-18 08:18:54 | 2 | mysqli::query(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 78
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::execute(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 78
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-18 08:18:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
@@ -72,3 +99,7 @@
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
 <?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 11:08:13 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 11:08:13 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 11:09:09 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 11:09:09 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84

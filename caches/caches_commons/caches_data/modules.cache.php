@@ -492,6 +492,7 @@ return array (
     'installdate' => '2011-09-02',
     'updatedate' => '2011-09-02',
   ),
+
   'zyshop' =>
   array (
     'module' => 'zyshop',
@@ -505,6 +506,27 @@ return array (
     'disabled' => '0',
     'installdate' => '2011-09-02',
     'updatedate' => '2011-09-02',
+  ),
+  'zymember' => 
+  array (
+    'module' => 'zymember',
+    'name' => '会员系统',
+    'url' => '',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => 'array (
+  1 => 
+  array (
+    \'is_post\' => \'1\',
+    \'enablecheckcode\' => \'0\',
+    ),
+  )',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2018-10-01',
+    'updatedate' => '2018-10-01',
+
   ),
 );
 ?>
