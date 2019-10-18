@@ -56,3 +56,19 @@
 <?php exit;?>08-13 11:25:59 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
 <?php exit;?>08-13 11:28:09 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
 <?php exit;?>08-13 11:28:33 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyexam\functions\global.func.php | 6
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Property access is not allowed yet | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
+<?php exit;?>10-18 08:47:29 | 2 | db_mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 486
