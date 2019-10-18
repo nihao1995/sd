@@ -23,7 +23,7 @@ return array (
   \'watermark_quality\' => \'80\',
   \'watermark_pos\' => \'9\',
 )',
-    'uuid' => '',
+    'uuid' => '0bb2faaa-efdc-11e9-b87d-0c9d92814cb3',
     'url' => 'http://192.168.0.8/sd/',
   ),
 );

@@ -455,7 +455,14 @@ $LANG['complete_info'] = '填写资料';
 $LANG['clear_data'] = '一键清理';
 $LANG['player_manage'] = '播放器管理';
 $LANG['video_upload'] = '视频上传'; 
-$LANG['shop'] = '商品';
-$LANG['shop'] = '商品';
-$LANG['shopManage'] = '商品管理';
+$LANG['zymembermenu'] = '会员系统';
+$LANG['zymember_manage'] = '会员管理';
+$LANG['zymember_manage_menu'] = '会员管理';
+$LANG['zymember_model'] = '会员模型管理';
+$LANG['zymember_model_manage'] = '会员模型管理';
+$LANG['member_config'] = '会员基本设置';
+$LANG['member_group2'] = '会员组管理';
+$LANG['zyconfigmenu'] = '配置模块';
+$LANG['zyconfig'] = '配置管理';
+$LANG['zymember_configs'] = '会员配置';
 ?>
