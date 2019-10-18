@@ -71,7 +71,13 @@ include $this->admin_tpl('header', 'admin');
                             <div style="width: 161px; text-align: center;">
                                 <div class='upload-pic img-wrap'><input type='hidden' name='info[photourl]' id='thumb' required="" v-model="thumb">
                                     <a href='javascript:void(0);' onclick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,0','content','6','<?php echo $authkey;?>');return false;">
-                                        <img src='statics/images/icon/upload-pic.png' id='thumb_preview' width='135' height='113' style='cursor:hand; margin-left: 13px;' /></a><!-- <input type="button" style="width: 66px;" class="button" onclick="crop_cut_thumb($('#thumb').val());return false;" value="裁切图片"> --><input type="button" style="width: 66px;" class="button" onclick="$('#thumb_preview').attr('src','statics/images/icon/upload-pic.png');$('#thumb').val(' ');return false;" value="取消图片">
+                                        <template v-if="thumb == ''">
+                                            <img src='statics/images/icon/upload-pic.png' id='thumb_preview' width='135' height='113' style='cursor:hand; margin-left: 13px;' />
+                                        </template>
+                                        <template v-else>
+                                            <img :src='thumb' id='thumb_preview' width='135' height='113' style='cursor:hand; margin-left: 13px;' />
+                                        </template>
+                                    </a><!-- <input type="button" style="width: 66px;" class="button" onclick="crop_cut_thumb($('#thumb').val());return false;" value="裁切图片"> --><input type="button" style="width: 66px;" class="button" onclick="$('#thumb_preview').attr('src','statics/images/icon/upload-pic.png');$('#thumb').val(' ');return false;" value="取消图片">
                                 </div>
                             </div>
                         </td>
@@ -126,7 +132,7 @@ include $this->admin_tpl('header', 'admin');
                         <th style="width: 120px">截止时间</th>
                         <th>
                             <template>
-                                <Date-Picker type="datetime" placeholder="选择截止日期" format="yyyy-MM-dd HH:mm:ss" style="width: 300px" @on-change="dateChange"></Date-Picker>
+                                <Date-Picker type="datetime" placeholder="选择截止日期" format="yyyy-MM-dd HH:mm:ss" style="width: 300px" @on-change="dateChange" :value="endtime"></Date-Picker>
 <!--                                <Date-Picker @on-change="dateChange" type="datetimerange" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></Date-Picker>-->
 <!--                            <DatePicker type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></DatePicker>-->
                             </template>
@@ -155,13 +161,14 @@ include $this->admin_tpl('header', 'admin');
     window.parent.app12 = new Vue({
         el:"#app",
         data:{
-            titlename:"",
-            description:"",
-            money:"",
+            titlename:"<?php echo $dataInfo['titlename']?>",
+            description:"<?php echo $dataInfo['description']?>",
+            money:"<?php echo $dataInfo['money']?>",
             img:[],
-            thumb:"",
-            num:"",
-            endtime:""
+            thumb:"<?php echo $dataInfo['thumb']?>",
+            num:"<?php echo $dataInfo['num']?>",
+            residueNum:"<?php echo $dataInfo['residueNum']?>",
+            endtime:"<?php echo $dataInfo['endtime']?>"
         },
         methods:{
             upload:function()
