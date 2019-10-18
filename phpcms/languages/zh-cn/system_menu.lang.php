@@ -465,4 +465,6 @@ $LANG['member_group2'] = '会员组管理';
 $LANG['zyconfigmenu'] = '配置模块';
 $LANG['zyconfig'] = '配置管理';
 $LANG['zymember_configs'] = '会员配置';
+$LANG['shop'] = '商品';
+$LANG['shopManage'] = '商品管理';
 ?>
