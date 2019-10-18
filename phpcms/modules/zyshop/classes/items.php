@@ -22,6 +22,25 @@ class items
         $this->DB = mf::Create()->getModel($type);
         $this->easySql = new easySql($type);
     }
+    function getShopInfo($where,$page = 1)
+    {
+        $where = returnWhereSQL($where);
+        list($info, $count) = $this->DB->moreTableSelect(array('zy_'.$this->type=>array("*")), array(), $where, ((string)($page-1)*$this->pagesize).",".$this->pagesize, "B1.addtime DESC","1");
+        //$info["options"] = json_decode($info['options'], true);
+        list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $this->pagesize, $count);
+        return array($info, $pagenums, $pageStart, $pageCount);
+    }
+
+
+
+
+
+
+
+
+
+
+
     function getVideoInfo($where,$page = 1)
     {
         $where = returnWhereSQL($where);
@@ -31,14 +50,7 @@ class items
         $category = (new easySql("zymanagetype"))->select(array("typeshow"=>'1'), "distinct `typename`, VFTID");
         return array($info, $pagenums, $pageStart, $pageCount, $category);
     }
-    function getFileInfo($where,$page = 1)
-    {
-        $where = returnWhereSQL($where);
-        list($info, $count) = $this->DB->moreTableSelect(array('zy_'.$this->type=>array("*")), array(), $where, ((string)($page-1)*$this->pagesize).",".$this->pagesize, "B1.addtime DESC","1");
-        //$info["options"] = json_decode($info['options'], true);
-        list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $this->pagesize, $count);
-        return array($info, $pagenums, $pageStart, $pageCount);
-    }
+
 
     function getExamGrade($where)
     {

@@ -16,7 +16,7 @@ class shopManage extends admin
 {
     function init()
     {
-        include $this->admin_tpl('zyshop\examManage');
+        include $this->admin_tpl('zyshop\shopManage');
     }
     function examGrade() //考试页面获取数据
     {
@@ -26,30 +26,54 @@ class shopManage extends admin
     }
     function getData() //主页面获取数据
     {
-        $neadArg = ["page"=>[true, 0], "titlename"=>[false, 0], "ETID"=>[false, 0], "category"=>[false, 0]];
-        $info = checkArg($neadArg, "POST");
-        $item = new items("zyexam");
+        $neadArg = ["page"=>[true, 1], "titlename"=>[false, 0], "SID"=>[false, 1]];
+        $info = checkArg($neadArg, $_POST);
+        $item = new items("zyshop");
         $page = array_shift($info);
-        list($data, $pagenums, $pageStart, $pageCount) = $item->getFileInfo($info, $page);
-        foreach ($data as $key=>$value)
-        {
-            if(isset($value["SCID"]))  $data[$key]["SCID"] = json_decode($value["SCID"], true );
-            if(isset($value["RCID"]))  $data[$key]["RCID"] = json_decode($value["RCID"], true );
-            if(isset($value["MCID"]))  $data[$key]["MCID"] = json_decode($value["MCID"], true );
-            if(isset($value["TFCID"]))  $data[$key]["TFCID"] = json_decode($value["TFCID"], true );
-            if(isset($value["member"]))  $data[$key]["member"] = json_decode($value["member"], true );
-            if(isset($value["finishMember"]))  $data[$key]["finishMember"] = json_decode($value["finishMember"], true );
-        }
+        list($data, $pagenums, $pageStart, $pageCount) = $item->getShopInfo($info, $page);
         returnAjaxData('1', '成功', ['data'=>$data,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
     }
     function delData() //删除单条数据
     {
-        $neadArg = ["EID"=>[true, 0]];
+        $neadArg = ["SID"=>[true, 0]];
         $info = checkArg($neadArg, "POST");
-        $items = new items('zyexam');
+        $items = new items('zyshop');
         $items->del($info);
         returnAjaxData('1', '删除成功');
     }
+    function addShop() //添加考试
+    {
+        if(!empty($_POST))
+        {
+            $neadArg = ['titlename'=>[true, 0], "SCID"=>[false, 0],"MCID"=>[false, 0],"RCID"=>[false, 0],'TFCID'=>[false, 0], "examTime"=>[true, 0],  "dateStart"=>[true, 0], "dateEnd"=>[true, 0],"member"=>[true, 0]];
+            $info = checkArg($neadArg, "POST");
+            $info["timestampStart"] = strtotime($info["dateStart"]);
+            $info["timestampEnd"] = strtotime($info["dateEnd"]);
+            $info["addtime"] = date("Y-m-d H:i:s",time());
+
+
+            if(isset($info["SCID"]))  $info["SCID"] = json_encode($info["SCID"], JSON_UNESCAPED_UNICODE );
+            if(isset($info["MCID"]))  $info["MCID"] = json_encode($info["MCID"], JSON_UNESCAPED_UNICODE );
+            if(isset($info["RCID"]))  $info["RCID"] = json_encode($info["RCID"], JSON_UNESCAPED_UNICODE );
+            if(isset($info["TFCID"]))  $info["TFCID"] = json_encode($info["TFCID"], JSON_UNESCAPED_UNICODE );
+            if(isset($info["member"]))  $info["member"] = json_encode($info["member"], JSON_UNESCAPED_UNICODE );
+            if(isset($info["finishMember"]))  $info["finishMember"] = json_encode([], JSON_UNESCAPED_UNICODE );
+            $item = new items("zyexam");
+            $item->easySql->add($info);
+            returnAjaxData('1','添加成功');
+        }
+        else
+        {
+            include $this->admin_tpl('zyshop\shopAdd');
+        }
+    }
+
+
+
+
+
+
+
 
     function editExam() //考试编辑
     {
