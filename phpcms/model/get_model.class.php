@@ -29,5 +29,30 @@ class get_model extends model {
 	public function fetch_next() {
 		return $this->db->fetch_next();
 	}
+	
+	
+	 //自定义分页查询{支持多表}
+    public function multi_listinfo($where = '', $page = 1, $pagesize = 20, $key='', $setpages = 10,$urlrule = '',$array = array()) {
+        $sql = preg_replace('/select([^from].*)from/i', "SELECT COUNT(*) as count FROM ", $where);
+        $this->sql_query($sql);
+        $c = $this->fetch_next();
+        $this->number = $c['count'];
+        $page = max(intval($page), 1);
+        $offset = $pagesize*($page-1);
+        $this->pages = pages($this->number, $page, $pagesize, $urlrule, 
+
+$array, $setpages);
+        
+        $r = $this->sql_query($where.' LIMIT '.$offset.','.$pagesize);
+        while(($s = $this->fetch_next()) != false){
+            $data[] = $s;
+        }
+        return $data;
+    }
+
+
+
+
+	
 }
 ?>
