@@ -492,19 +492,19 @@ return array (
     'installdate' => '2011-09-02',
     'updatedate' => '2011-09-02',
   ),
-    'zyshop' =>
-    array (
-        'module' => 'zyshop',
-        'name' => '商品',
-        'url' => 'zyshop/',
-        'iscore' => '0',
-        'version' => '1.0',
-        'description' => '商品',
-        'setting' => '',
-        'listorder' => '0',
-        'disabled' => '0',
-        'installdate' => '2011-09-02',
-        'updatedate' => '2011-09-02',
-    ),
+  'zyshop' =>
+  array (
+    'module' => 'zyshop',
+    'name' => '商品',
+    'url' => 'zyshop/',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '商品',
+    'setting' => '',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2011-09-02',
+    'updatedate' => '2011-09-02',
+  ),
 );
 ?>

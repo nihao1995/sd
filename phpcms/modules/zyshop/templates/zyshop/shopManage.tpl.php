@@ -95,7 +95,7 @@ $show_header = 1;
 
 <div id="singleChoice">
     <div class="subnav">
-        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="addFile()">添加</button>
+        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="addShop()">添加</button>
     </div>
     <div class='selectVue'>
         <span class="selectSpan">标题:</span>
@@ -111,17 +111,15 @@ $show_header = 1;
                         :value="checkAll"
                         @click.prevent.native="handleCheckAll"><span></span></Checkbox></th>
             <th>ID</th>
-            <th>文件标题</th>
-            <th>考试人员(点击查看考生)</th>
-            <th>以完成考试人员(点击查看考生)</th>
-            <th>单选题(点击查看题目)</th>
-            <th>多选题(点击查看题目)</th>
-            <th>排序题(点击查看题目)</th>
-            <th>判断题(点击查看题目)</th>
-            <th>添加时间</th>
-            <th>考试开始时间</th>
-            <th>考试结束时间</th>
-            <th>考试时长</th>
+            <th>任务标题</th>
+            <th>描述</th>
+            <th>缩略图</th>
+            <th>金额(元)</th>
+            <th>佣金(元)</th>
+            <th>任务总数</th>
+            <th>待接数量</th>
+            <th>添加任务时间</th>
+            <th>截止任务时间</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -130,73 +128,31 @@ $show_header = 1;
             <template v-for="item in itemGet" v-model="itemGet">
              <tr>
                  <td><Checkbox :label="item.EID"><span></span></Checkbox></td>
-                 <td>{{item.EID}}</td>
+                 <td>{{item.SID}}</td>
                  <td>{{item.titlename}}</td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                         <template v-if="item.member != ''">
-                             <template  v-for="(value, key) in item.member">
-                                 <template v-if="value != ''">
-                                     <span @click="view(value)" style="cursor: pointer">{{value}},</span>
-                                 </template>
-                             </template>
-                         </template>
-                     </div>
+                     {{item.description}}
                  </td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                         <template v-if="item.member != ''">
-                             <template  v-for="(value, key) in item.finishMember">
-                                 <template v-if="value != ''">
-                                     <span @click="view(value)" style="cursor: pointer">{{value}},</span>
-                                 </template>
-                             </template>
-                         </template>
-                     </div>
+
                  </td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                     <template v-if="item.SCID != ''">
-                         <template  v-for="(value, key) in item.SCID">
-                             <span style="cursor: pointer" @click="viewChoice(value, 'SCID')">{{value}},</span>
-                         </template>
-                     </template>
-                     </div>
+                   {{item.money}}
                  </td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                         <template v-if="item.MCID != ''">
-                             <template  v-for="(value, key) in item.MCID">
-                                 <span style="cursor: pointer" @click="viewChoice(value, 'MCID')">{{value}},</span>
-                             </template>
-                         </template>
-                     </div>
+                    {{item.brokerage}}
                  </td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                         <template v-if="item.RCID != ''">
-                             <template  v-for="(value, key) in item.RCID">
-                                 <span style="cursor: pointer" @click="viewChoice(value, 'RCID')">{{value}},</span>
-                             </template>
-                         </template>
-                     </div>
+                    {{item.num}}
                  </td>
                  <td >
-                     <div class="layer-photos-demo" style="min-width: 108px">
-                         <template v-if="item.TFCID != ''">
-                             <template  v-for="(value, key) in item.TFCID">
-                                 <span style="cursor: pointer" @click="viewChoice(value, 'TFCID')">{{value}},</span>
-                             </template>
-                         </template>
-                     </div>
+                    {{item.residueNum}}
                  </td>
                  <td>{{item.addtime}}</td>
-                 <td>{{item.dateStart}}</td>
-                 <td>{{item.dateEnd}}</td>
-                 <td>{{item.examTime}}</td>
+                 <td>{{item.endtime}}</td>
                  <td align="center">
-                     <i-button type="info" @click="edit(item.EID)" >编辑</i-button>
-                     <i-button type="error"  @click="del(item.EID)" style="margin-top: 3px;">删除</i-button>
+                     <i-button type="info" @click="edit(item.SID)" >编辑</i-button>
+                     <i-button type="error"  @click="del(item.SID)" style="margin-top: 3px;">删除</i-button>
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>
@@ -277,7 +233,7 @@ $show_header = 1;
         table = layui.table;
     var app12 = '2';
 
-    aj.post("index.php?m=zyexam&c=examManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:'1'},function(data){
+    aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:'1'},function(data){
         if(data.code=='1')
         {
             app = new Vue({
@@ -314,7 +270,7 @@ $show_header = 1;
                         if (this.checkAll) {
                             var cd = [];
                             for(var i in this.itemGet)
-                                cd.push(this.itemGet[i].EID)
+                                cd.push(this.itemGet[i].SID)
                             this.IDI = cd;
                         } else {
                             this.IDI = [];
@@ -396,7 +352,7 @@ $show_header = 1;
                     {
                         this.VTID = value.VTID;
                     },
-                    addFile:function(){
+                    addShop:function(){
                         var that = this;
                         layer.open({
                             type: 2,
@@ -404,7 +360,7 @@ $show_header = 1;
                             shadeClose: true,
                             shade: 0.8,
                             area: ['1300px', '99%'],
-                            content: 'index.php?m=zyexam&c=examManage&a=addExam&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            content: 'index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 console.log(1);
                                 that.getData(that.page);
@@ -465,7 +421,7 @@ $show_header = 1;
                     }//监听page
                 },
                 mounted:function () {
-                   this.photo();
+                    this.photo();
                 }
             })
         }
