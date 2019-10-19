@@ -43,7 +43,7 @@ return array(
 'execution_sql' => 0, //EXECUTION_SQL
 
 'phpsso' => '1',	//是否使用phpsso
-'phpsso_appid' => '1',	//应用id	
+'phpsso_appid' => '1',	//应用id
 'phpsso_api_url' => 'http://localhost/sd/phpsso_server',	//接口地址
 'phpsso_auth_key' => 'BRz6PSwi868aq51SPw9MWG1QGXTX9VEH', //加密密钥
 'phpsso_version' => '1', //phpsso版本
