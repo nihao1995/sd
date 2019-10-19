@@ -19,8 +19,19 @@ function thumb_images(uploadid,returnid) {
 		$('#'+returnid+'_preview').attr('src',in_content);
 	}
 	$('#'+returnid).val(in_content);
+	$('#'+returnid)[0].dispatchEvent(new Event('input'));
 }
-
+function change_images_vue(uploadid,returnid)
+{
+	var d = window.top.art.dialog({id:uploadid}).data.iframe;
+	var in_content = d.$("#att-status").html().substring(1);
+	var in_filename = d.$("#att-name").html().substring(1);
+	var contents = in_content.split('|');
+	var filenames = in_filename.split('|');
+	console.log("dasd",contents);
+	if(contents !=='')
+		returnid.img = returnid.img.concat(contents);
+}
 function change_images(uploadid,returnid){
 	var d = window.top.art.dialog({id:uploadid}).data.iframe;
 	var in_content = d.$("#att-status").html().substring(1);
@@ -30,10 +41,14 @@ function change_images(uploadid,returnid){
 	var filenames = in_filename.split('|');
 	$('#'+returnid+'_tips').css('display','none');
 	if(contents=='') return true;
+	var num = $("input[name='"+returnid+"_alt[]']").length;
+	//var num =1;
+	console.log(contents);
 	$.each( contents, function(i, n) {
+		num++;
 		var ids = parseInt(Math.random() * 10000 + 10*i); 
 		var filename = filenames[i].substr(0,filenames[i].indexOf('.'));
-		str += "<li id='image"+ids+"'><input type='text' name='"+returnid+"_url[]' value='"+n+"' style='width:310px;' ondblclick='image_priview(this.value);' class='input-text'> <input type='text' name='"+returnid+"_alt[]' value='"+filename+"' style='width:160px;' class='input-text' onfocus=\"if(this.value == this.defaultValue) this.value = ''\" onblur=\"if(this.value.replace(' ','') == '') this.value = this.defaultValue;\"> <a href=\"javascript:remove_div('image"+ids+"')\">移除</a> </li>";
+		str += "<li id='image"+ids+"'><img src='"+n+"' height='40' width='60' /><input type='text' name='"+returnid+"_url[]' value='"+n+"' style='width:110px;' ondblclick='image_priview(this.value);' class='input-text'> <input type='number' name='"+returnid+"_alt[]' value='"+num+"' style='width:60px;' class='input-text' onfocus=\"if(this.value == this.defaultValue) this.value = ''\" onblur=\"if(this.value.replace(' ','') == '') this.value = this.defaultValue;\"> <a href=\"javascript:remove_div('image"+ids+"')\">移除</a> </li>";
 		});
 	
 	$('#'+returnid).html(str);

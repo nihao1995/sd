@@ -31,7 +31,7 @@ class shopManage extends admin
         $item = new items("zyshop");
         $page = array_shift($info);
         list($data, $pagenums, $pageStart, $pageCount) = $item->getShopInfo($info, $page);
-        returnAjaxData('1', '成功', ['data'=>$data,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+        returnAjaxData('200', '成功', ['data'=>$data,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
     }
     function delData() //删除单条数据
     {
@@ -39,43 +39,41 @@ class shopManage extends admin
         $info = checkArg($neadArg, "POST");
         $items = new items('zyshop');
         $items->del($info);
-        returnAjaxData('1', '删除成功');
+        returnAjaxData('200', '删除成功');
     }
-    function addShop() //添加考试
+    function addShop() //添加商品
     {
         if(!empty($_POST))
         {
-            $neadArg = ['titlename'=>[true, 0], "SCID"=>[false, 0],"MCID"=>[false, 0],"RCID"=>[false, 0],'TFCID'=>[false, 0], "examTime"=>[true, 0],  "dateStart"=>[true, 0], "dateEnd"=>[true, 0],"member"=>[true, 0]];
-            $info = checkArg($neadArg, "POST");
-            $info["timestampStart"] = strtotime($info["dateStart"]);
-            $info["timestampEnd"] = strtotime($info["dateEnd"]);
-            $info["addtime"] = date("Y-m-d H:i:s",time());
-
-
-            if(isset($info["SCID"]))  $info["SCID"] = json_encode($info["SCID"], JSON_UNESCAPED_UNICODE );
-            if(isset($info["MCID"]))  $info["MCID"] = json_encode($info["MCID"], JSON_UNESCAPED_UNICODE );
-            if(isset($info["RCID"]))  $info["RCID"] = json_encode($info["RCID"], JSON_UNESCAPED_UNICODE );
-            if(isset($info["TFCID"]))  $info["TFCID"] = json_encode($info["TFCID"], JSON_UNESCAPED_UNICODE );
-            if(isset($info["member"]))  $info["member"] = json_encode($info["member"], JSON_UNESCAPED_UNICODE );
-            if(isset($info["finishMember"]))  $info["finishMember"] = json_encode([], JSON_UNESCAPED_UNICODE );
-            $item = new items("zyexam");
+            $neadArg = ['titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            if(isset($info["thumbs"]))
+                $info["thumbs"] = json_encode($info["thumbs"]);
+            $info["addtime"] = date("Y-m-d H:i:s", time());
+            $info["residueNum"] = $info["num"];
+            $item = new items("zyshop");
             $item->easySql->add($info);
-            returnAjaxData('1','添加成功');
+            returnAjaxData('200','添加成功');
         }
         else
         {
+            $upload_allowext = 'jpg|jpeg|gif|png|bmp';
+            $isselectimage = '1';
+            $images_width = '';
+            $images_height = '';
+            $watermark = '0';
+            $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
+
+
+            $upload_number = '50';
+            $upload_allowext = 'gif|jpg|jpeg|png|bmp';
+            $isselectimage = '0';
+            $authkeys = upload_key("$upload_number,$upload_allowext,$isselectimage");
+
             include $this->admin_tpl('zyshop\shopAdd');
         }
     }
-
-
-
-
-
-
-
-
-    function editExam() //考试编辑
+    function editShop() //考试编辑
     {
         if(!empty($_POST))
         {
@@ -95,13 +93,34 @@ class shopManage extends admin
         }
         else
         {
-            $neadArg = ["EID"=>[true, 0]];
-            $info = checkArg($neadArg);
-            $item = new items('zyexam');
+            $neadArg = ["SID"=>[true, 0]];
+            $info = checkArg($neadArg, $_GET);
+            $item = new items('zyshop');
             $dataInfo = $item->easySql->get_one($info);
-            include $this->admin_tpl('examManage\examManageEdit');
+            $upload_allowext = 'jpg|jpeg|gif|png|bmp';
+            $isselectimage = '1';
+            $images_width = '';
+            $images_height = '';
+            $watermark = '0';
+            $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
+
+
+            $upload_number = '50';
+            $upload_allowext = 'gif|jpg|jpeg|png|bmp';
+            $isselectimage = '0';
+            $authkeys = upload_key("$upload_number,$upload_allowext,$isselectimage");
+
+            include $this->admin_tpl('zyshop\shopEdit');
         }
     }
+
+
+
+
+
+
+
+
     function viewExam() //查看考题
     {
         $neadArg = ["SCID"=>[false, 3], "MCID"=>[false, 3], "TFCID"=>[false, 3], "RCID"=>[false, 3]];
