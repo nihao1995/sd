@@ -103,3 +103,85 @@
 <?php exit;?>10-18 11:08:13 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
 <?php exit;?>10-18 11:09:09 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
 <?php exit;?>10-18 11:09:09 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 14:02:52 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 131
+<?php exit;?>10-18 14:02:52 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 131
+<?php exit;?>10-18 14:02:52 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 131
+<?php exit;?>10-18 14:02:52 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 131
+<?php exit;?>10-18 14:02:54 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:02:59 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:02 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:05 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:07 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:10 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:10 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:11 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:14 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:03:15 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:05:18 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:07:05 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:07:08 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:07:11 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:14:09 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:14:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:14:15 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:15:31 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:15:34 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:15:41 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:18:04 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:18:16 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:18:35 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:21:34 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:21:37 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:21:42 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:23:23 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:23:34 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:23:47 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:23:54 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:24:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:24:09 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:24:29 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:27:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:27:43 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:28:35 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:29:48 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:29:52 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:30:01 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:30:05 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:30:46 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:30:48 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 14:39:21 | 2 | Missing argument 1 for zymember_api::zyfunds_withdrawal() | phpcms\modules\zymember\zymember_api.php | 25
+<?php exit;?>10-18 14:40:19 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-18 15:30:16 | 2 | imagepng() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 208
+<?php exit;?>10-18 15:30:16 | 2 | imagedestroy() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 209
+<?php exit;?>10-18 15:30:16 | 2 | imagedestroy() expects parameter 1 to be resource, string given | phpcms\modules\zyqrcode\api.php | 210
+<?php exit;?>10-18 15:30:24 | 2 | imagepng() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 208
+<?php exit;?>10-18 15:30:24 | 2 | imagedestroy() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 209
+<?php exit;?>10-18 15:30:24 | 2 | imagedestroy() expects parameter 1 to be resource, string given | phpcms\modules\zyqrcode\api.php | 210
+<?php exit;?>10-18 15:31:05 | 2 | imagepng() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 208
+<?php exit;?>10-18 15:31:05 | 2 | imagedestroy() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 209
+<?php exit;?>10-18 15:31:05 | 2 | imagedestroy() expects parameter 1 to be resource, string given | phpcms\modules\zyqrcode\api.php | 210
+<?php exit;?>10-18 15:31:11 | 2 | imagepng() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 208
+<?php exit;?>10-18 15:31:11 | 2 | imagedestroy() expects parameter 1 to be resource, null given | phpcms\modules\zyqrcode\api.php | 209
+<?php exit;?>10-18 15:31:11 | 2 | imagedestroy() expects parameter 1 to be resource, string given | phpcms\modules\zyqrcode\api.php | 210
+<?php exit;?>10-18 15:34:57 | 2 | fsockopen(): php_network_getaddresses: getaddrinfo failed: ��֪������������  | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 15:34:57 | 2 | fsockopen(): unable to connect to juhe.phpcms.cn:80 (php_network_getaddresses: getaddrinfo failed: ��֪������������ ) | phpcms\libs\classes\http.class.php | 84
+<?php exit;?>10-18 15:36:53 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 15:36:55 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 15:36:56 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 15:36:57 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 15:36:57 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 15:36:58 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-18 16:18:52 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:21:13 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:23:38 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:37:14 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:37:20 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:40:37 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:40:38 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:40:39 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:40:40 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:41:06 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+<?php exit;?>10-18 16:41:15 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15

@@ -465,4 +465,14 @@ $LANG['member_group2'] = '会员组管理';
 $LANG['zyconfigmenu'] = '配置模块';
 $LANG['zyconfig'] = '配置管理';
 $LANG['zymember_configs'] = '会员配置';
+$LANG['shop'] = '商品';
+$LANG['shopManage'] = '商品管理';
+$LANG['zyinteractmenu'] = '互动模块';
+$LANG['zyinteracth_manage'] = '互动管理';
+$LANG['zyqrcode'] = '二维码配置';
+$LANG['zyqrcode_configs'] = '二维码配置';
+$LANG['fxBack'] = '分销模块';
+$LANG['fxmenu'] = '分销菜单';
+$LANG['fxmember'] = '用户列表';
+$LANG['fxconfig'] = '分销配置文件';
 ?>

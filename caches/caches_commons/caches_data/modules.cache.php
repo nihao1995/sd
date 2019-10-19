@@ -22,20 +22,6 @@ return array (
   \'mail_from\' => \'phpcms.cn@foxmail.com\',
   \'mail_password\' => \'\',
   \'errorlog_size\' => \'20\',
-)array (
-  \'admin_email\' => \'phpcms@phpcms.cn\',
-  \'adminaccessip\' => \'0\',
-  \'maxloginfailedtimes\' => \'8\',
-  \'maxiplockedtime\' => \'15\',
-  \'minrefreshtime\' => \'2\',
-  \'mail_type\' => \'1\',
-  \'mail_server\' => \'smtp.qq.com\',
-  \'mail_port\' => \'25\',
-  \'mail_user\' => \'phpcms.cn@foxmail.com\',
-  \'mail_auth\' => \'1\',
-  \'mail_from\' => \'phpcms.cn@foxmail.com\',
-  \'mail_password\' => \'\',
-  \'errorlog_size\' => \'20\',
 )',
     'listorder' => '0',
     'disabled' => '0',
@@ -506,21 +492,6 @@ return array (
     'installdate' => '2011-09-02',
     'updatedate' => '2011-09-02',
   ),
-
-  'zyshop' =>
-  array (
-    'module' => 'zyshop',
-    'name' => '商品',
-    'url' => 'zyshop/',
-    'iscore' => '0',
-    'version' => '1.0',
-    'description' => '商品',
-    'setting' => '',
-    'listorder' => '0',
-    'disabled' => '0',
-    'installdate' => '2011-09-02',
-    'updatedate' => '2011-09-02',
-  ),
   'zymember' => 
   array (
     'module' => 'zymember',
@@ -534,13 +505,52 @@ return array (
   array (
     \'is_post\' => \'1\',
     \'enablecheckcode\' => \'0\',
-    ),
-  )',
+  ),
+)',
     'listorder' => '0',
     'disabled' => '0',
     'installdate' => '2018-10-01',
     'updatedate' => '2018-10-01',
-
+  ),
+  'zyqrcode' => 
+  array (
+    'module' => 'zyqrcode',
+    'name' => '二维码管理',
+    'url' => '',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => 'array (
+  1 => 
+  array (
+    \'is_post\' => \'1\',
+    \'enablecheckcode\' => \'0\',
+  ),
+)',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2019-03-08',
+    'updatedate' => '2019-03-08',
+  ),
+  'zyfx' => 
+  array (
+    'module' => 'zyfx',
+    'name' => '分销模块',
+    'url' => '',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => 'array (
+  1 => 
+  array (
+    \'is_post\' => \'1\',
+    \'enablecheckcode\' => \'0\',
+  ),
+)',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2018-07-08',
+    'updatedate' => '2018-07-08',
   ),
 );
 ?>
