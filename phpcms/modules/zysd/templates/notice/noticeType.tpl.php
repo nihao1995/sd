@@ -94,12 +94,15 @@ $show_header = 1;
 </div>
 
 <div id="singleChoice">
-    <div class="subnav">
-        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="addShop()">添加</button>
-    </div>
+<!--    <div class="subnav">-->
+<!--        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>-->
+<!--    </div>-->
     <div class='selectVue'>
-        <span class="selectSpan">标题:</span>
-        <input type="text" v-model="itemname" class="itemInput">
+        <span class="selectSpan">用户ID:</span>
+        <input type="text" v-model="userid" class="itemInput">
+        <span >持卡人姓名:</span>
+        <input type="text" v-model="owner_name" class="itemInput">
+<!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
     </div>
     <Checkbox-Group v-model="IDI">
@@ -111,15 +114,11 @@ $show_header = 1;
                         :value="checkAll"
                         @click.prevent.native="handleCheckAll"><span></span></Checkbox></th>
             <th>ID</th>
-            <th>任务标题</th>
-            <th>描述</th>
-            <th>缩略图</th>
-            <th>金额(元)</th>
-            <th>佣金(元)</th>
-            <th>任务总数</th>
-            <th>待接数量</th>
-            <th>添加任务时间</th>
-            <th>截止任务时间</th>
+            <th>用户ID</th>
+            <th>银行卡号</th>
+            <th>银行名称</th>
+            <th>持卡人姓名</th>
+            <th>所属支行</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -127,32 +126,21 @@ $show_header = 1;
 
             <template v-for="item in itemGet" v-model="itemGet">
              <tr>
-                 <td><Checkbox :label="item.SID"><span></span></Checkbox></td>
-                 <td>{{item.SID}}</td>
-                 <td>{{item.titlename}}</td>
-                 <td >
-                     {{item.description}}
-                 </td>
-                 <td >
-                    <img :src="item.thumb" width="100px"/>
-                 </td>
-                 <td >
-                   {{item.money}}
-                 </td>
-                 <td >
-                    {{item.brokerage}}
-                 </td>
-                 <td >
-                    {{item.num}}
-                 </td>
-                 <td >
-                    {{item.residueNum}}
-                 </td>
-                 <td>{{item.addtime}}</td>
-                 <td>{{item.endtime}}</td>
+                 <td><Checkbox :label="item.BID"><span></span></Checkbox></td>
+                 <td>{{item.BID}}</td>
+                 <td>{{item.userid}}</td>
+                 <td>{{item.bank_cardid}}</td>
+                 <td>{{item.bank_name}}</td>
+                 <td>{{item.owner_name}}</td>
+                 <td>{{item.bank_branch}}</td>
                  <td align="center">
-                     <i-button type="info" @click="edit(item.SID)" >编辑</i-button>
-                     <i-button type="error"  @click="del(item.SID)" style="margin-top: 3px;">删除</i-button>
+<!--                     <template v-if="item.status==0">-->
+<!--                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>-->
+<!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
+<!--                     </template>-->
+
+<!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
+<!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>
@@ -233,9 +221,10 @@ $show_header = 1;
         table = layui.table;
     var app12 = '2';
 
-    aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:'1'},function(data){
+    aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:'1'},function(data){
         if(data.code=='200')
         {
+            console.log(data.data);
             app = new Vue({
                 el: '#singleChoice',
                 data:{
@@ -243,9 +232,9 @@ $show_header = 1;
                     pagenums:data.data.pagenums,//显示的最大页
                     page:1,//当前页数
                     pagecount:data.data.pageCount,//后台得到的总页数
-                    itemname:'', //题目筛选
                     itemGet:data.data.data,
-                    FTID:'',
+                    owner_name:'', //时间筛选
+                    userid:'',//id筛选
                     value4: false,
                     pStyle: {
                         fontSize: '16px',
@@ -281,8 +270,9 @@ $show_header = 1;
                     },
                     getData:function(page){
                         var that = this;
-                        aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:page, titlename:this.itemname},function(data){
-//                            console.log(data.data.pageStart);
+                        console.log(this.time);
+                        aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
+                            console.log(data);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
                             that.pagenums=data.data.pagenums;//显示的最大页
@@ -296,12 +286,12 @@ $show_header = 1;
                     seach:function () {
                         this.getData(1)
                     },
-                    del:function(SID){
+                    del:function(ID){
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zyshop&c=shopManage&a=delShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:SID},function(data){
-                                if(data.code == 1)
+                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                                if(data.code == 200)
                                     that.getData(that.page);
                                 else
                                     layer.msg(data.message);
@@ -310,20 +300,38 @@ $show_header = 1;
                         });
 
                     },
-                    edit:function(SID){
+                    pass:function(ID){
                         var that = this;
-                        layer.open({
-                            type: 2,
-                            title: '编辑',
-                            shadeClose: true,
-                            shade: 0.8,
-                            area: ['800px', '99%'],
-                            content: 'index.php?m=zyshop&c=shopManage&a=editShop&pc_hash=<?php echo $_GET["pc_hash"]?>&SID='+SID, //iframe的url
-                            end: function () {
-                                console.log(1);
-                               that.getData(that.page);
-                            }
+                        layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
+                            //do something
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                                if(data.code == 200)
+                                    that.getData(that.page);
+                                else
+                                    layer.msg(data.message);
+                            });
+                            layer.close(index);
                         });
+                    },
+                    reject:function(ID){
+                        var that = this;
+                        layer.confirm('确定驳回？', {icon: 2, title:'提示'}, function(index){
+                            //do something
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                                if(data.code == 200)
+                                    that.getData(that.page);
+                                else
+                                    layer.msg(data.message);
+                            });
+                            layer.close(index);
+                        });
+                    },
+                    replace_status:function(status){
+                        switch (status){
+                            case '0':return "待审核";
+                            case '1':return "<span style='color: green'>已通过</span>";
+                            case '2':return "<span style='color: red'>驳回</span>";
+                        }
                     },
                     photo:function(){
                         layer.photos({
@@ -331,11 +339,15 @@ $show_header = 1;
                             , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
                         });
                     },
+                    showvideo:function(src){
+                        this.src=src;
+                        this.value4 = true;
+                    },
                     getVTID:function(value)
                     {
                         this.VTID = value.VTID;
                     },
-                    addShop:function(){
+                    add:function(){
                         var that = this;
                         layer.open({
                             type: 2,
@@ -343,11 +355,36 @@ $show_header = 1;
                             shadeClose: true,
                             shade: 0.8,
                             area: ['700px', '79%'],
-                            content: 'index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            content: 'index.php?m=zysd&c=zysd&a=add_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
-                                console.log(1);
                                 that.getData(that.page);
                             }
+                        });
+                    },
+                    edit:function(ID)
+                    {
+                        var that = this;
+                        layer.open({
+                            type: 2,
+                            title: '添加',
+                            shadeClose: true,
+                            shade: 0.8,
+                            area: ['500px', '50%'],
+                            content: 'index.php?m=zysd&c=zysd&a=edit_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+ID,
+                            end: function () {
+                                that.getData(that.page);
+                            }
+                        });
+                    },
+                    view:function(data)
+                    {
+                        layer.open({
+                            type: 2,
+                            title: '编辑',
+                            shadeClose: true,
+                            shade: 0.8,
+                            area: ['400px', '70%'],
+                            content: 'index.php?m=zysd&c=zysd&a=manage_view&type=1&userid='+data +'&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                         });
                     },
                     delid:function()
@@ -360,8 +397,8 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zyshop&c=shopManage&a=delShop&&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:that.IDI},function(data){
-                                if(data.code == 1) {
+                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:that.IDI},function(data){
+                                if(data.code == 200) {
                                     that.getData(that.page);
                                     that.IDI = [];
                                     that.checkAll = false;
@@ -371,6 +408,10 @@ $show_header = 1;
                             });
                             layer.close(index);
                         });
+                    },
+                    changeTime:function(date)
+                    {
+                        this.time = date;
                     }
 
                 },
