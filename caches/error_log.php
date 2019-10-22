@@ -186,3 +186,15 @@
 <?php exit;?>10-18 16:41:06 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
 <?php exit;?>10-18 16:41:15 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
 <?php exit;?>10-18 13:32:19 | 2 | extract() expects parameter 1 to be array, null given | phpcms\modules\zymember\zymember.php | 760
+<?php exit;?>10-19 08:38:10 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-19 08:38:11 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-21 15:32:55 | 2 | array_shift() expects parameter 1 to be array, string given | phpcms\libs\classes\model.class.php | 179
+<?php exit;?>10-21 15:32:55 | 2 | Invalid argument supplied for foreach() | phpcms\libs\classes\model.class.php | 180
+<?php exit;?>10-21 15:32:55 | 2 | array_shift() expects parameter 1 to be array, string given | phpcms\libs\classes\model.class.php | 179
+<?php exit;?>10-21 15:32:55 | 2 | Invalid argument supplied for foreach() | phpcms\libs\classes\model.class.php | 180
+<?php exit;?>10-21 15:33:03 | 2 | array_shift() expects parameter 1 to be array, string given | phpcms\libs\classes\model.class.php | 179
+<?php exit;?>10-21 15:33:03 | 2 | Invalid argument supplied for foreach() | phpcms\libs\classes\model.class.php | 180
+<?php exit;?>10-21 15:33:03 | 2 | array_shift() expects parameter 1 to be array, string given | phpcms\libs\classes\model.class.php | 179
+<?php exit;?>10-21 15:33:03 | 2 | Invalid argument supplied for foreach() | phpcms\libs\classes\model.class.php | 180
+<?php exit;?>10-21 15:46:24 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
+<?php exit;?>10-21 15:46:26 | 2 | Invalid argument supplied for foreach() | phpcms\modules\zyfx\templates\FXmember\capitaldetails.tpl.php | 99
