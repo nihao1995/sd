@@ -185,3 +185,4 @@
 <?php exit;?>10-18 16:40:40 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
 <?php exit;?>10-18 16:41:06 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
 <?php exit;?>10-18 16:41:15 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zymember\fundApi.php on line 21 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
+

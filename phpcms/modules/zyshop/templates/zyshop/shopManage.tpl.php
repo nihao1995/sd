@@ -127,7 +127,7 @@ $show_header = 1;
 
             <template v-for="item in itemGet" v-model="itemGet">
              <tr>
-                 <td><Checkbox :label="item.EID"><span></span></Checkbox></td>
+                 <td><Checkbox :label="item.SID"><span></span></Checkbox></td>
                  <td>{{item.SID}}</td>
                  <td>{{item.titlename}}</td>
                  <td >
@@ -276,20 +276,12 @@ $show_header = 1;
                             this.IDI = [];
                         }
                     },
-                    getFTID:function(values){
-                        this.category = values===null?'':values.DBname;
-                    },
-                    DBnameAdd:function (values) {
-                        this.DBname = values.map(function(obj){
-                            return obj.DBname
-                        })
-                    },
                     changepage:function(num){
                         this.page = num;
                     },
                     getData:function(page){
                         var that = this;
-                        aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:page, titlename:this.itemname, VTID:this.VTID, category:this.category},function(data){
+                        aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:page, titlename:this.itemname},function(data){
 //                            console.log(data.data.pageStart);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
@@ -304,11 +296,11 @@ $show_header = 1;
                     seach:function () {
                         this.getData(1)
                     },
-                    del:function(EID){
+                    del:function(SID){
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zyexam&c=examManage&a=delData&pc_hash=<?php echo $_GET["pc_hash"]?>",{type:"zysinglechoice", EID:EID},function(data){
+                            aj.post("index.php?m=zyshop&c=shopManage&a=delShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:SID},function(data){
                                 if(data.code == 1)
                                     that.getData(that.page);
                                 else
@@ -333,20 +325,11 @@ $show_header = 1;
                             }
                         });
                     },
-                    check:function(){
-                    },
                     photo:function(){
                         layer.photos({
                             photos: '.layer-photos-demo'
                             , anim: 5 //0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
                         });
-                    },
-                    ads:function () {
-                        console.log("124124");
-                    },
-                    showvideo:function(src){
-                        this.src=src;
-                        this.value4 = true;
                     },
                     getVTID:function(value)
                     {
@@ -367,29 +350,6 @@ $show_header = 1;
                             }
                         });
                     },
-                    viewChoice:function(ID, type)
-                    {
-                        var that = this;
-                        layer.open({
-                            type: 2,
-                            title: '添加',
-                            shadeClose: true,
-                            shade: 0.8,
-                            area: ['400px', '50%'],
-                            content: 'index.php?m=zyexam&c=examManage&a=viewExam&pc_hash=<?php echo $_GET["pc_hash"]?>&'+type+'='+ID, //iframe的url
-                        });
-                    },
-                    view:function(data)
-                    {
-                        layer.open({
-                            type: 2,
-                            title: '编辑',
-                            shadeClose: true,
-                            shade: 0.8,
-                            area: ['400px', '70%'],
-                            content: 'index.php?m=zymember&c=zymember&a=manage_view&type=1&userid='+data +'&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
-                        });
-                    },
                     delid:function()
                     {
                         if(this.IDI.length === 0)
@@ -400,7 +360,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zyexam&c=examManage&a=delID&pc_hash=<?php echo $_GET["pc_hash"]?>",{EID:that.IDI},function(data){
+                            aj.post("index.php?m=zyshop&c=shopManage&a=delShop&&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:that.IDI},function(data){
                                 if(data.code == 1) {
                                     that.getData(that.page);
                                     that.IDI = [];
