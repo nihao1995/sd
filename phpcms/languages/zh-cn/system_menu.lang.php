@@ -475,4 +475,10 @@ $LANG['fxBack'] = '分销模块';
 $LANG['fxmenu'] = '分销菜单';
 $LANG['fxmember'] = '用户列表';
 $LANG['fxconfig'] = '分销配置文件';
+$LANG['zysd'] = '刷单模块';
+$LANG['sdgl'] = '刷单管理';
+$LANG['zjgl'] = '资金管理';
+$LANG['rechargeManage'] = '充值管理';
+$LANG['txgl'] = '提现管理';
+$LANG['yhkgl'] = '银行卡管理';
 ?>
