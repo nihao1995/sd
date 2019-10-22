@@ -100,8 +100,8 @@ $show_header = 1;
     <div class='selectVue'>
         <span class="selectSpan">用户ID:</span>
         <input type="text" v-model="userid" class="itemInput">
-        <span class="selectSpan">持卡人姓名:</span>
-        <input type="text" v-model="userid" class="itemInput">
+        <span >持卡人姓名:</span>
+        <input type="text" v-model="owner_name" class="itemInput">
 <!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
     </div>
