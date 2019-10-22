@@ -134,7 +134,7 @@ $show_header = 1;
                      {{item.description}}
                  </td>
                  <td >
-
+                    <img :src="item.thumb" width="100px"/>
                  </td>
                  <td >
                    {{item.money}}
@@ -234,7 +234,7 @@ $show_header = 1;
     var app12 = '2';
 
     aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:'1'},function(data){
-        if(data.code=='1')
+        if(data.code=='200')
         {
             app = new Vue({
                 el: '#singleChoice',
@@ -289,7 +289,7 @@ $show_header = 1;
                     },
                     getData:function(page){
                         var that = this;
-                        aj.post("index.php?m=zyexam&c=examManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:page, titlename:this.itemname, VTID:this.VTID, category:this.category},function(data){
+                        aj.post("index.php?m=zyshop&c=shopManage&a=getData&pc_hash=<?php echo $_GET["pc_hash"]?>",{ page:page, titlename:this.itemname, VTID:this.VTID, category:this.category},function(data){
 //                            console.log(data.data.pageStart);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
@@ -318,15 +318,15 @@ $show_header = 1;
                         });
 
                     },
-                    edit:function(EID){
+                    edit:function(SID){
                         var that = this;
                         layer.open({
                             type: 2,
                             title: '编辑',
                             shadeClose: true,
                             shade: 0.8,
-                            area: ['1300px', '99%'],
-                            content: 'index.php?m=zyexam&c=examManage&a=editExam&pc_hash=<?php echo $_GET["pc_hash"]?>&EID='+EID, //iframe的url
+                            area: ['800px', '99%'],
+                            content: 'index.php?m=zyshop&c=shopManage&a=editShop&pc_hash=<?php echo $_GET["pc_hash"]?>&SID='+SID, //iframe的url
                             end: function () {
                                 console.log(1);
                                that.getData(that.page);
@@ -359,7 +359,7 @@ $show_header = 1;
                             title: '添加',
                             shadeClose: true,
                             shade: 0.8,
-                            area: ['1300px', '99%'],
+                            area: ['700px', '79%'],
                             content: 'index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 console.log(1);

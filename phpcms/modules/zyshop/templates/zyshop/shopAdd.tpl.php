@@ -4,8 +4,8 @@ $show_header = 1;
 include $this->admin_tpl('header', 'admin');
 ?>
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-<script src="https://unpkg.com/vue-select@3.0.0"></script>
-<link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+<!--<script src="https://unpkg.com/vue-select@3.0.0"></script>-->
+<!--<link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">-->
 <link rel="stylesheet" href="//unpkg.com/iview/dist/styles/iview.css">
 <!--<link rel="stylesheet" type="text/css" href="--><?php //echo APP_PATH?><!--statics/vue/iview.css">-->
 <link rel="stylesheet" type="text/css" href="<?php echo APP_PATH?>statics/layui-v2.5.3/layui/css/layui.css">
@@ -33,95 +33,101 @@ include $this->admin_tpl('header', 'admin');
         display: inline-block
     }
 </style>
+<style scoped>
+    .demo-badge{
+        width: 42px;
+        height: 42px;
+        background: #eee;
+        border-radius: 6px;
+        display: inline-block;
+    }
+</style>
 
 <div class="pad-10" id="app">
     <div class="common-form">
         <div id="div_setting_2" class="contentList">
             <fieldset>
-                <legend>添加考试</legend>
+                <legend>商品添加</legend>
                 <table  class="table_form">
                     <tbody>
                     <tr>
-                        <th style="width: 120px">考试标题</th>
+                        <th style="width: 120px">商品标题</th>
                         <td>
                             <textarea  required v-model="titlename" id="" cols="70" rows="2" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">商品描述</th>
+                        <td>
+                            <textarea  required v-model="description" id="" cols="70" rows="2" maxlength="200" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">商品图片</th>
+                        <td>
+
+                            <div style="width: 161px; text-align: center;">
+                                <div class='upload-pic img-wrap'><input type='hidden' name='info[photourl]' id='thumb' required="" v-model="thumb">
+                                    <a href='javascript:void(0);' onclick="flashupload('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,0','content','6','<?php echo $authkey;?>');return false;">
+                                        <img src='statics/images/icon/upload-pic.png' id='thumb_preview' width='135' height='113' style='cursor:hand; margin-left: 13px;' /></a><!-- <input type="button" style="width: 66px;" class="button" onclick="crop_cut_thumb($('#thumb').val());return false;" value="裁切图片"> --><input type="button" style="width: 66px;" class="button" onclick="$('#thumb_preview').attr('src','statics/images/icon/upload-pic.png');$('#thumb').val(' ');return false;" value="取消图片">
+                                </div>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">商品详情图</th>
+                        <td><input name="goodsimg" type="hidden" value="1">
+
+                           <div class='onShow' id='nameTip'>您最多可以同时上传 <font color='red'>50</font> 张</div></center><div id="goodsimg" class="picList"></div>
+
+                            <div class="bk10"></div>
+                            <div class='picBut cu'><a href='javascript:void(0);' @click="uploadMoreImg()"/> 选择图片 </a></div>
+                            <div style="clear: both"></div>
+                            <div style="display: inline-block">
+                                <template v-for="(item,index) in img">
+                                    <li style="position: relative;margin: 15px 15px 10px 0;display: inline-block"  @click="del_img(index)">
+                                        <Badge text="X">
+                                            <img :src="item" width='60' height='60' style='cursor:hand; margin-left: 13px;'/>
+                                        </Badge>
+
+                                    </li>
+
+                                </template>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 120px">商品价格</th>
+                        <td>
+                            <i-input v-model="money"  placeholder="请输入价格" type="number" style="width: 300px"></i-input>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">商品佣金</th>
+                        <td>
+                            一级会员佣金：43元
+                            二级会员佣金：22元
+                            三级会员佣金：11元
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">任务总数</th>
+                        <td>
+                            <i-input v-model="num"  placeholder="请输入数量" type="number" style="width: 300px"></i-input>
+
                         </td>
                     </tr>
                     <tr >
-                        <th style="width: 120px">考试会员</th>
-                        <th>
-                            <Transfer
-                                    filterable
-                                    :data="memberData"
-                                    :target-keys="memberKeys"
-                                    :list-style="listStyle"
-                                    @on-change="memberChange">
-                            </Transfer>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style="width: 120px">单选题选择</th>
-                        <th>
-                            <Transfer
-                                    filterable
-                                    :data="singleChoiceData"
-                                    :target-keys="singleChoiceKeys"
-                                    :list-style="listStyle"
-                                    @on-change="singleChoiceChange">
-                            </Transfer>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style="width: 120px">多选题选择</th>
-                        <th>
-                            <Transfer
-                                    filterable
-                                    :data="multipleChoiceData"
-                                    :target-keys="multipleChoiceKeys"
-                                    :list-style="listStyle"
-                                    @on-change="multipleChoiceChange">
-                            </Transfer>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style="width: 120px">排序题选择</th>
-                        <th>
-                            <Transfer
-                                    filterable
-                                    :data="rankChoiceData"
-                                    :target-keys="rankChoiceKeys"
-                                    :list-style="listStyle"
-                                    @on-change="rankChoiceChange">
-                            </Transfer>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style="width: 120px">判断题选择</th>
-                        <th>
-                            <Transfer
-                                    filterable
-                                    :data="trueorfalseChoiceData"
-                                    :target-keys="trueorfalseChoiceKeys"
-                                    :list-style="listStyle"
-                                    @on-change="trueorfalseChoiceChange">
-                            </Transfer>
-                        </th>
-                    </tr>
-                    <tr >
-                        <th style="width: 120px">考试时间</th>
+                        <th style="width: 120px">截止时间</th>
                         <th>
                             <template>
-                                <Date-Picker @on-change="dateChange" type="datetimerange" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></Date-Picker>
-<!--                            <DatePicker type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></DatePicker>-->
-                            </template>
-                        </th>
-                    </tr>
-                    </tbody>
-                    <tr >
-                        <th style="width: 120px">考试时长</th>
-                        <th>
-                            <template>
-                                <Time-Picker :value="pkTime" format="HH:mm:ss" type="time" placeholder="Select time" style="width: 168px" @on-change="timeChange"></Time-Picker>
+                                <Date-Picker type="datetime" placeholder="选择截止日期" format="yyyy-MM-dd HH:mm:ss" style="width: 300px" @on-change="dateChange"></Date-Picker>
+<!--                                <Date-Picker @on-change="dateChange" type="datetimerange" format="yyyy-MM-dd HH:mm:ss" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></Date-Picker>-->
 <!--                            <DatePicker type="datetimerange" format="yyyy-MM-dd HH:mm" placeholder="Select date and time(Excluding seconds)" style="width: 300px"></DatePicker>-->
                             </template>
                         </th>
@@ -140,11 +146,7 @@ include $this->admin_tpl('header', 'admin');
 
 </div>
 <script>
-    Vue.component("v-select", VueSelect.VueSelect);
-    function pushData(){
-
-        return true;
-    }
+    // Vue.component("v-select", VueSelect.VueSelect);
     var layer = layui.layer,
         form = layui.form,
         $ = layui.jquery,
@@ -153,69 +155,19 @@ include $this->admin_tpl('header', 'admin');
     window.parent.app12 = new Vue({
         el:"#app",
         data:{
-            VFTID:'',
-            titlename: '',
-            visible: false,
-            uploadList: [],
-            dataList:[],
-            singleChoiceData:[],
-            singleChoiceKeys:[],
-            multipleChoiceData:[],
-            multipleChoiceKeys:[],
-            rankChoiceData:[],
-            rankChoiceKeys:[],
-            trueorfalseChoiceData:[],
-            trueorfalseChoiceKeys:[],
-            memberData:[],
-            memberKeys:[],
-            dateStart:'',
-            dateEnd:'',
-            pkTime:'00:00:00',
-            listStyle: {
-                width: '500px',
-                height: '500px'
-            }
+            titlename:"",
+            description:"",
+            money:"",
+            img:[],
+            thumb:"",
+            num:"",
+            endtime:""
         },
         methods:{
-            remove:function(file, fileList){
-                console.log(file.name);
-                for(index in this.dataList)
-                {
-                    if(this.dataList[index].name === file.name)
-                        delete this.dataList[index];
-                }
-            },
-            timeChange:function(index)
-            {
-                this.pkTime = index;
-            },
-            success:function(response, file, fileList){
-                this.dataList.push(response.data);
-                console.log(response);
-            },
-            getTransfer:function(data, type='S'){
-                var returnData = [];
-                for(var index in data)
-                {
-                    switch (type)
-                    {
-                        case "S":returnData.push({"key":data[index].SCID, "label": data[index].itemname, "disabled": false});break;
-                        case "M":returnData.push({"key":data[index].MCID, "label": data[index].itemname, "disabled": false});break;
-                        case "T":returnData.push({"key":data[index].TFCID, "label": data[index].itemname, "disabled": false});break;
-                        case "R":returnData.push({"key":data[index].RCID, "label": data[index].itemname, "disabled": false});break;
-                        case "ME":returnData.push({"key":data[index].userid, "label": data[index].nickname, "disabled": false});break;
-                    }
-                }
-                return returnData;
-            },
-            exceeded:function(file, fileList)
-            {
-                layer.msg('文件过大')
-            },
             upload:function()
             {
-                aj.post("index.php?m=zyexam&c=examManage&a=addExam&pc_hash=<?php echo $_GET["pc_hash"]?>",{titlename:this.titlename, SCID:this.singleChoiceKeys,RCID:this.rankChoiceKeys, MCID:this.multipleChoiceKeys , TFCID:this.trueorfalseChoiceKeys, dateStart:this.dateStart, dateEnd:this.dateEnd, member:this.memberKeys, examTime:this.pkTime},function(data){
-                    if(data.code == 1)
+                aj.post("index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime},function(data){
+                    if(data.code == 200)
                     {
                         var index = parent.layer.getFrameIndex(window.name);
                         parent.layer.close(index);
@@ -224,49 +176,32 @@ include $this->admin_tpl('header', 'admin');
                         layer.msg("有数据未填写");
                 });
             },
-            singleChoiceChange:function(newTargetKeys, direction, moveKeys){
-                this.singleChoiceKeys = newTargetKeys;
+            dateChange:function(date, time){ //获取结束时间
+                this.endtime = date;
             },
-            multipleChoiceChange:function(newTargetKeys, direction, moveKeys){
-                this.multipleChoiceKeys = newTargetKeys;
+            uploadMoreImg:function()//cms自带的图片上传，集成到vue中
+            {
+                flashupload('goodsimg_images', '附件上传',this,change_images_vue,'50,gif|jpg|jpeg|png|bmp,0','content','0','<?php echo $authkeys;?>') ;
             },
-            trueorfalseChoiceChange:function (newTargetKeys, direction, moveKeys) {
-                this.trueorfalseChoiceKeys = newTargetKeys;
-            },
-            rankChoiceChange:function (newTargetKeys, direction, moveKeys) {
-                this.rankChoiceKeys = newTargetKeys;
-            },
-            memberChange:function (newTargetKeys, direction, moveKeys){
-                this.memberKeys = newTargetKeys;
-            },
-            dateChange:function(date, time){
-                this.dateStart = date[0];
-                this.dateEnd = date[1];
+            del_img:function(index) //删除图片的
+            {
+                console.log(index);
+                this.img.splice(index, 1);
             }
+
         },
-        mounted:function(){
-            var that = this;
-            aj.post("index.php?m=zyexam&c=examManage&a=getChoice&pc_hash=<?php echo $_GET["pc_hash"]?>",{},function(data){
-                if(data.code == 1)
-                {
-                    that.singleChoiceData = that.getTransfer(data.data.singlechoice);
-                    that.multipleChoiceData = that.getTransfer(data.data.multiplechoice, "M");
-                    that.trueorfalseChoiceData = that.getTransfer(data.data.trueorfalsechoice, "T");
-                    that.rankChoiceData = that.getTransfer(data.data.rankchoice, "R");
-                    that.memberData = that.getTransfer(data.data.member, "ME");
-                    that.singleChoiceKeys = [];
-                    that.multipleChoiceKeys = [];
-                    that.trueorfalseChoiceKeys = [];
-                    that.rankChoiceKeys = [];
-                    that.memberKeys=[];
-                }
-                else
-                    layer.msg("有数据未填写");
-            });
-        }
+
     })
 </script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>swfupload/swf2ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>content_addtop.js"></script>
+
+<script type="text/javascript">
+    function crop_cut_thumb(id){
+        if (id=='') { alert('请先上传缩略图');return false;}
+        window.top.art.dialog({title:'裁切图片', id:'crop', iframe:'index.php?m=content&c=content&a=public_crop&module=content&catid='+0+'&picurl='+encodeURIComponent(id)+'&input=thumb&preview=thumb_preview', width:'680px', height:'480px'}, 	function(){var d = window.top.art.dialog({id:'crop'}).data.iframe;
+            d.uploadfile();return false;}, function(){window.top.art.dialog({id:'crop'}).close()});
+    };
+</script>
 </body>
 </html>

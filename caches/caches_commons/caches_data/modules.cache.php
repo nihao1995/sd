@@ -552,5 +552,20 @@ return array (
     'installdate' => '2018-07-08',
     'updatedate' => '2018-07-08',
   ),
+  'zyshop' =>
+      array (
+          'module' => 'zyshop',
+          'name' => '商品模块',
+          'url' => 'zyshop/',
+          'iscore' => '0',
+          'version' => '1.0',
+          'description' => 'zyshop',
+          'setting' => '',
+          'listorder' => '0',
+          'disabled' => '0',
+          'installdate' => '2011-09-02',
+          'updatedate' => '2011-09-02',
+      ),
+
 );
 ?>
