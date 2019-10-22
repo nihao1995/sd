@@ -113,6 +113,21 @@ class shopManage extends admin
             include $this->admin_tpl('zyshop\shopEdit');
         }
     }
+    function delShop()
+    {
+        $neadArg = ["SID"=>[true, 0]];
+        $info = checkArg($neadArg, $_POST);
+        $shop = new items("zyshop");
+        if(is_array($info["SID"]))
+        {
+            $shop->easySql->del_or($info);
+        }
+        else
+            $shop->easySql->del($info);
+        returnAjaxData("1", "成功");
+//        $shop
+//        if(is_array($info["SID"]))
+    }
 
 
 

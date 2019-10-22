@@ -2,13 +2,13 @@
 
 return array (
 	'default' => array (
-		'hostname' => 'localhost',
+		'hostname' => '192.168.0.8',
 		'port' => 3306,
-		'database' => 'phpsso',
-		'username' => '',
+		'database' => 'sd',
+		'username' => 'root',
 		'password' => '',
-		'tablepre' => 'ps_',
-		'charset' => 'gbk',
+		'tablepre' => 'zy_sso_',
+		'charset' => 'utf8',
 		'type' => 'mysqli',
 		'debug' => true,
 		'pconnect' => 0,
