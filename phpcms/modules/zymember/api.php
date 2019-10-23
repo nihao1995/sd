@@ -3,7 +3,9 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_func('global');
 
 class api{
+	public $hour = 3;
 	function __construct() {
+
 
 		$this->get_db = pc_base::load_model('get_model');
 		$this->member_db = pc_base::load_model('member_model');
@@ -97,14 +99,6 @@ class api{
 		//==================	操作成功-更新数据 START
 
 			//如果是网页的话，清空缓存。如果是APP的话，还没定
-			if ($type==1) {
-				param::set_cookie('auth', '');
-				param::set_cookie('_userid', '');
-				param::set_cookie('_username', '');
-				param::set_cookie('_groupid', '');
-				param::set_cookie('_nickname', '');
-				param::set_cookie('cookietime', '');
-			}
 
 			$result = [
 				'status'=>'success',
@@ -211,23 +205,15 @@ class api{
 
 			//如果是网页的话，要存缓存。如果是APP的话，我就直接传值就行了
 			if ($type==1) {
-				$cookietime = SYS_TIME + 7200;	//系统时间+两个小时
-				$phpcms_auth = sys_auth($memberinfo['userid']."\t".$memberinfo['password'], 'ENCODE', get_auth_key('login'));
-				param::set_cookie('auth', $phpcms_auth, $cookietime);
-				param::set_cookie('_userid', $memberinfo['userid'], $cookietime);
-				param::set_cookie('_username', $memberinfo['username'], $cookietime);
-				param::set_cookie('_nickname', $memberinfo['nickname'], $cookietime);
-				param::set_cookie('_groupid', $memberinfo['groupid'], $cookietime);
-				param::set_cookie('cookietime', $_cookietime, $cookietime);
+				$cookie_userid=param::set_app_cookie('_userid', $memberinfo['userid']);
 			}
 			$result = [
 				'status'=>'success',
 				'code'=>200,
 				'message'=>'登录成功',
 				'data'=>[
-					'userid'=>$memberinfo['userid'],
-					'groupid'=>$memberinfo['groupid'],
-					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
+					'userid'=>$cookie_userid,
+					'time'=>time()+3600*$this->hour,
 				]
 			];
 			exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
@@ -331,14 +317,7 @@ class api{
 
 			//如果是网页的话，要存缓存。如果是APP的话，我就直接传值就行了
 			if ($type==1) {
-				$cookietime = SYS_TIME + 7200;	//系统时间+两个小时
-				$phpcms_auth = sys_auth($memberinfo['userid']."\t".$memberinfo['password'], 'ENCODE', get_auth_key('login'));
-				param::set_cookie('auth', $phpcms_auth, $cookietime);
-				param::set_cookie('_userid', $memberinfo['userid'], $cookietime);
-				param::set_cookie('_username', $memberinfo['username'], $cookietime);
-				param::set_cookie('_nickname', $memberinfo['nickname'], $cookietime);
-				param::set_cookie('_groupid', $memberinfo['groupid'], $cookietime);
-				param::set_cookie('cookietime', $_cookietime, $cookietime);
+				$cookie_userid=param::set_app_cookie('_userid', $memberinfo['userid']);
 			}
 			
 			//调用通讯模块-短信接口-清空此账号的短信验证码
@@ -346,7 +325,7 @@ class api{
 			//==================	获取其他接口-接口 START
 				$config = $this->zyconfig_db->get_one(array('key'=>'zymessagesys5'),"url");
 				$curl = [
-					'mobile'=>$memberinfo['mobile']
+					'mobile'=>$memberinfo['mobile'],
 				];
 				_crul_post($config['url'],$curl);
 			//==================	获取其他接口-接口 END		
@@ -357,8 +336,8 @@ class api{
 				'code'=>200,
 				'message'=>'登录成功',
 				'data'=>[
-					'userid'=>$memberinfo['userid'],
-					'groupid'=>$memberinfo['groupid'],
+					'userid'=>$cookie_userid,
+					'time'=>time()+3600*$this->hour,
 					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
 				]
 			];
@@ -515,14 +494,7 @@ class api{
 			$memberinfo = $this->member_db->get_one(array('mobile'=>$mobile));
 			//如果是网页的话，要存缓存。如果是APP的话，我就直接传值就行了
 			if ($type==1) {
-				$cookietime = SYS_TIME + 7200;	//系统时间+两个小时
-				$phpcms_auth = sys_auth($memberinfo['userid']."\t".$memberinfo['password'], 'ENCODE', get_auth_key('login'));
-				param::set_cookie('auth', $phpcms_auth, $cookietime);
-				param::set_cookie('_userid', $memberinfo['userid'], $cookietime);
-				param::set_cookie('_username', $memberinfo['username'], $cookietime);
-				param::set_cookie('_nickname', $memberinfo['nickname'], $cookietime);
-				param::set_cookie('_groupid', $memberinfo['groupid'], $cookietime);
-				param::set_cookie('cookietime', $_cookietime, $cookietime);
+				$cookie_userid=param::set_app_cookie('_userid', $memberinfo['userid']);
 			}
 			
 			//调用通讯模块-短信接口-清空此账号的短信验证码
@@ -541,9 +513,8 @@ class api{
 				'code'=>200,
 				'message'=>'注册成功',
 				'data'=>[
-					'userid'=>$memberinfo['userid'],
-					'groupid'=>$memberinfo['groupid'],
-					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
+					'userid'=>$cookie_userid,
+					'time'=>time()+3600*$this->hour,
 				]
 			];
 			exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));

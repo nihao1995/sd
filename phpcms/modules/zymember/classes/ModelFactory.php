@@ -19,6 +19,8 @@ class modelFactory
             case "bankcard": return \pc_base::load_model("zybankcard_model");
             case "fund_record": return \pc_base::load_model("fund_record_model");
             case "account_record": return \pc_base::load_model("account_record_model");
+            case "notice": return \pc_base::load_model("announce_model");
+            case "notice_type": return \pc_base::load_model("notice_type_model");
             default:\Res::Error("没有这个model");
         }
     }

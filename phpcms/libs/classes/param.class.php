@@ -91,11 +91,14 @@ class param {
 		$_COOKIE[$var] = $value;
 		if (is_array($value)) {
 			foreach($value as $k=>$v) {
-				setcookie($var.'['.$k.']', sys_auth($v, 'ENCODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key')), $time, pc_base::load_config('system','cookie_path'), pc_base::load_config('system','cookie_domain'), $s, $httponly);
+				$cookie =  sys_auth($v, 'ENCODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key'));
+				setcookie($var.'['.$k.']',$cookie, $time, pc_base::load_config('system','cookie_path'), pc_base::load_config('system','cookie_domain'), $s, $httponly);
 			}
 		} else {
-			setcookie($var, sys_auth($value, 'ENCODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key')), $time, pc_base::load_config('system','cookie_path'), pc_base::load_config('system','cookie_domain'), $s, $httponly);
+			$cookie =   sys_auth($value, 'ENCODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key'));
+			setcookie($var,$cookie, $time, pc_base::load_config('system','cookie_path'), pc_base::load_config('system','cookie_domain'), $s, $httponly);
 		}
+		return $cookie;
 	}
 
 	/**
@@ -115,6 +118,16 @@ class param {
 		return $value;
 	}
 
+	public static function set_app_cookie($var, $value = '') {
+		$var = pc_base::load_config('system','cookie_pre').$var;
+		$cookie =   sys_auth($value, 'ENCODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key'));
+		return $cookie;
+	}
+	public static function get_app_cookie($var,$value) {
+		$var = pc_base::load_config('system','cookie_pre').$var;
+		$value = sys_auth($value, 'DECODE', md5(PC_PATH.'cookie'.$var).pc_base::load_config('system','auth_key'));
+		return $value;
+	}
 	/**
 	 * 安全处理函数
 	 * 处理m,a,c
