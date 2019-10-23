@@ -96,17 +96,12 @@ class zymember_api{
 	 */
 	public function pub_memberinfo($userid=NULL,$field)
 	{
-		if($_POST['type']){
-			$field = $_POST['field'] ? $_POST['field'] : '';
-			$userid = $_POST['userid'];
-			$type = $_POST['type'] ? $_POST['type'] : 1;	//类型：1web端、2APP端
-		}else{
-			$field = $_GET['field'] ? $_GET['field'] : '';
-			$userid = $_GET['userid'];
-			$type = $_GET['type'] ? $_GET['type'] : 1;	//类型：1web端、2APP端
+		$parm=checkArg(["time"=>[true,0,"请传入时间"],"userid"=>[true,0,"请传入用户id"],"filed"=>[true,0,"请传入字段"]],$_POST);
+		if($parm['time']<=time()){
+			returnAjaxData(-200,"登录超时");
 		}
-		$userid = $type==1 ? param::get_cookie('_userid') : $userid;
-
+		$userid = $parm['userid'] ? param::get_app_cookie('_userid',$parm['userid']) : 0;
+		$field = $parm['filed'];
 		
 		//==================	操作失败-验证 START
 		if(!$userid){

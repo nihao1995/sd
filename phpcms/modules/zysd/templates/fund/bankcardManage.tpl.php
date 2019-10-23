@@ -95,13 +95,13 @@ $show_header = 1;
 
 <div id="singleChoice">
     <div class="subnav">
-        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>
+<!--        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>-->
     </div>
     <div class='selectVue'>
         <span class="selectSpan">用户ID:</span>
         <input type="text" v-model="userid" class="itemInput">
-        <span class="selectSpan">持卡人姓名:</span>
-        <input type="text" v-model="userid" class="itemInput">
+        <span >持卡人姓名:</span>
+        <input type="text" v-model="owner_name" class="itemInput">
 <!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
     </div>
@@ -139,8 +139,8 @@ $show_header = 1;
 <!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
 <!--                     </template>-->
 
-                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>
-                     <i-button type="error"  @click="del(item.BID)">删除</i-button>
+<!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
+<!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>

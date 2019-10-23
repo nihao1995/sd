@@ -552,20 +552,59 @@ return array (
     'installdate' => '2018-07-08',
     'updatedate' => '2018-07-08',
   ),
-  'zyshop' =>
-      array (
-          'module' => 'zyshop',
-          'name' => '商品模块',
-          'url' => 'zyshop/',
-          'iscore' => '0',
-          'version' => '1.0',
-          'description' => 'zyshop',
-          'setting' => '',
-          'listorder' => '0',
-          'disabled' => '0',
-          'installdate' => '2011-09-02',
-          'updatedate' => '2011-09-02',
-      ),
-
+  'zysd' => 
+  array (
+    'module' => 'zysd',
+    'name' => '刷单模块',
+    'url' => '',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => 'array (
+  1 => 
+  array (
+    \'is_post\' => \'1\',
+    \'enablecheckcode\' => \'0\',
+  ),
+)',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2019-03-08',
+    'updatedate' => '2019-03-08',
+  ),
+  'zymessagesys' => 
+  array (
+    'module' => 'zymessagesys',
+    'name' => '通讯系统',
+    'url' => '',
+    'iscore' => '0',
+    'version' => '1.0',
+    'description' => '',
+    'setting' => 'array (
+  1 => 
+  array (
+    \'is_post\' => \'1\',
+    \'enablecheckcode\' => \'0\',
+  ),
+)',
+    'listorder' => '0',
+    'disabled' => '0',
+    'installdate' => '2018-10-01',
+    'updatedate' => '2018-10-01',
+  ),
+    'zyshop' =>
+        array (
+            'module' => 'sms',
+            'name' => '短信平台',
+            'url' => 'sms/',
+            'iscore' => '0',
+            'version' => '1.0',
+            'description' => '短信平台',
+            'setting' => '',
+            'listorder' => '0',
+            'disabled' => '0',
+            'installdate' => '2011-09-02',
+            'updatedate' => '2011-09-02',
+        ),
 );
 ?>
