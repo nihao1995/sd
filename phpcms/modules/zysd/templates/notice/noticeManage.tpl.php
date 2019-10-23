@@ -94,15 +94,16 @@ $show_header = 1;
 </div>
 
 <div id="singleChoice">
-<!--    <div class="subnav">-->
-<!--        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>-->
-<!--    </div>-->
+    <div class="subnav">
+        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>
+    </div>
     <div class='selectVue'>
         <span class="selectSpan">用户ID:</span>
         <input type="text" v-model="userid" class="itemInput">
         <span >持卡人姓名:</span>
         <input type="text" v-model="owner_name" class="itemInput">
-<!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
+        <span >发布时间:</span>
+        <Date-Picker  type="daterange" placeholder="请选择时间" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
     </div>
     <Checkbox-Group v-model="IDI">
@@ -114,11 +115,14 @@ $show_header = 1;
                         :value="checkAll"
                         @click.prevent.native="handleCheckAll"><span></span></Checkbox></th>
             <th>ID</th>
-            <th>用户ID</th>
-            <th>银行卡号</th>
-            <th>银行名称</th>
-            <th>持卡人姓名</th>
-            <th>所属支行</th>
+            <th>标题</th>
+            <th>公告类型</th>
+            <th>公告内容</th>
+            <th>发布人</th>
+            <th>开始时间</th>
+            <th>结束时间</th>
+            <th>添加时间</th>
+            <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -128,19 +132,22 @@ $show_header = 1;
              <tr>
                  <td><Checkbox :label="item.BID"><span></span></Checkbox></td>
                  <td>{{item.BID}}</td>
-                 <td>{{item.userid}}</td>
-                 <td>{{item.bank_cardid}}</td>
-                 <td>{{item.bank_name}}</td>
-                 <td>{{item.owner_name}}</td>
-                 <td>{{item.bank_branch}}</td>
+                 <td>{{item.title}}</td>
+                 <td>{{item.siteid}}</td>
+                 <td>{{item.content}}</td>
+                 <td>{{item.username}}</td>
+                 <td>{{item.starttime}}</td>
+                 <td>{{item.endtime}}</td>
+                 <td>{{item.addtime}}</td>
+                 <td>{{item.passed}}</td>
                  <td align="center">
-<!--                     <template v-if="item.status==0">-->
-<!--                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>-->
-<!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
-<!--                     </template>-->
+                     <template v-if="item.status==0">
+                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>
+                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>
+                     </template>
 
-<!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
-<!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
+                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>
+                     <i-button type="error"  @click="del(item.BID)">删除</i-button>
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>

@@ -94,17 +94,17 @@ $show_header = 1;
 </div>
 
 <div id="singleChoice">
-<!--    <div class="subnav">-->
-<!--        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>-->
-<!--    </div>-->
-    <div class='selectVue'>
-        <span class="selectSpan">用户ID:</span>
-        <input type="text" v-model="userid" class="itemInput">
-        <span >持卡人姓名:</span>
-        <input type="text" v-model="owner_name" class="itemInput">
-<!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
-        <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
+    <div class="subnav">
+        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>
     </div>
+<!--    <div class='selectVue'>-->
+<!--        <span class="selectSpan">用户ID:</span>-->
+<!--        <input type="text" v-model="userid" class="itemInput">-->
+<!--        <span >持卡人姓名:</span>-->
+<!--        <input type="text" v-model="owner_name" class="itemInput">-->
+<!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
+<!--        <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>-->
+<!--    </div>-->
     <Checkbox-Group v-model="IDI">
     <table class="layui-table">
         <thead>
@@ -114,11 +114,9 @@ $show_header = 1;
                         :value="checkAll"
                         @click.prevent.native="handleCheckAll"><span></span></Checkbox></th>
             <th>ID</th>
-            <th>用户ID</th>
-            <th>银行卡号</th>
-            <th>银行名称</th>
-            <th>持卡人姓名</th>
-            <th>所属支行</th>
+            <th>排序</th>
+            <th>公告类型名称</th>
+            <th>状态</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -126,21 +124,18 @@ $show_header = 1;
 
             <template v-for="item in itemGet" v-model="itemGet">
              <tr>
-                 <td><Checkbox :label="item.BID"><span></span></Checkbox></td>
-                 <td>{{item.BID}}</td>
-                 <td>{{item.userid}}</td>
-                 <td>{{item.bank_cardid}}</td>
-                 <td>{{item.bank_name}}</td>
-                 <td>{{item.owner_name}}</td>
-                 <td>{{item.bank_branch}}</td>
+                 <td><Checkbox :label="item.NTID"><span></span></Checkbox></td>
+                 <td>{{item.NTID}}</td>
+                 <td>{{item.sort}}</td>
+                 <td>{{item.notice_type_name}}</td>
+                 <td><span v-html="replace_status(item.status)"></span></td>
                  <td align="center">
 <!--                     <template v-if="item.status==0">-->
-<!--                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>-->
-<!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
+<!--                         <i-button type="info" @click="pass(item.NTID)" >通过</i-button>-->
+<!--                         <i-button type="error" @click="reject(item.NTID)" >驳回</i-button>-->
 <!--                     </template>-->
-
-<!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
-<!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
+                     <i-button type="info" @click="edit(item.NTID)" >编辑</i-button>
+                     <i-button type="error"  @click="del(item.NTID)">删除</i-button>
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>
@@ -221,10 +216,9 @@ $show_header = 1;
         table = layui.table;
     var app12 = '2';
 
-    aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:'1'},function(data){
+    aj.post("index.php?m=zysd&c=zysd&a=notice_type_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:'1'},function(data){
         if(data.code=='200')
         {
-            console.log(data.data);
             app = new Vue({
                 el: '#singleChoice',
                 data:{
@@ -259,7 +253,7 @@ $show_header = 1;
                         if (this.checkAll) {
                             var cd = [];
                             for(var i in this.itemGet)
-                                cd.push(this.itemGet[i].SID)
+                                cd.push(this.itemGet[i].NTID)
                             this.IDI = cd;
                         } else {
                             this.IDI = [];
@@ -271,7 +265,7 @@ $show_header = 1;
                     getData:function(page){
                         var that = this;
                         console.log(this.time);
-                        aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
+                        aj.post("index.php?m=zysd&c=zysd&a=notice_type_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
                             console.log(data);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
@@ -290,7 +284,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_notice_type&pc_hash=<?php echo $_GET["pc_hash"]?>",{NTID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -304,7 +298,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{NTID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -317,7 +311,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定驳回？', {icon: 2, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{NTID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -328,9 +322,8 @@ $show_header = 1;
                     },
                     replace_status:function(status){
                         switch (status){
-                            case '0':return "待审核";
-                            case '1':return "<span style='color: green'>已通过</span>";
-                            case '2':return "<span style='color: red'>驳回</span>";
+                            case '0':return "<span style='color: red'>关闭</span>";
+                            case '1':return "<span style='color: green'>开启</span>";
                         }
                     },
                     photo:function(){
@@ -355,7 +348,7 @@ $show_header = 1;
                             shadeClose: true,
                             shade: 0.8,
                             area: ['700px', '79%'],
-                            content: 'index.php?m=zysd&c=zysd&a=add_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            content: 'index.php?m=zysd&c=zysd&a=add_noticeType&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 that.getData(that.page);
                             }
@@ -366,11 +359,11 @@ $show_header = 1;
                         var that = this;
                         layer.open({
                             type: 2,
-                            title: '添加',
+                            title: '编辑',
                             shadeClose: true,
                             shade: 0.8,
                             area: ['500px', '50%'],
-                            content: 'index.php?m=zysd&c=zysd&a=edit_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+ID,
+                            content: 'index.php?m=zysd&c=zysd&a=edit_noticeType&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+ID,
                             end: function () {
                                 that.getData(that.page);
                             }
@@ -397,7 +390,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:that.IDI},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_notice_type&pc_hash=<?php echo $_GET["pc_hash"]?>",{NTID:that.IDI},function(data){
                                 if(data.code == 200) {
                                     that.getData(that.page);
                                     that.IDI = [];

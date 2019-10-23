@@ -95,7 +95,7 @@ $show_header = 1;
 
 <div id="singleChoice">
     <div class="subnav">
-        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>
+<!--        <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>-->
     </div>
     <div class='selectVue'>
         <span class="selectSpan">用户ID:</span>
@@ -139,8 +139,8 @@ $show_header = 1;
 <!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
 <!--                     </template>-->
 
-                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>
-                     <i-button type="error"  @click="del(item.BID)">删除</i-button>
+<!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
+<!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>

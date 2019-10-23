@@ -115,6 +115,7 @@ class param {
 		return $value;
 	}
 
+
 	/**
 	 * 安全处理函数
 	 * 处理m,a,c

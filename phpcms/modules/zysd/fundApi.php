@@ -54,6 +54,23 @@ class fundApi
         }
     }
 
+    //银行卡信息
+    public function get_bank_card()
+    {
+        $data=checkArg(["userid"=>[true,1,"请输入用户ID"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+        $where="1";
+        if($data['userid']){
+            $where.=" AND userid=".$data['userid'];
+        }
+        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($where,$data['page']);
+        if($info){
+            returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+        }else{
+            returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+        }
+    }
+
+
     //账本记录
     public function account_records()
     {
