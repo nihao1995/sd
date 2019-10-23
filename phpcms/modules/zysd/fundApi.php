@@ -11,7 +11,7 @@ pc_base::load_sys_class('form', '', 0);
 pc_base::load_sys_class('format', '', 0);
 pc_base::load_sys_class('Res', '', 0);
 
-use zymember\classes\FundControl as fc;
+use zysd\classes\FundControl as fc;
 
 class fundApi
 {
