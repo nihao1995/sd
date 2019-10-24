@@ -153,10 +153,10 @@ class fundApi
     //资金记录
     public function fund_record()
     {
-        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_type"=>[true,1,"请输入提现金额"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
-        $id=$this->fund->fund_list(["userid"=>$data['userid'],"fund_type"=>$data['fund_type']],1,$data['page'],$data['pagesize']);
-        if($id){
-            returnAjaxData(200,"操作成功",$id);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_type"=>[true,1,"请输入金额类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
+        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->fund_list("B1.userid=".$data['userid']." and fund_type=".$data['fund_type'],1,$data['page'],$data['pagesize']);
+        if($info){
+            returnAjaxData(200,"操作成功",['data'=>$info, 'pageCount'=>$pageCount]);
         }else{
             returnAjaxData(-200,"操作失败");
         }

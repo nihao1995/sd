@@ -145,7 +145,6 @@ $show_header = 1;
                          <i-button type="info" @click="pass(item.FRID)" >通过</i-button>
                          <i-button type="error" @click="reject(item.FRID)" >驳回</i-button>
                      </template>
-
 <!--                     <i-button type="info" @click="edit(item.FRID)" >编辑</i-button>-->
 <!--                     <i-button type="error"  @click="del(item.FRID)" style="margin-top: 3px;">删除</i-button>-->
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
