@@ -39,7 +39,9 @@ include $this->admin_tpl('header', 'admin');
     }
 </style>
 <form id="myform" action="?m=zysd&c=zysd&a=add_notice" method="post" onsubmit="return zz()">
-<div class="pad-10">
+    <input type="hidden" name="aid" value="<?php echo $dataInfo2["aid"]?>">
+
+    <div class="pad-10">
     <div class="common-form">
         <div id="div_setting_2" class="contentList">
             <fieldset>
@@ -49,7 +51,7 @@ include $this->admin_tpl('header', 'admin');
                     <tr>
                         <th style="width: 120px">标题</th>
                         <td>
-                            <textarea  required name="title" id="" cols="70" rows="2" maxlength="80" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
+                            <textarea  required name="title" id="" cols="70" rows="2" maxlength="80" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"><?php echo $dataInfo2['title'];?></textarea>
                         </td>
                     </tr>
                     <tr>
@@ -63,13 +65,13 @@ include $this->admin_tpl('header', 'admin');
                     <tr>
                         <th style="width: 120px">公告类型</th>
                         <td>
-                            <?php echo form::select($dataInfo, $info['default_style'], 'name="siteid" id="siteid" onchange="load_file_list(this.value)"', "请选择")?>
+                            <?php echo form::select($dataInfo, $dataInfo2['siteid'], 'name="siteid" id="siteid" onchange="load_file_list(this.value)"')?>
                         </td>
                     </tr>
                     <tr>
                         <th style="width: 120px">是否发布</th>
                         <td>
-                            <input name="passed" type="radio" value="1" checked>&nbsp;是&nbsp;&nbsp;<input name="passed" type="radio" value="0">&nbsp;否
+                            <input name="passed" type="radio" value="1" <?php if($dataInfo2['passed']==1){echo "checked"; }  ?> >&nbsp;是&nbsp;&nbsp;<input name="passed" type="radio" value="0" <?php if($dataInfo2['passed']==0){echo "checked"; }  ?>>&nbsp;否
                         </td>
                     </tr>
                     </tbody>
@@ -90,18 +92,23 @@ include $this->admin_tpl('header', 'admin');
 //    Vue.component("v-select", VueSelect.VueSelect);
     function pushData(){
         var formdom=$("[name]");
+        console.log(formdom);
         var d={};
         $.each(formdom,function(index,val) {
             if(val.checked !== undefined){
                 if(val.checked===true){
                     d[val.name]=val.value;
+                }else {
+                    if(val.type!="radio"){
+                        d[val.name]=val.value;
+                    }
                 }
             }else{
                 d[val.name]=val.value;
             }
         });
         console.log(d);
-        aj.post("index.php?m=zysd&c=zysd&a=add_notice&pc_hash=<?php echo $_GET["pc_hash"]?>",d,function(data){
+        aj.post("index.php?m=zysd&c=zysd&a=edit_notice&pc_hash=<?php echo $_GET["pc_hash"]?>",d,function(data){
             if(data.code == 200)
             {
                 var index = parent.layer.getFrameIndex(window.name);
@@ -124,6 +131,13 @@ include $this->admin_tpl('header', 'admin');
         upload = layui.upload,
         table = layui.table;
     var ue = UE.getEditor('editor11');
+    var str = '<?php echo $dataInfo2["editorValue"]?>';
+    add(str);
+    function add(str){
+        setTimeout(function (){
+            ue.execCommand('insertHtml', str)
+        },500);
+    }
 </script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>swfupload/swf2ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>content_addtop.js"></script>
