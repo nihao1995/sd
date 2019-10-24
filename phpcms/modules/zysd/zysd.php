@@ -10,8 +10,10 @@ class zysd extends admin {
 	/**
 	*构造函数，初始化
 	*/
+	public $username;
 	public function __construct()
 	{
+		$this->username = param::get_cookie('admin_username');
 		$this->fund = new fc();
 		$this->sd = new sd();
 	}
@@ -90,19 +92,43 @@ class zysd extends admin {
 	/**
 	 * 公告-列表
 	 */
-	public function noticeManage()
-	{
+	public function noticeManage(){
 		include $this->admin_tpl('notice/noticeManage');
+	}
+	/**
+	 * 添加公告
+	 */
+	public function add_notice()
+	{
+		if(!empty($_POST))
+		{
+			$neadArg = ['title'=>[true, 0,"请输入标题"],"editorValue"=>[true, 0,"请输入内容"], "siteid"=>[true, 1,"请选择公告类型"],"passed"=>[true, 1]];
+			$data = checkArg($neadArg, $_POST);
+			$data['addtime']=date("Y-m-d H:i:s",time());
+			$data['username']=$this->username;
+			$bool=$this->sd->add_notice($data);
+			if($bool) {
+				returnAjaxData(200, '添加成功');
+			}else{
+				returnAjaxData(-200, '添加失败');
+			}
+		}
+		else {
+			$info=$this->sd->notice_type_all(array("status"=>1));
+			$dataInfo=array();
+			foreach ($info as $key=> $item) {
+				$dataInfo[$item['NTID']]=$item['notice_type_name'];
+			}
+			include $this->admin_tpl('notice/noticeAdd');
+		}
 	}
 
 	/**
 	 * 公告类型-列表
 	 */
-	public function noticeType()
-	{
+	public function noticeType(){
 		include $this->admin_tpl('notice/noticeType');
 	}
-
 	/**
 	 * 添加公告类型
 	 */
@@ -256,9 +282,32 @@ class zysd extends admin {
 			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
-
-	//删除银行卡
+	//删除公告类型
 	public function del_notice_type()
+	{
+		$data=checkArg(["NTID"=>[true,0,"请输入ID"]],$_POST);
+		$info=$this->fund->del("notice_type","NTID",$data['NTID']);
+		if($info){
+			returnAjaxData(200,"操作成功");
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+
+	//公告类型记录
+	public function notice_list()
+	{
+		$data=checkArg(["page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		$where="1";
+		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->notice_list($where,$data['page']);
+		if($info){
+			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}else{
+			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}
+	}
+	//删除公告类型
+	public function del_notice()
 	{
 		$data=checkArg(["NTID"=>[true,0,"请输入ID"]],$_POST);
 		$info=$this->fund->del("notice_type","NTID",$data['NTID']);

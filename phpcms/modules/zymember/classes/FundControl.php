@@ -12,7 +12,7 @@ use zymember\classes\modelFactory as mf;
 
 class FundControl
 {
-    function __construct($type)
+    function __construct()
     {
 
     }
@@ -70,7 +70,7 @@ class FundControl
         if(empty($userid)){
             returnAjaxData(-1,"缺少参数");
         }
-        $member=mf::dbFactory('bankcard')->get_one(['userid'=>$userid]);
+        $member=mf::dbFactory('member')->get_one(['userid'=>$userid]);
         if($member){
             if($member["islock"]==1){
                 returnAjaxData(-1,"用户已锁定");
@@ -127,7 +127,7 @@ class FundControl
         if(empty($BID)){
             returnAjaxData(-1,"缺少参数");
         }
-        $id=mf::dbFactory('bankcard')->delete(['BID'=>$BID]);
+        $id=mf::dbFactory('bankcard')->delete($BID);
         return $id;
     }
 
@@ -136,10 +136,11 @@ class FundControl
      * @param $where
      * @param int $page
      * @param int $pagesize
+     * @param $filed
      * @return array
      */
-    function bank_card_list($where,$page=1,$pagesize=20){
-        $info = mf::dbFactory("bankcard")->listinfo($where,"BID DESC",$page,$pagesize);
+    function bank_card_list($where,$page=1,$pagesize=20,$filed="*"){
+        $info = mf::dbFactory("bankcard")->listinfo($where,"BID DESC",$page,$pagesize,'','','','',$filed);
         $count= mf::dbFactory("bankcard")->number;
         list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         return [$info,$pagenums, $pageStart, $pageCount];
