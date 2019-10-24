@@ -495,4 +495,5 @@ $LANG['sms_confing'] = '平台设置';
 $LANG['sms_record'] = '消费记录';
 $LANG['sms_model'] = '短信模板';
 $LANG['zymessagesys_configs'] = '通讯配置';
+$LANG['qtlb'] = '前台轮播';
 ?>
