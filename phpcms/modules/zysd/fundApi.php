@@ -73,7 +73,7 @@ class fundApi
         }
     }
 
-    //银行卡信息
+    //银行卡详情
     public function get_one_bank_card()
     {
         $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"BID"=>[true,1,"请输入ID"]],$_POST);
@@ -99,11 +99,42 @@ class fundApi
     }
 
 
+    //充值申请
+    public function cz_apply()
+    {
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"proof_thumb"=>[true,0,"请上传凭证"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
+        $bankcard=$this->fund->bank_card_list(["BID"=>$data['bankcard_id']])[0];
+        if(!$bankcard[0]){
+            returnAjaxData(-1,"银行卡不存在");
+        }else{
+            if($bankcard[0]['userid']!=$data['userid']) returnAjaxData(-100,"非法操作");
+        }
+        $info=[
+            'userid'=>$data['userid'],
+            'fund_type'=>1,
+            'proof_thumb'=>$data['proof_thumb'],
+            'fund_money'=>$data['fund_money'],
+            'bankcard_id'=>$data['bankcard_id'],
+            'addtime'=>date("Y-m-d H:i:s",time()),
+        ];
+        $id=$this->fund->fund_application($info);
+        if($id){
+            returnAjaxData(200,"操作成功",$id);
+        }else{
+            returnAjaxData(-200,"操作失败");
+        }
+    }
 
     //提现申请
     public function tx_apply()
     {
         $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
+        $bankcard=$this->fund->bank_card_list(["BID"=>$data['bankcard_id']])[0];
+        if(!$bankcard[0]){
+            returnAjaxData(-1,"银行卡不存在");
+        }else{
+            if($bankcard[0]['userid']!=$data['userid']) returnAjaxData(-100,"非法操作");
+        }
         $info=[
             'userid'=>$data['userid'],
             'fund_type'=>2,
@@ -112,6 +143,18 @@ class fundApi
             'addtime'=>date("Y-m-d H:i:s",time()),
         ];
         $id=$this->fund->fund_application($info);
+        if($id){
+            returnAjaxData(200,"操作成功",$id);
+        }else{
+            returnAjaxData(-200,"操作失败");
+        }
+    }
+
+    //资金记录
+    public function fund_record()
+    {
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_type"=>[true,1,"请输入提现金额"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
+        $id=$this->fund->fund_list(["userid"=>$data['userid'],"fund_type"=>$data['fund_type']],1,$data['page'],$data['pagesize']);
         if($id){
             returnAjaxData(200,"操作成功",$id);
         }else{
