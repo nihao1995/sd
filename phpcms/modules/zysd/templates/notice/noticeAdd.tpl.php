@@ -94,17 +94,16 @@ include $this->admin_tpl('header', 'admin');
         console.log(formdom);
         var d={};
         $.each(formdom,function(index,val) {
-            console.log('index='+index);
+            console.log('index='+index+'val='+val.name);
             if(val.checked){
-                console.log(val.checked)
-                if(val.checked){
+                if(val.checked===true){
+                    console.log(val.checked)
                     d[val.name]=val.value;
                 }
             }else{
                 d[val.name]=val.value;
             }
-            console.log('val='+val.name);
-        })
+        });
         console.log(d);
 
 //        aj.post("index.php?m=zysd&c=zysd&a=add_notice&pc_hash=<?php //echo $_GET["pc_hash"]?>//",d,function(data){
