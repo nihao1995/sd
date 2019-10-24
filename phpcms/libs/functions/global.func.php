@@ -1813,7 +1813,7 @@ spl_autoload_register(function($class_name) {
 function returnAjaxData($code, $info="成功", $data=[])//ajax返回函数
 {
     $resule = ['code'=>$code, 'data'=>$data];
-    if($code == 1)
+    if($code == 200)
     {
         $resule_info = [
             'status' => 'success',
@@ -1877,6 +1877,10 @@ function checkArg($neadData, $data)
                         returnAjaxData("-1", $key."字段请传入数组格式");
                     $info[$key] = $data[$key];
                     break;
+				case "6":
+					$info[$key] = param::get_app_cookie("_userid", $data["userid"]);
+					if(empty($info[$key])&&!is_numeric($info[$key])) returnAjaxData("-1", $key."请传入正确的userid");
+					break;
                 case "0":
                     $info[$key] = $data[$key];
                     break;
