@@ -1998,3 +1998,40 @@
 <?php exit;?>10-23 16:51:30 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 16 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 <?php exit;?>10-23 16:51:30 | 2 | Missing argument 1 for zymember\classes\FundControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 15 and defined | phpcms\modules\zymember\classes\FundControl.php | 15
 <?php exit;?>10-23 16:51:30 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 16 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:50:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:52:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 08:52:51 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-24 09:49:16 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 09:52:29 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 09:53:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 09:53:28 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 09:53:28 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 09:53:28 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 09:53:28 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 11:08:31 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:19:38 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:19:38 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:19:38 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:19:38 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:41:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:15 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:16 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:18 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:19 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:21 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:41:32 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:49:22 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:49:43 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 13:49:58 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:49:58 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:49:58 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:49:58 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-24 13:49:59 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-24 14:22:39 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
