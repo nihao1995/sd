@@ -32,7 +32,17 @@ class SdControl
     }
 
     /**
-     * 添加银行卡
+     * 公告类型列表
+     * @param $where
+     * @return array
+     */
+    function notice_type_all($where){
+        $info = mf::dbFactory("notice_type")->select($where,'*','',"sort asc,NTID asc");
+        return $info;
+    }
+
+    /**
+     * 添加公告类型
      * @param $data
      * @return mixed
      */
@@ -49,7 +59,7 @@ class SdControl
     }
 
     /**
-     * 修改银行卡
+     * 修改公告类型
      * @param $data
      * @param $NTID
      * @return mixed
@@ -65,6 +75,22 @@ class SdControl
         $id=mf::dbFactory('notice_type')->update($data,['NTID'=>$NTID]);
         return $id;
     }
+
+    /**
+     * 公告列表
+     * @param $where
+     * @param int $page
+     * @param int $pagesize
+     * @return array
+     */
+    function notice_list($where,$page=1,$pagesize=20){
+        $info = mf::dbFactory("notice")->listinfo($where,"aid desc",$page,$pagesize);
+        $count= mf::dbFactory("notice")->number;
+        list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
+        return [$info,$pagenums, $pageStart, $pageCount];
+    }
+
+
 
 
 

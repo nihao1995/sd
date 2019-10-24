@@ -130,8 +130,8 @@ $show_header = 1;
 
             <template v-for="item in itemGet" v-model="itemGet">
              <tr>
-                 <td><Checkbox :label="item.BID"><span></span></Checkbox></td>
-                 <td>{{item.BID}}</td>
+                 <td><Checkbox :label="item.aid"><span></span></Checkbox></td>
+                 <td>{{item.aid}}</td>
                  <td>{{item.title}}</td>
                  <td>{{item.siteid}}</td>
                  <td>{{item.content}}</td>
@@ -142,12 +142,12 @@ $show_header = 1;
                  <td>{{item.passed}}</td>
                  <td align="center">
                      <template v-if="item.status==0">
-                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>
-                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>
+                         <i-button type="info" @click="pass(item.aid)" >通过</i-button>
+                         <i-button type="error" @click="reject(item.aid)" >驳回</i-button>
                      </template>
 
-                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>
-                     <i-button type="error"  @click="del(item.BID)">删除</i-button>
+                     <i-button type="info" @click="edit(item.aid)" >编辑</i-button>
+                     <i-button type="error"  @click="del(item.aid)">删除</i-button>
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
                  </td>
              </tr>
@@ -228,7 +228,7 @@ $show_header = 1;
         table = layui.table;
     var app12 = '2';
 
-    aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:'1'},function(data){
+    aj.post("index.php?m=zysd&c=zysd&a=notice_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:'1'},function(data){
         if(data.code=='200')
         {
             console.log(data.data);
@@ -266,7 +266,7 @@ $show_header = 1;
                         if (this.checkAll) {
                             var cd = [];
                             for(var i in this.itemGet)
-                                cd.push(this.itemGet[i].SID)
+                                cd.push(this.itemGet[i].aid)
                             this.IDI = cd;
                         } else {
                             this.IDI = [];
@@ -278,7 +278,7 @@ $show_header = 1;
                     getData:function(page){
                         var that = this;
                         console.log(this.time);
-                        aj.post("index.php?m=zysd&c=zysd&a=bankcard_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
+                        aj.post("index.php?m=zysd&c=zysd&a=notice_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
                             console.log(data);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
@@ -297,7 +297,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -311,7 +311,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -324,7 +324,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定驳回？', {icon: 2, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -361,8 +361,8 @@ $show_header = 1;
                             title: '添加',
                             shadeClose: true,
                             shade: 0.8,
-                            area: ['700px', '79%'],
-                            content: 'index.php?m=zysd&c=zysd&a=add_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            area: ['800px', '79%'],
+                            content: 'index.php?m=zysd&c=zysd&a=add_notice&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 that.getData(that.page);
                             }
@@ -404,7 +404,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:that.IDI},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:that.IDI},function(data){
                                 if(data.code == 200) {
                                     that.getData(that.page);
                                     that.IDI = [];

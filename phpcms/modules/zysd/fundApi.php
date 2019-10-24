@@ -23,7 +23,7 @@ class fundApi
 
     //添加银行卡
     public function add_bank_card(){
-        $data=checkArg(["userid"=>[true,1,"请输入用户ID"],"bank_cardid"=>[true,0,"请输入银行卡号"],"bank_name"=>[true,0,"请输入开户银行"],"bank_branch"=>[true,0,"请输入所属支行"],"owner_name"=>[true,0,"请输入持卡人姓名"]],$_POST);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"bank_cardid"=>[true,0,"请输入银行卡号"],"bank_name"=>[true,0,"请输入开户银行"],"bank_branch"=>[true,0,"请输入所属支行"],"owner_name"=>[true,0,"请输入持卡人姓名"]],$_POST);
         $id=$this->fund->add_bank_card($data);
         if($id){
             returnAjaxData(200,"操作成功",$id);
@@ -34,8 +34,8 @@ class fundApi
 
     //编辑银行卡
     public function edit_bank_card(){
-        $data=checkArg(["bid"=>[true,1,"请输入ID"],"bank_cardid"=>[false,0,"请输入银行卡号"],"bank_name"=>[false,0,"请输入开户银行"],"bank_branch"=>[false,0,"请输入所属支行"],"owner_name"=>[false,0,"请输入持卡人姓名"]],$_POST);
-        $id=$this->fund->edit_bank_card($data,$data['bid']);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"BID"=>[true,1,"请输入ID"],"bank_cardid"=>[false,0,"请输入银行卡号"],"bank_name"=>[false,0,"请输入开户银行"],"bank_branch"=>[false,0,"请输入所属支行"],"owner_name"=>[false,0,"请输入持卡人姓名"]],$_POST);
+        $id=$this->fund->edit_bank_card($data,$data['BID']);
         if($id){
             returnAjaxData(200,"操作成功",$id);
         }else{
@@ -45,8 +45,8 @@ class fundApi
 
     //删除银行卡
     public function del_bank_card(){
-        $data=checkArg(["bid"=>[true,1,"请输入ID"]],$_POST);
-        $id=$this->fund->del_bank_card($data['bid']);
+        $data=checkArg(["BID"=>[true,1,"请输入ID"],["userid"=>[true, 6,"请输入用户ID"]]],$_POST);
+        $id=$this->fund->del_bank_card($data);
         if($id){
             returnAjaxData(200,"操作成功",$id);
         }else{
@@ -57,16 +57,31 @@ class fundApi
     //银行卡信息
     public function get_bank_card()
     {
-        $data=checkArg(["userid"=>[true,1,"请输入用户ID"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
         $where="1";
         if($data['userid']){
             $where.=" AND userid=".$data['userid'];
         }
-        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($where,$data['page']);
+        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($where,1,50,"BID,bank_cardid,bank_name,owner_name,bank_branch");
         if($info){
+            foreach ($info as $key=> $item) {
+                $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
+            }
             returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
         }else{
             returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+        }
+    }
+
+    //银行卡信息
+    public function get_one_bank_card()
+    {
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"BID"=>[true,1,"请输入ID"]],$_POST);
+        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($data,1,50,"BID,bank_cardid,bank_name,owner_name,bank_branch");
+        if($info){
+            returnAjaxData(200,"操作成功",$info[0]);
+        }else{
+            returnAjaxData(200,"暂无数据",$info[0]);
         }
     }
 
@@ -74,7 +89,7 @@ class fundApi
     //账本记录
     public function account_records()
     {
-        $data=checkArg(["userid"=>[true,1,"请输入用户ID"],"type"=>[true,1,"请输入类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,1,"请输入类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
         $info=$this->fund->account_list(['userid'=>$data['userid'],'type'=>$data['type']],$data['page'],$data['pagesize']);
         if($info){
             returnAjaxData(200,"操作成功",$info);
@@ -88,7 +103,7 @@ class fundApi
     //提现申请
     public function tx_apply()
     {
-        $data=checkArg(["userid"=>[true,1,"请输入用户ID"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
         $info=[
             'userid'=>$data['userid'],
             'fund_type'=>2,
