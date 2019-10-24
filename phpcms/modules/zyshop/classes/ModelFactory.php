@@ -22,6 +22,7 @@ class modelList implements model_List
         switch ($modelName)
         {
             case "zyshop": return \pc_base::load_model("zyshop_model");
+            case "zyslideshow": return \pc_base::load_model("zyslideshow_model");
             default:\Res::Error("没有这个model");
         }
         // TODO: Implement getModel() method.

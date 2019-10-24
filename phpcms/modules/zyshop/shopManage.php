@@ -130,16 +130,77 @@ class shopManage extends admin
     }
 
 
-
-
-
+    function slideshowMange()
+    {
+        include $this->admin_tpl('slideshow\slideshow');
+    }
+    function editSlideshow()
+    {
+        if(!empty($_POST))
+        {
+            $neadArg = ['SSID'=>[true, 0], 'thumb'=>[false, 0], 'isshow'=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            $item = new items("zyslideshow");
+            $where["SSID"] = array_shift($info);
+            $item->easySql->changepArg($info, $where);
+        }
+        else
+        {
+            $neadArg = ["SSID"=>[true, 0]];
+            $info = checkArg($neadArg, $_GET);
+            $item = new items('zyslideshow');
+            $data = $item->easySql->get_one($info);
+            $upload_allowext = 'jpg|jpeg|gif|png|bmp';
+            $isselectimage = '1';
+            $images_width = '';
+            $images_height = '';
+            $watermark = '0';
+            $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
+            include $this->admin_tpl('slideshow\editSlideshow');
+        }
+    }
+    function addSlideshow()
+    {
+        if(!empty($_POST))
+        {
+            $neadArg = ['thumb'=>[true, 0], 'isshow'=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            $info["addtime"] = date("Y-m-d H:i:s",time());
+            $item = new items("zyslideshow");
+            $item->easySql->add($info);
+        }
+        else
+        {
+            $upload_allowext = 'jpg|jpeg|gif|png|bmp';
+            $isselectimage = '1';
+            $images_width = '';
+            $images_height = '';
+            $watermark = '0';
+            $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
+            include $this->admin_tpl('slideshow\addSlideshow');
+        }
+    }
+    function getTypeData()
+    {
+        $item = new items('zyslideshow');
+        $data = $item->easySql->select();
+        returnAjaxData('1', '成功', $data);
+    }
+    function delType()
+    {
+        $neadArg = ["SSID"=>[true, 0]];
+        $info = checkArg($neadArg, $_POST);
+        $item = new items('zyslideshow');
+        $item->easySql->del($info);
+        returnAjaxData('1', '成功');
+    }
 
 
 
     function viewExam() //查看考题
     {
         $neadArg = ["SCID"=>[false, 3], "MCID"=>[false, 3], "TFCID"=>[false, 3], "RCID"=>[false, 3]];
-        $info = checkArg($neadArg);
+        $info = checkArg($neadArg,$_POST);
         $str = '';
         if($info == null)
             returnAjaxData("-1", "请传入参数");
