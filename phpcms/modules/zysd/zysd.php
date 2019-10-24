@@ -122,6 +122,35 @@ class zysd extends admin {
 			include $this->admin_tpl('notice/noticeAdd');
 		}
 	}
+	/**
+	 * 编辑公告
+	 */
+	public function edit_notice()
+	{
+		if(!empty($_POST))
+		{
+			$neadArg = ['aid'=>[true, 1,"请输入ID"],'title'=>[true, 0,"请输入标题"],"editorValue"=>[true, 0,"请输入内容"], "siteid"=>[true, 1,"请选择公告类型"],"passed"=>[true, 1]];
+			$data = checkArg($neadArg, $_POST);
+			$where = array_shift($data);
+			$bool=$this->sd->edit_notice($data,['aid'=>$where]);
+			if($bool) {
+				returnAjaxData(200, '编辑成功');
+			}else{
+				returnAjaxData(-200, '编辑失败');
+			}
+		}
+		else {
+			$data = checkArg(['ID'=>[true, 1,"请输入id"]],$_GET);
+			$info=$this->sd->notice_list(array('aid'=>$data['ID']))[0];
+			$dataInfo2=$info[0];
+			$info=$this->sd->notice_type_all(array("status"=>1));
+			$dataInfo=array();
+			foreach ($info as $key=> $item) {
+				$dataInfo[$item['NTID']]=$item['notice_type_name'];
+			}
+			include $this->admin_tpl('notice/noticeEdit');
+		}
+	}
 
 	/**
 	 * 公告类型-列表
@@ -297,8 +326,14 @@ class zysd extends admin {
 	//公告类型记录
 	public function notice_list()
 	{
-		$data=checkArg(["page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		$data=checkArg(["title"=>[false,0,"请输入标题"],"time"=>[false,0,"请输入时间"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
 		$where="1";
+		if($data['title']){
+			$where.=" AND title like '%".$data['title']."%'";
+		}
+		if($data['time']){
+			$where.=" AND addtime>='".date("Y-m-d H:i:s",strtotime($data['time'][0]))."' AND addtime<='".date("Y-m-d H:i:s",strtotime($data['time'][1]))."'";
+		}
 		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->notice_list($where,$data['page']);
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
@@ -309,8 +344,8 @@ class zysd extends admin {
 	//删除公告类型
 	public function del_notice()
 	{
-		$data=checkArg(["NTID"=>[true,0,"请输入ID"]],$_POST);
-		$info=$this->fund->del("notice_type","NTID",$data['NTID']);
+		$data=checkArg(["aid"=>[true,0,"请输入ID"]],$_POST);
+		$info=$this->fund->del("notice","aid",$data['aid']);
 		if($info){
 			returnAjaxData(200,"操作成功");
 		}else{

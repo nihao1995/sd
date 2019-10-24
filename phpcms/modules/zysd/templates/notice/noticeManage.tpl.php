@@ -98,10 +98,8 @@ $show_header = 1;
         <button class="layui-btn layui-btn-sm layui-btn-normal" @click="add()">添加</button>
     </div>
     <div class='selectVue'>
-        <span class="selectSpan">用户ID:</span>
-        <input type="text" v-model="userid" class="itemInput">
-        <span >持卡人姓名:</span>
-        <input type="text" v-model="owner_name" class="itemInput">
+        <span class="selectSpan">标题:</span>
+        <input type="text" v-model="title" class="itemInput">
         <span >发布时间:</span>
         <Date-Picker  type="daterange" placeholder="请选择时间" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
@@ -117,10 +115,7 @@ $show_header = 1;
             <th>ID</th>
             <th>标题</th>
             <th>公告类型</th>
-            <th>公告内容</th>
             <th>发布人</th>
-            <th>开始时间</th>
-            <th>结束时间</th>
             <th>添加时间</th>
             <th>状态</th>
             <th>操作</th>
@@ -133,19 +128,17 @@ $show_header = 1;
                  <td><Checkbox :label="item.aid"><span></span></Checkbox></td>
                  <td>{{item.aid}}</td>
                  <td>{{item.title}}</td>
-                 <td>{{item.siteid}}</td>
-                 <td>{{item.content}}</td>
+                 <td>{{item.notice_type_name}}</td>
                  <td>{{item.username}}</td>
-                 <td>{{item.starttime}}</td>
-                 <td>{{item.endtime}}</td>
                  <td>{{item.addtime}}</td>
-                 <td>{{item.passed}}</td>
+                 <td><span v-html="replace_status(item.passed)"></span></td>
                  <td align="center">
                      <template v-if="item.status==0">
                          <i-button type="info" @click="pass(item.aid)" >通过</i-button>
                          <i-button type="error" @click="reject(item.aid)" >驳回</i-button>
                      </template>
 
+                     <i-button @click="view(item.aid)" >预览</i-button>
                      <i-button type="info" @click="edit(item.aid)" >编辑</i-button>
                      <i-button type="error"  @click="del(item.aid)">删除</i-button>
 <!--                     <Date-Picker  type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></Date-Picker>-->
@@ -240,8 +233,8 @@ $show_header = 1;
                     page:1,//当前页数
                     pagecount:data.data.pageCount,//后台得到的总页数
                     itemGet:data.data.data,
-                    owner_name:'', //时间筛选
-                    userid:'',//id筛选
+                    time:'', //时间筛选
+                    title:'',//标题筛选
                     value4: false,
                     pStyle: {
                         fontSize: '16px',
@@ -278,7 +271,7 @@ $show_header = 1;
                     getData:function(page){
                         var that = this;
                         console.log(this.time);
-                        aj.post("index.php?m=zysd&c=zysd&a=notice_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, userid:this.userid, owner_name:this.owner_name},function(data){
+                        aj.post("index.php?m=zysd&c=zysd&a=notice_list&pc_hash=<?php echo $_GET["pc_hash"]?>",{page:page, title:this.title, time:this.time},function(data){
                             console.log(data);
                             that.page = page;
                             that.pagestart=data.data.pageStart;//显示的起始也
@@ -297,7 +290,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_notice&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -335,9 +328,8 @@ $show_header = 1;
                     },
                     replace_status:function(status){
                         switch (status){
-                            case '0':return "待审核";
-                            case '1':return "<span style='color: green'>已通过</span>";
-                            case '2':return "<span style='color: red'>驳回</span>";
+                            case '1':return "<span style='color: green'>发布</span>";
+                            case '0':return "<span style='color: red'>未发布</span>";
                         }
                     },
                     photo:function(){
@@ -361,7 +353,7 @@ $show_header = 1;
                             title: '添加',
                             shadeClose: true,
                             shade: 0.8,
-                            area: ['800px', '79%'],
+                            area: ['800px', '80%'],
                             content: 'index.php?m=zysd&c=zysd&a=add_notice&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 that.getData(that.page);
@@ -376,8 +368,8 @@ $show_header = 1;
                             title: '添加',
                             shadeClose: true,
                             shade: 0.8,
-                            area: ['500px', '50%'],
-                            content: 'index.php?m=zysd&c=zysd&a=edit_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+ID,
+                            area: ['800px', '80%'],
+                            content: 'index.php?m=zysd&c=zysd&a=edit_notice&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+ID,
                             end: function () {
                                 that.getData(that.page);
                             }
@@ -404,7 +396,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:that.IDI},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_notice&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:that.IDI},function(data){
                                 if(data.code == 200) {
                                     that.getData(that.page);
                                     that.IDI = [];
