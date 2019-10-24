@@ -15,5 +15,54 @@ class shopApi {
         returnAjaxData("200", "成功", $data);
     }
 
+    function getAddress(){
+        $neadArg = ["userid"=>[true, 6]];
+        $info = checkArg($neadArg, $_POST);
+        $item = new items("zyaddress");
+        $data = $item->easySql->select($info);
+        returnAjaxData("200", "成功", $data);
+    }
+    function addAddress(){
+        $neadArg = ["userid"=>[true, 6], "receivername"=>[true, 0, "请填写收件人姓名"], "phone"=>[true, "number", "请传入联系方式"], "address"=>[true, "0", "请传入地址详情"], "isDefault"=>[false, 1]];
+        $info = checkArg($neadArg, $_POST);
+        $items = new items("zyaddress");
+        if(isset($info["isDefault"]) && $info["isDefault"] == "1")
+        {
+            $this->updateDefault($items, $info);
+        }
+        $items->easySql->add($info);
+        returnAjaxData("200", "添加成功");
+    }
+    function editAddress(){
+        $neadArg =[ "receivername"=>[false, 0, "请填写收件人姓名"], "phone"=>[false, "number", "请传入联系方式"], "address"=>[false, "0", "请传入地址详情"], "isDefault"=>[false, 1]];
+        $info = checkArg($neadArg, $_POST);
+        $whereArg = ["userid"=>[true, 6], "ADID"=>[true, 1]];
+        $where = checkArg($whereArg, $_POST);
+        $items = new items("zyaddress");
+        if(isset($info["isDefault"]) && $info["isDefault"] == "1")
+        {
+            $sss = $info;
+            $sss["userid"] = $where["userid"];
+            $this->updateDefault($items, $sss);
+        }
+        $items->easySql->changepArg($info, $where);
+        returnAjaxData("200", "修改成功");
+    }
+    function delAddress(){
+        $whereArg = ["userid"=>[true, 6], "ADID"=>[true, 1]];
+        $where = checkArg($whereArg, $_POST);
+        $items = new items("zyaddress");
+        $items ->easySql->del($where);
+        returnAjaxData("200","删除成功");
+    }
 
+
+
+    function updateDefault($items, $info){
+        $data = $items->easySql->get_one(["isDefault"=>"1", "userid"=>$info["userid"]]);
+        if($data)
+        {
+            $items->easySql->changepArg(["isDefault"=>"0"], ["ADID"=>$data["ADID"]]);
+        }
+    }
 }
