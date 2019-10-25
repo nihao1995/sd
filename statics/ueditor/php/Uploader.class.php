@@ -361,7 +361,7 @@ class Uploader
     {
         return array(
             "state" => $this->stateInfo,
-            "url" => $this->fullName,
+            "url" => "http://192.168.0.2".$this->fullName,
             "title" => $this->fileName,
             "original" => $this->oriName,
             "type" => $this->fileType,

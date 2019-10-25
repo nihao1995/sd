@@ -214,6 +214,27 @@ class zysd extends admin {
 		}
 	}
 
+	/**
+	 * 系统配置
+	 */
+	public function system_config()
+	{
+		if(!empty($_POST))
+		{
+			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"]];
+			$data = checkArg($neadArg, $_POST);
+			$bool=$this->sd->edit_system_config($data);
+			if($bool) {
+				returnAjaxData(200, '更新成功');
+			}else{
+				returnAjaxData(-200, '更新失败');
+			}
+		}
+		else {
+			$dataInfo=$this->sd->get_system_config();
+			include $this->admin_tpl('systemConfig');
+		}
+	}
 
 	//---------------------------------------------------后台模板--------------------------------------------------------
 
@@ -352,5 +373,7 @@ class zysd extends admin {
 			returnAjaxData(-200,"操作失败");
 		}
 	}
+
+
 }
 ?>
