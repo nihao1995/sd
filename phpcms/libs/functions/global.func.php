@@ -1861,7 +1861,7 @@ function checkArg($neadData, $data)
                 case "1":
                     if(!is_numeric($data[$key]))
                         returnAjaxData("-1", $key."字段请传入数字格式");
-                    $info[$key] = intval($data[$key]);
+                    $info[$key] = $data[$key];
                     break;
                 case "2":
                     $info[$key] = strtotime($data[$key]);
@@ -1879,7 +1879,7 @@ function checkArg($neadData, $data)
                     break;
 				case "6":
 					$info[$key] = param::get_app_cookie("_userid", $data["userid"]);
-					if(empty($info[$key])&&!is_numeric($info[$key])) returnAjaxData("-1", $key."请传入正确的userid");
+					if(empty($info[$key])&&!is_numeric($info[$key])) returnAjaxData("-1", "请传入正确的userid");
 					break;
                 case "0":
                     $info[$key] = $data[$key];
