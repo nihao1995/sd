@@ -119,6 +119,26 @@ class SdControl
         return $id;
     }
 
+    /**
+     * 获取系统配置
+     */
+    function get_system_config(){
+        $info = mf::dbFactory("zyfxconfig")->get_one();
+        return $info;
+    }
+
+    /**
+     * 更新系统配置
+     * @param $data
+     * @return mixed
+     */
+    function edit_system_config($data){
+        if(empty($data)){
+            returnAjaxData(-1,"缺少参数");
+        }
+        $info = mf::dbFactory("zyfxconfig")->update($data,1);
+        return $info;
+    }
 
 
 }

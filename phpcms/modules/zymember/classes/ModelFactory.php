@@ -21,6 +21,7 @@ class modelFactory
             case "account_record": return \pc_base::load_model("account_record_model");
             case "notice": return \pc_base::load_model("announce_model");
             case "notice_type": return \pc_base::load_model("notice_type_model");
+            case "zyfxconfig": return \pc_base::load_model("zyfxconfig_model");
             default:\Res::Error("没有这个model");
         }
     }
