@@ -56,14 +56,15 @@ class api{
 	 * @param  string $file_url [文件夹]
 	 */
 	function upload_headimg(){
+		$msg = [0=>"上传成功", 1=>"上传图片过大",4=>"文件没有被上传"];
 		$parm=checkArg(["userid"=>[true,6,"请输入用户ID"]],$_GET);
 		if($_FILES["file"]["error"]!=0){
-			$result = array('status'=>0,'msg'=>$_FILES["file"]["error"]);
+			$result = array('status'=>0,'msg'=>$msg[$_FILES["file"]["error"]]);
 			echo json_encode($result);exit();
 		}
 
 		if( !in_array($_FILES["file"]["type"], array('image/gif','image/jpeg','image/bmp','image/jpg','image/png')) ){
-			$result = array('status'=>-1,'msg'=>$_FILES["file"]["type"]);
+			$result = array('status'=>-1,'msg'=>"上传类型错误！".$_FILES["file"]["type"]);
 			echo json_encode($result);exit();
 		}
 
@@ -165,6 +166,7 @@ class api{
 		$cookie = param::get_app_cookie("_userid", $_GET["type"]);
 		echo($cookie);
 	}
+	//******************************************************************************************************************
 	//公告类型
 	function notice_type_list(){
 		$where="status=1";
@@ -196,6 +198,23 @@ class api{
 		}else{
 			returnAjaxData(200,"暂无数据");
 		}
+	}
+
+	//二维码用户信息
+	function qrcode_msg(){
+		$data=checkArg(["msg"=>[true,0,"请输入二维码信息"]],$_POST);
+		$msg=substr($data['msg'],strripos($data['msg'],"token=")+6);
+		$info=$this->member_db->get_one(["username"=>$msg]);
+		if($info){
+			returnAjaxData(200,"操作成功",$info['nickname']);
+		}else{
+			returnAjaxData(-200,"暂无此人数据");
+		}
+	}
+
+	//假借口
+	function add_fx(){
+		returnAjaxData(200,"操作成功");
 	}
 }
 ?>

@@ -98,8 +98,8 @@ class api
             }
         }
 
-        $msg = 1;
-        $url=$memberinfo["username"];
+        $msg = 0;
+        $url=APP_PATH."index.php?"."token=".$memberinfo["username"];
 
         if(!empty($data['userid'])){
 //            $token=sys_auth($data['userid'], 'ENCODE', 'add');
