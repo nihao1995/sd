@@ -65,4 +65,28 @@ class shopApi {
             $items->easySql->changepArg(["isDefault"=>"0"], ["ADID"=>$data["ADID"]]);
         }
     }
+    function upFile()
+    {
+        if (!empty ( $_FILES ['file'] ['name'] ))
+            $tmp_file = $_FILES ['file'] ['tmp_name'];
+        else
+            returnAjaxData('-1','上传文件为空');
+        $file_types = explode ( ".", $_FILES ['file'] ['name'] );
+        $file_type = $file_types [count ( $file_types ) - 1];
+        $basepath = str_replace( '\\' , '/' , realpath(dirname(__FILE__).'/../../../'));
+        /*设置上传路径*/
+        $time = date("Ymd", time());
+        $savePath = $basepath.'/uploadfile/'.$time;
+        if(!file_exists($savePath)){
+            mkdir($savePath);
+        }
+        $file_name = $_FILES ['file'] ['name'];
+        $str = date ( 'Ymdhis' ) + rand(1, 2000);
+        $path = $savePath.'/'.$str.'.'.$file_type ;
+        if(! copy ( $tmp_file, $path))
+            returnAjaxData('-1', '上传失败');
+        $uploadPath = APP_PATH.'uploadfile/'.$time.'/'.$str.'.'.$file_type;
+        $returnData = ['name'=>$file_name, 'url'=>$uploadPath];
+        returnAjaxData('1', 'success', $returnData);
+    }
 }
