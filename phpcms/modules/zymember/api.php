@@ -534,7 +534,7 @@ class api{
 	*/
 	public function edit_memberdata()
 	{
-		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,0,"请输入type"],"nickname"=>[false,0,"请输入nickname"]],$_POST);
+		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"nickname"=>[false,0,"请输入nickname"]],$_POST);
 		$userid=$_POST['userid'];
 		//如果要修改，则被修改；不然获取原来的数据
 		//下面就是要更新的数据组
@@ -1458,7 +1458,7 @@ class api{
 	 */
 	public function update_mobile()
 	{
-		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,0,"请输入type"],"mobile"=>[true,0,"请输入手机号"],"verify_code"=>[true,0,"请输入验证码"],"newmobile"=>[true,0,"请输入新手机号"],"newverify_code"=>[true,0,"请输入新手机号验证码"]],$_POST);
+		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"mobile"=>[true,0,"请输入手机号"],"verify_code"=>[true,0,"请输入验证码"],"newmobile"=>[true,0,"请输入新手机号"],"newverify_code"=>[true,0,"请输入新手机号验证码"]],$_POST);
 
 		$userid = $_POST['userid'];	//用户id
 		$mobile = $_POST['mobile'];	//手机号
