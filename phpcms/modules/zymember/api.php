@@ -622,7 +622,20 @@ class api{
 
 	}
 
-
+	public function changePassword()
+	{
+		$neadArg = ["userid"=>[true, 6,"请登录"], "oldPassword"=>[true, 0, "请传入旧密码"], "newPassword"=>[true, 0, "请传入新密码"], "againNewPassword"=>[true, 0]];
+		$info = checkArg($neadArg, $_POST);
+		$memberinfo = $this->member_db->get_one(array('userid'=>$info["userid"]));
+		$oldpassword = password($info["oldPassword"], $memberinfo['encrypt']);
+		if($info["newPassword"] != $info["againNewPassword"])
+			returnAjaxData("-1", "两次密码不相同");
+		else if($memberinfo["password"]!= $oldpassword)
+			returnAjaxData("-1","输入的旧密码错误");
+		$newpassword = password($info["newPassword"], $memberinfo['encrypt']);
+		$this->member_db->update(array('password'=>$newpassword),array('userid'=>$memberinfo['userid']));
+		returnAjaxData("200","修改成功");
+	}
 
 	/**
 	* 安全中心_密码修改
@@ -650,6 +663,8 @@ class api{
 		$password = $_POST['password'];	//密码
 		$repassword = $_POST['repassword'];	//重复密码
 
+
+
 		//用手机号码查出用户账号
 		$memberinfo = $this->member_db->get_one(array('mobile'=>$mobile,'userid'=>$userid));
 		
@@ -660,7 +675,7 @@ class api{
 					'status'=>'error',
 					'code'=>-1,
 					'message'=>'帐号、验证码、用户id不能为空',
-					
+
 				];
 				exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 			}
@@ -670,7 +685,7 @@ class api{
 					'status'=>'error',
 					'code'=>-2,
 					'message'=>'用户名格式错误',	//只允许 13，14，15，16，17，18，19的号码,11位
-					
+
 				];
 				exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
 			}
@@ -686,7 +701,7 @@ class api{
 				];
 				$sms_verify = _crul_post($config['url'],$curl);
 				$sms_verify=json_decode($sms_verify,true);
-			//==================	获取其他接口-接口 END		
+			//==================	获取其他接口-接口 END
 
 
 			if($sms_verify['status']=='error') {	//false,进入

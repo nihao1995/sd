@@ -2068,3 +2068,322 @@
 <?php exit;?>10-26 09:39:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 <?php exit;?>10-26 09:40:08 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 
+<?php exit;?>10-26 09:45:59 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:45:59 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:46:25 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:46:25 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:46:42 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:47:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:49:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:51:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:55:29 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:55:29 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:56:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:56:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:57:31 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:57:31 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:58:10 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:58:10 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:58:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:58:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:59:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:59:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:59:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:59:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:59:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:13 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:21 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:21 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:30 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:30 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:00:30 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:00:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:00:52 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:00:52 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:01:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:01:43 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:01:43 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:01:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:01:49 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:01:49 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:01:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:01:55 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:01:55 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:08:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:08:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:29 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:29 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:09:38 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:09:38 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:09:54 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 10:09:54 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 10:09:54 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 10:09:54 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 10:10:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:10:03 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:10:03 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:11:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:11:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:11:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:11:45 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:11:45 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:18:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:18:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:19:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:19:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:19:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:19:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:07 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:07 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:20:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:22:44 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:22:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:22:59 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:23:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:23:28 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:23:28 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:27:42 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:27:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:28:42 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:28:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:29:25 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:29:26 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:29:42 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:29:42 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:29:42 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:30:54 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:30:54 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:31:08 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:31:08 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:31:08 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 10:37:16 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:37:16 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:37:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:37:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:37:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:37:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:38:13 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:38:13 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:40:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:40:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:40:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:40:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:43:01 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:43:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:46:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:46:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:46:58 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:46:58 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:47:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:47:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:48:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:48:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:48:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:48:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:51 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:49:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:50:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:50:09 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:51:01 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:51:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:52:36 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:52:36 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:52:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:52:53 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:54:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:54:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:55:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:55:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:56:53 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:56:53 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:58:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:58:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:58:23 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:58:23 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:59:25 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:59:25 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:59:56 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 10:59:57 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:01:41 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:01:41 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:02:44 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:02:44 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:03:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:03:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:05:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:05:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:07:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:07:11 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:08:01 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:08:02 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:08:42 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:08:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:09:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:09:38 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:16:54 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:16:54 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:16:54 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:17:10 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:17:10 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:17:10 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:17:21 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:17:21 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:17:21 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:17:27 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:17:27 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:17:27 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:17:31 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:17:31 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:17:31 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:18:28 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:18:28 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:18:54 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:18:54 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:19:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:19:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:20:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:20:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:23:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:23:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:23:31 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:23:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:26:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:26:05 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:28:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:28:15 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:28:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:28:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:29:26 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:29:26 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:30:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:30:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:00 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:00 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:31:00 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:31:12 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:12 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:23 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:23 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:31:23 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:31:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:58 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:31:58 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 11:31:58 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 11:32:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:32:17 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:32:17 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:32:19 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:32:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:32:32 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:32:34 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:34:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:34:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:34:27 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:34:46 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:35:54 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:35:54 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:35:58 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:36:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:37:04 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:42:56 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:42:56 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:45:01 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:45:01 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:45:04 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:46:23 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:46:23 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:46:27 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:52:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:52:19 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:52:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:52:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:52:55 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:52:57 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:53:51 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:53:51 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 11:53:54 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:53:56 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 11:54:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 12:01:22 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 13:28:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:28:18 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:28:30 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:28:30 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:28:30 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:28:30 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:49:40 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:49:40 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:49:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:49:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:49:48 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 13:49:57 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:49:57 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:49:57 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:49:57 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 13:56:12 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 13:58:35 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:58:35 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:58:39 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 13:59:33 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:59:33 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 13:59:36 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:00:39 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:00:39 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:00:43 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:02:59 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:02:59 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:03:24 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:03:24 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:03:28 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:04:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:04:49 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:05:05 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:05 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:05 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:05 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:05:53 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:53 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:53 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:05:53 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:06:01 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:06:01 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:06:01 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:06:01 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:06:53 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:07:19 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:07:19 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:07:31 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:31 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:31 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:31 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:31 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:07:56 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:56 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:56 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:07:56 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-26 14:08:21 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:08:21 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:08:27 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:08:30 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:08:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:08:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:08:52 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:09:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:09:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:09:41 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:10:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:10:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 14:11:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 14:11:03 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
