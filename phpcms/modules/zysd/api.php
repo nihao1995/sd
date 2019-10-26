@@ -8,6 +8,7 @@ class api{
 	function __construct()
 	{
 		$this->sd = new sd();
+		$this->member_db=pc_base::load_model("member_model");
 	}
 
 	//====================================	头像上传=================================================================== 开始
@@ -55,6 +56,7 @@ class api{
 	 * @param  string $file_url [文件夹]
 	 */
 	function upload_headimg(){
+		$parm=checkArg(["userid"=>[true,6,"请输入用户ID"]],$_GET);
 		if($_FILES["file"]["error"]!=0){
 			$result = array('status'=>0,'msg'=>$_FILES["file"]["error"]);
 			echo json_encode($result);exit();
@@ -85,8 +87,8 @@ class api{
 			$data=[
 				'headimgurl'=>$lurl,
 			];
-			if(!$this->_userid) returnjsoninfo('0','登录超时');
-			$info=$this->member_db->update($data,array('userid'=>$this->_userid));
+			if(!$parm['userid']) returnAjaxData('0','登录超时');
+			$info=$this->member_db->update($data,array('userid'=>$parm['userid']));
 		}else{
 			$result  = array('status'=>-200,'msg'=>'error');
 		}

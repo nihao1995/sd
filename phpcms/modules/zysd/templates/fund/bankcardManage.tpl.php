@@ -104,6 +104,8 @@ $show_header = 1;
         <input type="text" v-model="owner_name" class="itemInput">
 <!--        <Date-Picker  type="daterange" placeholder="Select date" formate="yyyy-mm-dd" @on-change="changeTime" style="width: 200px" ></Date-Picker>-->
         <button class="layui-btn layui-btn-sm layui-btn-radius layui-btn-primary" @click="seach" >搜索</button>
+        <button class="layui-btn layui-btn-sm " @click="setting" style="float: left" >平台银行卡号配置</button>
+
     </div>
     <Checkbox-Group v-model="IDI">
     <table class="layui-table">
@@ -385,6 +387,17 @@ $show_header = 1;
                             shade: 0.8,
                             area: ['400px', '70%'],
                             content: 'index.php?m=zysd&c=zysd&a=manage_view&type=1&userid='+data +'&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                        });
+                    },
+                    setting:function()
+                    {
+                        layer.open({
+                            type: 2,
+                            title: '配置',
+                            shadeClose: true,
+                            shade: 0.8,
+                            area: ['500px', '50%'],
+                            content: 'index.php?m=zysd&c=zysd&a=edit_platform_bankcard&pc_hash=<?php echo $_GET["pc_hash"]?>'
                         });
                     },
                     delid:function()

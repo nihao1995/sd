@@ -206,7 +206,6 @@ class FundControl
         if(!$info||$info['status']!=0){
             returnAjaxData(-1,"状态错误");
         }
-        $id=mf::dbFactory('fund_record')->update(['status'=>1],['frid'=>$frid]);
         $fund_record=mf::dbFactory('fund_record')->get_one(['frid'=>$frid]);
         //添加资金记录及资金
         if($fund_record['fund_type']==1) {
@@ -214,6 +213,7 @@ class FundControl
         } elseif($fund_record['fund_type']==2) {
             $this->add_account_record($fund_record['userid'], 2, $fund_record['fund_money'], 2, true);
         }
+        $id=mf::dbFactory('fund_record')->update(['status'=>1],['frid'=>$frid]);
         return $id;
     }
 

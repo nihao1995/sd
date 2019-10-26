@@ -12,13 +12,16 @@ pc_base::load_sys_class('format', '', 0);
 pc_base::load_sys_class('Res', '', 0);
 
 use zymember\classes\FundControl as fc;
+use zysd\classes\SdControl as sd;
 
 class fundApi
 {
     public $fund;
+    public $sd;
     function __construct()
     {
         $this->fund = new fc();
+        $this->sd = new sd();
     }
 
     //添加银行卡
@@ -67,7 +70,8 @@ class fundApi
             foreach ($info as $key=> $item) {
                 $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
             }
-            returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+            $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
+            returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount,"platform_bankcard"=>$config]);
         }else{
             returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
         }
@@ -79,9 +83,11 @@ class fundApi
         $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"BID"=>[true,1,"请输入ID"]],$_POST);
         list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($data,1,50,"BID,bank_cardid,bank_name,owner_name,bank_branch");
         if($info){
-            returnAjaxData(200,"操作成功",$info[0]);
+            $data=$info[0];
+            $data['']=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
+            returnAjaxData(200,"操作成功",$data);
         }else{
-            returnAjaxData(200,"暂无数据",$info[0]);
+            returnAjaxData(200,"暂无数据");
         }
     }
 

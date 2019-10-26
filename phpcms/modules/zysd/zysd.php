@@ -236,6 +236,28 @@ class zysd extends admin {
 		}
 	}
 
+	/**
+	 * 平台银行卡配置
+	 */
+	public function edit_platform_bankcard()
+	{
+		if($_POST)
+		{
+			$neadArg = ['platform_bankcard_number'=>[true, 0,"请输入平台银行账户"],'platform_bankcard_name'=>[true, 0,"请输入开户行"], "platform_bankcard_keeper"=>[true, 0,"请输入持卡人姓名"]];
+			$data = checkArg($neadArg, $_POST);
+			$bool=$this->sd->edit_system_config($data);
+			if($bool) {
+				returnAjaxData(200, '更新成功');
+			}else{
+				returnAjaxData(-200, '更新失败');
+			}
+		}
+		else {
+			$dataInfo=$this->sd->get_system_config();
+			include $this->admin_tpl('fund/platformBankcardEdit');
+		}
+	}
+
 	//---------------------------------------------------后台模板--------------------------------------------------------
 
 	//提现充值记录

@@ -534,11 +534,8 @@ class api{
 	*/
 	public function edit_memberdata()
 	{
-		//$userid = $_POST['userid'];	//用户id
-		$type = $_POST['type'] ? $_POST['type'] : 1;	//类型：1web端、2APP端
-		$userid = $type==1 ? param::get_cookie('_userid') : $_POST['userid'];	//用户id
-		$forward = $_POST['forward'] ? urldecode($_POST['forward']) : APP_PATH.'index.php?m=member&c=index';	//接下来该跳转的页面链接
-		
+		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,0,"请输入type"],"nickname"=>[false,0,"请输入nickname"]],$_POST);
+		$userid=$_POST['userid'];
 		//如果要修改，则被修改；不然获取原来的数据
 		//下面就是要更新的数据组
 		$data = array();
@@ -612,9 +609,9 @@ class api{
 				'code'=>200,
 				'message'=>'修改成功',
 				'data'=>[
-					'userid'=>$memberinfo['userid'],
-					'groupid'=>$memberinfo['groupid'],
-					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
+//					'userid'=>$memberinfo['userid'],
+//					'groupid'=>$memberinfo['groupid'],
+//					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
 				]
 			];
 			exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
@@ -1461,22 +1458,21 @@ class api{
 	 */
 	public function update_mobile()
 	{
-		$type = $_POST['type'] ? $_POST['type'] : 1;	//类型：1web端、2APP端
-		$forward = $_POST['forward'] ? urldecode($_POST['forward']) : APP_PATH.'index.php?m=member&c=index';	//接下来该跳转的页面链接
+		$_POST=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,0,"请输入type"],"mobile"=>[true,0,"请输入手机号"],"verify_code"=>[true,0,"请输入验证码"],"newmobile"=>[true,0,"请输入新手机号"],"newverify_code"=>[true,0,"请输入新手机号验证码"]],$_POST);
 
-		//$userid = $_POST['userid'];	//用户id
-		$userid = $type==1 ? param::get_cookie('_userid') : $_POST['userid'];	//用户id
+		$userid = $_POST['userid'];	//用户id
 		$mobile = $_POST['mobile'];	//手机号
 		$verify_code = $_POST['verify_code'];	//短信验证码
 		$newmobile = $_POST['newmobile'];	//新手机号码
-		
+		$newverify_code = $_POST['newverify_code'];	//新手机号码
+
 		//用手机号码查出用户账号
 		$memberinfo = $this->member_db->get_one(array('userid'=>$userid));
 		$member_mobile = $this->member_db->get_one(array('mobile'=>$newmobile));
 
 		//==================	操作失败-验证 START
 			//帐号密码类型不能为空
-			if (!$mobile || !$verify_code ||!$userid || !$newmobile) {
+			if (!$mobile || !$verify_code ||!$userid || !$newmobile|| !$newverify_code) {
 				$result = [
 					'status'=>'error',
 					'code'=>-1,
@@ -1523,10 +1519,19 @@ class api{
 				];
 				$sms_verify = _crul_post($config['url'],$curl);
 				$sms_verify=json_decode($sms_verify,true);
+
+				$config = $this->zyconfig_db->get_one(array('key'=>'zymessagesys4'),"url");
+				$curl = [
+					'mobile'=>$newmobile,
+					'verify_code'=>$newverify_code,
+					'clear'=>1,
+				];
+				$sms_verify2 = _crul_post($config['url'],$curl);
+				$sms_verify2=json_decode($sms_verify2,true);
 			//==================	获取其他接口-接口 END		
 
 
-			if($sms_verify['status']=='error') {	//false,进入
+			if($sms_verify['status']=='error'||$sms_verify2['status']=='error') {	//false,进入
 				$result = [
 					'status'=>'error',
 					'code'=>-6,
@@ -1562,6 +1567,12 @@ class api{
 					'mobile'=>$memberinfo['mobile']
 				];
 				_crul_post($config['url'],$curl);
+
+				$config = $this->zyconfig_db->get_one(array('key'=>'zymessagesys5'),"url");
+				$curl = [
+					'mobile'=>$newmobile
+				];
+				_crul_post($config['url'],$curl);
 			//==================	获取其他接口-接口 END		
 
 
@@ -1570,9 +1581,9 @@ class api{
 				'code'=>200,
 				'message'=>'修改成功',
 				'data'=>[
-					'userid'=>$memberinfo['userid'],
-					'groupid'=>$memberinfo['groupid'],
-					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
+//					'userid'=>$memberinfo['userid'],
+//					'groupid'=>$memberinfo['groupid'],
+//					'forward'=>$forward,	//给web端用的，接下来跳转到哪里
 				]
 			];
 			exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
