@@ -10,6 +10,7 @@ class api
     public function __construct()
     {
         $this->get_db = pc_base::load_model('get_model');
+        $this->member_db = pc_base::load_model('member_model');
         $this->zyconfig_db = pc_base::load_model('zyconfig_model');
         $this->zyfxconfig = pc_base::load_model('zyfxconfig_model');
 		$this->qrcode_db = pc_base::load_model('zyqrcode_model');
@@ -87,37 +88,44 @@ class api
      */
     public function create_qrcode_api()
     {
-        $msg = empty($_POST['msg']) ? 0 : $_POST['msg'];
-        $data['thumb'] = empty($_POST['thumb']) ? 0 : $_POST['thumb'];
-        $data['userid'] = empty($_POST['userid']) ? $this->_userid : $this->_userid;
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"update"=>[false,1]],$_POST);
+        $memberinfo=$this->member_db->get_one(["userid"=>$data['userid']]);
+        if($memberinfo["qrcode"]){
+            if(isset($data["update"])){
+
+            }else{
+                returnAjaxData(200,"操作成功",['qrcode'=>$memberinfo["qrcode"]]);
+            }
+        }
+
+        $msg = 1;
+        $url=$memberinfo["username"];
 
         if(!empty($data['userid'])){
-            $token=sys_auth($data['userid'], 'ENCODE', 'add');
-            $url=APP_PATH.'index.php?m=zymember&c=index&a=register&token='.$token;
+//            $token=sys_auth($data['userid'], 'ENCODE', 'add');
             if ($msg==1){
-                $data['qrcode']= $this->create_qrcode_pic($url,$data['thumb']);
+                $data['qrcode']= $this->create_qrcode_pic($url,$memberinfo['headimgurl']);
             }else {
                 $data['qrcode'] = $this->create_qrcode($url);
             }
         }else{
-            $url=APP_PATH.'index.php?m=zymember&c=index&a=register';
             if ($msg==1){
-                $data['qrcode']= $this->create_qrcode_pic($url,$data['thumb']);
+                $data['qrcode']= $this->create_qrcode_pic($url,$memberinfo['headimgurl']);
             }else {
                 $data['qrcode'] = $this->create_qrcode($url);
             }
         }
         if($data['qrcode']){
+            $this->member_db->update(["qrcode"=>$data['qrcode']],["userid"=>$memberinfo['userid']]);
             $json['status']='success';
-            $json['code']='200';
+            $json['code']=200;
             $json['message']='操作成功';
             $json['data']['qrcode']=$data['qrcode'];
         }else{
             $json['status']='error';
-            $json['code']='-200';
+            $json['code']=-200;
             $json['message']='数据为空';
         }
-
         exit(json_encode($json,JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
     }
     /**

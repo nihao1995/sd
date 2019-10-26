@@ -159,11 +159,12 @@ class FundControl
         if($money<=0){
             returnAjaxData(-99,'金额错误');
         }
+        $this->check_user($userid);
         if($is_update_member){
             if($type==1){
-                mf::dbFactory('member')->update(['amount'=>"+=".$money]);
+                mf::dbFactory('member')->update(['amount'=>"+=".$money],["userid"=>$userid]);
             }elseif($type==2){
-                mf::dbFactory('member')->update(['amount'=>"-=".$money]);
+                mf::dbFactory('member')->update(['amount'=>"-=".$money],["userid"=>$userid]);
             }else{
                 returnAjaxData(-101,'金额类型错误');
             }
