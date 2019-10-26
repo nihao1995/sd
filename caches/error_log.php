@@ -2734,3 +2734,88 @@
 <?php exit;?>10-24 17:00:35 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 <?php exit;?>10-24 17:00:43 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 <?php exit;?>10-24 17:00:44 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:41:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:41:52 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:42:03 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:42:04 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:42:06 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 08:42:32 | 2 | Missing argument 1 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-25 08:42:32 | 2 | Missing argument 2 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-25 08:42:32 | 2 | Missing argument 3 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-25 08:42:32 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
+<?php exit;?>10-25 08:42:34 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-25 09:13:48 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:13:48 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:48 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:48 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:48 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:48 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:13:54 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:13:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:54 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:54 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:54 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:13:58 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:13:58 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:58 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:58 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:13:58 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:13:58 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:14:05 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:14:05 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:05 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:05 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:05 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:05 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:14:09 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:14:09 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:09 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:09 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:09 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:09 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:14:32 | 2 | mysqli::mysqli(): (HY000/1130): Host 'DESKTOP-JUQI1CV' is not allowed to connect to this MySQL server | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:14:32 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:32 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:32 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:32 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:32 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:14:44 | 2 | mysqli::mysqli(): (HY000/2002): ����Ŀ����������ܾ����޷����ӡ�
+ | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:14:44 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:44 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:44 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:44 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:44 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:14:46 | 2 | mysqli::mysqli(): (HY000/2002): ����Ŀ����������ܾ����޷����ӡ�
+ | phpcms\libs\classes\db_mysqli.class.php | 55
+<?php exit;?>10-25 09:14:46 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:46 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:46 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
+<?php exit;?>10-25 09:14:46 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>10-25 09:14:46 | 2 | mysqli::close(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 484
+<?php exit;?>10-25 09:18:44 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:45 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:46 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:47 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:18:50 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:29:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:29:34 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:29:35 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:29:35 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-25 09:29:36 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\zysd.php on line 18 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:38:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:38:22 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:39:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:39:48 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:39:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
+<?php exit;?>10-26 09:40:08 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
