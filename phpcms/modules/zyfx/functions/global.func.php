@@ -1,4 +1,10 @@
 <?php
+    function string_array($data)
+    {
+        $s = explode("," ,$data);
+        array_pop($s);
+        return $s;
+    }
     //后台
     //检测传入参数 形似：$neadArg = ["userid"=>[true,1], "shopID"=>[true,1], "count"=>[1,1]];[1,1]第一个参数代表是否必须，true是false否。第二个参数表示是否转换为INT类型。0为否，1位是
     //2019/4/7增加参数2表示将时间转化为时间戳

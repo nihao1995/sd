@@ -2387,3 +2387,6 @@
 <?php exit;?>10-26 14:10:55 | 2 | Missing argument 1 for zysd\classes\SdControl::__construct(), called in C:\wamp\www\sd\phpcms\modules\zysd\api.php on line 10 and defined | phpcms\modules\zysd\classes\SdControl.php | 15
 <?php exit;?>10-26 14:11:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
 <?php exit;?>10-26 14:11:03 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>10-26 09:59:45 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 37
+<?php exit;?>10-26 10:00:13 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
+<?php exit;?>10-26 09:59:45 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 38
