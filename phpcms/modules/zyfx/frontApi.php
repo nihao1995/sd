@@ -54,6 +54,7 @@ class frontApi
             returnAjaxData("-1", "没有该用户信息");
         $data = array(0=>array(), 1=>array(), 2=>array(), 3=>array());
         $s = $this->member->getTeamID($info, 0, $data, $grade);
+        $in = array_shift($s);
         returnAjaxData("200", "成功", $s);
     }
     function addchild()//添加下级队员

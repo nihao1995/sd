@@ -73,7 +73,7 @@ class fundApi
             $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
             returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount,"platform_bankcard"=>$config]);
         }else{
-            returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+            returnAjaxData(-1,"暂无银行卡数据，请先绑定",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
         }
     }
 
@@ -87,7 +87,7 @@ class fundApi
             $data['']=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
             returnAjaxData(200,"操作成功",$data);
         }else{
-            returnAjaxData(200,"暂无数据");
+            returnAjaxData(-200,"暂无数据");
         }
     }
 
@@ -100,7 +100,7 @@ class fundApi
         if($info){
             returnAjaxData(200,"操作成功",$info);
         }else{
-            returnAjaxData(200,"暂无数据");
+            returnAjaxData(-200,"暂无数据");
         }
     }
 
