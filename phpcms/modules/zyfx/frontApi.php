@@ -46,7 +46,7 @@ class frontApi
     }
     function getTeamInfo()//得到所有下级队员的信息
     {
-        $neadArg = ["userid"=>[true, 6], "grade"=>[false, 1]];
+        $neadArg = ["userid"=>[true, 6,"请登录"], "grade"=>[false, 1]];
         $info = checkArg($neadArg, $_POST);
         $grade = isset($info['grade'])?array_pop($info):0;
         $s = $this->member->getMemberInfo($info);
