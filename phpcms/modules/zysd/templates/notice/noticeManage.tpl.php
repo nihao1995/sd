@@ -379,11 +379,11 @@ $show_header = 1;
                     {
                         layer.open({
                             type: 2,
-                            title: '编辑',
+                            title: '预览',
                             shadeClose: true,
                             shade: 0.8,
                             area: ['400px', '70%'],
-                            content: 'index.php?m=zysd&c=zysd&a=manage_view&type=1&userid='+data +'&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            content: 'index.php?m=zysd&c=zysd&a=notice_view&pc_hash=<?php echo $_GET["pc_hash"]?>&ID='+data, //iframe的url
                         });
                     },
                     delid:function()

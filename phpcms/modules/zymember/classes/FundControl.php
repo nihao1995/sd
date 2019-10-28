@@ -78,7 +78,7 @@ class FundControl
         }else{
             returnAjaxData(-1,"用户不存在");
         }
-        return true;
+        return $member;
     }
 
     /**
@@ -159,11 +159,19 @@ class FundControl
         if($money<=0){
             returnAjaxData(-99,'金额错误');
         }
-        $this->check_user($userid);
+        $member_info=$this->check_user($userid);
         if($is_update_member){
+            $info = mf::dbFactory("zyfxconfig")->get_one();
             if($type==1){
+                $amount=$member_info['amount']+$money;
+                if($amount>$info['fund_toplimit']){
+                    returnAjaxData(-102,'超出账户金额上限');
+                }
                 mf::dbFactory('member')->update(['amount'=>"+=".$money],["userid"=>$userid]);
             }elseif($type==2){
+                if($money>$member_info['amount']){
+                    returnAjaxData(-102,'账户金额不足');
+                }
                 mf::dbFactory('member')->update(['amount'=>"-=".$money],["userid"=>$userid]);
             }else{
                 returnAjaxData(-101,'金额类型错误');

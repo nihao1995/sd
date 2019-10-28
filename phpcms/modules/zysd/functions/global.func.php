@@ -1,4 +1,13 @@
-<?php 
+<?php
+
+/**
+ * 生成流水号
+ */
+function create_transaction_code()
+{
+	mt_srand((double )microtime() * 1000000 );
+	return date("YmdHis" ).str_pad( mt_rand( 1, 99999 ), 5, "0", STR_PAD_LEFT );
+}
 
 /**
  * CURL方式的GET传值

@@ -93,6 +93,8 @@ class Fx
                 Error("没有用户ID为".$pid["pid"]."的信息");
             if($userData["pid"] != 0)
                 Error("您已经拥有上级");
+            else if($pidData["pid"] == $_userid["userid"])
+                Error("对方的上级是您，无法添加对方为自己上级");
             $this->zyfxmember->update($pid, $_userid);
 //            $info = $this->fxBeDec->returnAddChirdSQL(array("childID"=>$_userid["userid"]), "C=", ",");
             $this->zyfxmember->update(array("childID"=>"C=".$_userid["userid"]), array("userid"=>$pid["pid"]));
