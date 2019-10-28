@@ -57,19 +57,25 @@ include $this->admin_tpl('header', 'admin');
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 120px">任务上限</th>
+                        <th style="width: 120px">任务金额上限</th>
                         <td>
                             <i-input v-model="task_toplimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>%
                         </td>
                     </tr>
                     <tr>
-                        <th style="width: 120px">任务下限</th>
+                        <th style="width: 120px">任务金额下限</th>
                         <td>
                             <i-input v-model="task_lowerlimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>%
 <!--                            <i-switch v-model="status" size="large" @on-change="change">-->
 <!--                                <span slot="open">On</span>-->
 <!--                                <span slot="close">Off</span>-->
 <!--                            </i-switch>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">任务冻结时间</th>
+                        <td>
+                            <i-input v-model="freeze_time"  placeholder="请输入" type="number" style="width: 300px"></i-input>秒/s
                         </td>
                     </tr>
                     </tbody>
@@ -97,12 +103,13 @@ include $this->admin_tpl('header', 'admin');
         data:{
             fund_toplimit:"<?php echo $dataInfo['fund_toplimit']?>",
             task_toplimit:"<?php echo $dataInfo['task_toplimit'] ?>",
-            task_lowerlimit:"<?php echo $dataInfo['task_lowerlimit'] ?>"
+            task_lowerlimit:"<?php echo $dataInfo['task_lowerlimit'] ?>",
+            freeze_time:"<?php echo $dataInfo['freeze_time'] ?>",
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_toplimit:this.fund_toplimit, task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit},function(data){
+                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_toplimit:this.fund_toplimit, task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time},function(data){
                     if(data.code == 200)
                     {
                         layer.msg(data.message);

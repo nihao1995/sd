@@ -38,92 +38,25 @@ include $this->admin_tpl('header', 'admin');
         display: inline-block
     }
 </style>
-<form id="myform" action="?m=zysd&c=zysd&a=add_notice" method="post" onsubmit="return zz()">
-<div class="pad-10">
-    <div class="common-form">
-        <div id="div_setting_2" class="contentList">
-            <fieldset>
-                <legend>基本信息</legend>
-                <table  class="table_form">
-                    <tbody>
-                    <tr>
-                        <th style="width: 120px">标题</th>
-                        <td>
-                            <textarea  required name="title" id="" cols="70" rows="2" maxlength="80" onchange="this.value=this.value.substring(0, 200)" onkeydown="this.value=this.value.substring(0, 200)" onkeyup="this.value=this.value.substring(0, 200)"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="width: 120px">
-                            文本编辑
-                        </th>
-                        <th style="width: 1000px">
-                            <div id="editor11"  style="width:100%; height:500px;"></div>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th style="width: 120px">公告类型</th>
-                        <td>
-                            <?php echo form::select($dataInfo, $info['default_style'], 'name="siteid" id="siteid" onchange="load_file_list(this.value)"', "请选择")?>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th style="width: 120px">是否发布</th>
-                        <td>
-                            <input name="passed" type="radio" value="1" checked>&nbsp;是&nbsp;&nbsp;<input name="passed" type="radio" value="0">&nbsp;否
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </fieldset>
-            <div class="bk15"></div>
-
-        </div>
-        <div style="text-align: center">
-            <button class="layui-btn layui-btn-sm"   type="button" onclick="pushData()" >确认</button>
-        </div>
-
-    </div>
-
+<div id="app" style="padding: 1rem">
+    <h1 style="color: black">{{itemGet.title}}</h1><br>
+    {{itemGet.addtime}}<br>
+    <span v-html="itemGet.editorValue"></span>
 </div>
-</form>
 <script>
-//    Vue.component("v-select", VueSelect.VueSelect);
-    function pushData(){
-        var formdom=$("[name]");
-        var d={};
-        $.each(formdom,function(index,val) {
-            if(val.checked !== undefined){
-                if(val.checked===true){
-                    d[val.name]=val.value;
+    aj.post("index.php?m=zysd&c=api&a=notice_detail&pc_hash=<?php echo $_GET["pc_hash"]?>",{aid:'<?php echo $_GET['ID']?>'},function(data){
+        if(data.code == 200)
+        {
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    itemGet: data.data[0],
                 }
-            }else{
-                d[val.name]=val.value;
-            }
-        });
-        console.log(d);
-        aj.post("index.php?m=zysd&c=zysd&a=add_notice&pc_hash=<?php echo $_GET["pc_hash"]?>",d,function(data){
-            if(data.code == 200)
-            {
-                var index = parent.layer.getFrameIndex(window.name);
-                parent.layer.close(index);
-            }
-            else
-                layer.msg(data.message);
-        });
-        return true;
-    }
-    function zz()
-    {
-        var index = parent.layer.getFrameIndex(window.name);
-        parent.layer.close(index);
-        return true;
-    }
-    var layer = layui.layer,
-        form = layui.form,
-        $ = layui.jquery,
-        upload = layui.upload,
-        table = layui.table;
-    var ue = UE.getEditor('editor11');
+            })
+        }
+        else
+            layer.msg(data.message);
+    });
 </script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>swfupload/swf2ckeditor.js"></script>
 <script language="javascript" type="text/javascript" src="<?php echo JS_PATH?>content_addtop.js"></script>
