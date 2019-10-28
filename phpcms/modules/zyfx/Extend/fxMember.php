@@ -92,10 +92,10 @@ class Fx
             if($pidData == null)
                 Error("没有用户ID为".$pid["pid"]."的信息");
             if($userData["pid"] != 0)
-                Error("已经存在上级");
+                Error("您已经拥有上级");
             $this->zyfxmember->update($pid, $_userid);
-            $info = $this->fxBeDec->returnAddChirdSQL(array("childID"=>$_userid["userid"]), "C=", ",");
-            $this->zyfxmember->update($info, array("userid"=>$pid["pid"]));
+//            $info = $this->fxBeDec->returnAddChirdSQL(array("childID"=>$_userid["userid"]), "C=", ",");
+            $this->zyfxmember->update(array("childID"=>"C=".$_userid["userid"]), array("userid"=>$pid["pid"]));
         }
         catch (Exception $e)
         {
@@ -129,8 +129,8 @@ class Fx
             if($data !=null)
                 Error("用户已存在");
             $money->insert($_userid);
-            $_userid["addTime"] = time();
-            $_userid["updateTime"] = time();
+            $_userid["addTime"] = date("Y-m-d H:s:i",time());
+            $_userid["updateTime"] = date("Y-m-d H:s:i",time());
             $this->zyfxmember->insert($_userid);
 
         }

@@ -23,53 +23,56 @@ class frontApi
     function insertMember()//创建用户的时候插入分销用户表和提现中，
     {
         $neadArg = ["userid"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $info = checkArg($neadArg, $_POST);
         Res::AssertOk($this->member->insertMember($info), "2");
-        returnAjaxData("1", "添加成功");
+        returnAjaxData("200", "添加成功");
     }
     function updateMemberLoginTime()
     {
-        $neadArg = ["userid"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6]];
+        $info = checkArg($neadArg, $_POST);
         $this->member->updateLoginTime($info);
-        returnAjaxData("1", "修改成功");
+        returnAjaxData("200", "修改成功");
 
     }
     function getMemberInfo()//得到用户所有信息
     {
-        $neadArg = ["userid"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6]];
+        $info = checkArg($neadArg, $_POST);
         $s = $this->member->getMemberInfo($info);
         if($s == null)
             returnAjaxData("-1", "没有该用户信息");
-        returnAjaxData("1", "成功", $s);
+        returnAjaxData("200", "成功", $s);
     }
     function getTeamInfo()//得到所有下级队员的信息
     {
-        $neadArg = ["userid"=>[true, 1], "grade"=>[false, 1]];
-        $info = checkArg($neadArg,'POST');
+        $neadArg = ["userid"=>[true, 6], "grade"=>[false, 1]];
+        $info = checkArg($neadArg, $_POST);
         $grade = isset($info['grade'])?array_pop($info):0;
         $s = $this->member->getMemberInfo($info);
         if($s == null)
             returnAjaxData("-1", "没有该用户信息");
         $data = array(0=>array(), 1=>array(), 2=>array(), 3=>array());
         $s = $this->member->getTeamID($info, 0, $data, $grade);
-        returnAjaxData("1", "成功", $s);
+        returnAjaxData("200", "成功", $s);
     }
     function addchild()//添加下级队员
     {
-        $neadArg = ["userid"=>[true, 1], "pid"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6], "pid"=>[true, 0]];
+        $info = checkArg($neadArg, $_POST);
+        $member_db=pc_base::load_model("member_model");
+        $data=$member_db->get_one(["username"=>$info["pid"]], "userid");
+        $info["pid"] = $data["userid"];
         $userid["userid"] = $info["userid"];
         $pid["pid"] = $info["pid"];
         if($userid["userid"] == $pid["pid"])
             returnAjaxData("-1", "无法添加自己为上级");
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
-        returnAjaxData("1", "添加成功");
+        returnAjaxData("200", "添加成功");
     }
     function addchild_yqm()//添加下级队员
     {
-        $neadArg = ["userid"=>[true, 1], "yqm"=>[true, 0]];
+        $neadArg = ["userid"=>[true, 6], "yqm"=>[true, 0]];
         $info = checkArg($neadArg,'POST');
         $userid["userid"] = $info["userid"];
         $s = $this->member->getMemberInfo($userid);
@@ -80,37 +83,37 @@ class frontApi
         if($userid["userid"] == $pid["pid"])
             returnAjaxData("-1", "无法添加自己为上级");
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
-        returnAjaxData("1", "添加成功");
+        returnAjaxData("200", "添加成功");
     }
     function awardMoney()//奖励钱****
     {
-        $neadArg = ["userid"=>[true, 1], "shopprice"=>[false, 1]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6], "shopprice"=>[false, 1]];
+        $info = checkArg($neadArg, $_POST);
         $shopprice = isset($info["shopprice"])?array_pop($info):0;
         Res::AssertOk($this->member->awardMoney($info,$shopprice),"2");
-        returnAjaxData("1", "奖励成功");
+        returnAjaxData("200", "奖励成功");
     }
     function TX()
     {
         $neadArg = ["userid"=>[true, 1], "money"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $info = checkArg($neadArg, $_POST);
         $money = array_pop($info);
         $TXmoney = Res::AssertOk($this->member->TX($info, $money), "2");
-        returnAjaxData("1", "得到金额成功", $TXmoney);
+        returnAjaxData("200", "得到金额成功", $TXmoney);
     }
     function TXAffirm()//
     { 
-        $neadArg = ["userid"=>[true, 1], "money"=>[true, 0]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6], "money"=>[true, 0]];
+        $info = checkArg($neadArg, $_POST);
         $money = array_pop($info);
         Res::AssertOk($this->member->TXAffirm( $info, $money),"2");
-        returnAjaxData("1", "提现成功");
+        returnAjaxData("200", "提现成功");
     }
     function getMoneyInfo()
     {
-        $neadArg = ["userid"=>[true, 1]];
-        $info = checkArg($neadArg);
+        $neadArg = ["userid"=>[true, 6]];
+        $info = checkArg($neadArg, $_POST);
         $moneyInfo = Res::AssertOk($this->member->getMoneyInfo($info), '2');
-        returnAjaxData("1", "查询成功", $moneyInfo);
+        returnAjaxData("200", "查询成功", $moneyInfo);
     }
 }
