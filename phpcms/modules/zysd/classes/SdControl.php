@@ -121,9 +121,11 @@ class SdControl
 
     /**
      * 获取系统配置
+     * @param string $field
+     * @return mixed
      */
-    function get_system_config(){
-        $info = mf::dbFactory("zyfxconfig")->get_one();
+    function get_system_config($field="*"){
+        $info = mf::dbFactory("zyfxconfig")->get_one(1,$field);
         return $info;
     }
 
