@@ -3,11 +3,13 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_func('global');
 
 use zysd\classes\SdControl as sd;
+use zysd\classes\OrderControl as oc;
 class api{
 	public $sd;
 	function __construct()
 	{
 		$this->sd = new sd();
+		$this->oc = new oc();
 		$this->member_db=pc_base::load_model("member_model");
 	}
 
@@ -57,7 +59,7 @@ class api{
 	 */
 	function upload_headimg(){
 		$msg = [0=>"上传成功", 1=>"上传图片过大",4=>"文件没有被上传"];
-		$parm=checkArg(["userid"=>[true,6,"请输入用户ID"]],$_GET);
+		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_GET);
 		if($_FILES["file"]["error"]!=0){
 			$result = array('status'=>0,'msg'=>$msg[$_FILES["file"]["error"]]);
 			echo json_encode($result);exit();
@@ -174,7 +176,7 @@ class api{
 		if($info){
 			returnAjaxData(200,"操作成功",$info);
 		}else{
-			returnAjaxData(200,"暂无数据");
+			returnAjaxData(-200,"暂无数据");
 		}
 	}
 	//公告列表
@@ -185,7 +187,7 @@ class api{
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}else{
-			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+			returnAjaxData(-200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
 	//公告详请
@@ -196,25 +198,52 @@ class api{
 		if($info){
 			returnAjaxData(200,"操作成功",$info);
 		}else{
-			returnAjaxData(200,"暂无数据");
+			returnAjaxData(-200,"暂无数据");
 		}
 	}
-
-	//二维码用户信息
+	//扫描二维码
 	function qrcode_msg(){
 		$data=checkArg(["msg"=>[true,0,"请输入二维码信息"]],$_POST);
 		$msg=substr($data['msg'],strripos($data['msg'],"token=")+6);
 		$info=$this->member_db->get_one(["username"=>$msg]);
 		if($info){
-			returnAjaxData(200,"操作成功",$info['nickname']);
+			returnAjaxData(200,"操作成功",["nickname"=>$info['nickname'], "qrcode"=>$info["username"]]);
 		}else{
 			returnAjaxData(-200,"暂无此人数据");
 		}
 	}
 
-	//假借口
-	function add_fx(){
-		returnAjaxData(200,"操作成功");
+	//自动抢单
+	function auto_grab_order(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_POST);
+		$res=$this->oc->auto_grab_order($parm['userid']);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+
+	//接取任务
+	function get_task(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"SID"=>[true,1,"请先选择任务"]],$_POST);
+		$res=$this->oc->get_task($parm['userid'],$parm['SID']);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+
+	//任务详情
+	function task_detail(){
+		$parm=checkArg(["SID"=>[true,1,"请先选择任务"]],$_POST);
+		$res=$this->oc->task_detail(['SID',$parm['SID']]);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
 	}
 }
 ?>

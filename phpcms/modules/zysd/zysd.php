@@ -6,6 +6,7 @@ pc_base::load_sys_class('form', 0, 0);
 pc_base::load_app_func('global');
 use zymember\classes\FundControl as fc;
 use zysd\classes\SdControl as sd;
+use zysd\classes\OrderControl as oc;
 class zysd extends admin {
 	/**
 	*构造函数，初始化
@@ -16,6 +17,7 @@ class zysd extends admin {
 		$this->username = param::get_cookie('admin_username');
 		$this->fund = new fc();
 		$this->sd = new sd();
+		$this->oc = new oc();
 	}
 
 	//---------------------------------------------------后台模板--------------------------------------------------------
@@ -159,6 +161,13 @@ class zysd extends admin {
 		include $this->admin_tpl('notice/noticeType');
 	}
 	/**
+	 * 公告类型-列表
+	 */
+	public function notice_view(){
+		include $this->admin_tpl('notice/noticeShow');
+	}
+
+	/**
 	 * 添加公告类型
 	 */
 	public function add_noticeType()
@@ -221,7 +230,7 @@ class zysd extends admin {
 	{
 		if(!empty($_POST))
 		{
-			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"]];
+			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"]];
 			$data = checkArg($neadArg, $_POST);
 			$bool=$this->sd->edit_system_config($data);
 			if($bool) {
@@ -256,6 +265,14 @@ class zysd extends admin {
 			$dataInfo=$this->sd->get_system_config();
 			include $this->admin_tpl('fund/platformBankcardEdit');
 		}
+	}
+
+	/**
+	 * 订单管理
+	 */
+	public function order_manage()
+	{
+			include $this->admin_tpl('order/orderManage');
 	}
 
 	//---------------------------------------------------后台模板--------------------------------------------------------
@@ -397,5 +414,26 @@ class zysd extends admin {
 	}
 
 
+	//公告类型记录
+	public function order_list()
+	{
+		$data=checkArg(["userid"=>[false,0,"请输入用户id"],"order_sn"=>[false,0,"请输入任务编号"],"time"=>[false,0,"请输入时间"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		$where="1";
+		if($data['userid']){
+			$where.=" AND userid = ".$data['userid'];
+		}
+		if($data['order_sn']){
+			$where.=" AND order_sn like '%".$data['order_sn']."%'";
+		}
+		if($data['time']){
+			$where.=" AND gettime>='".date("Y-m-d H:i:s",strtotime($data['time'][0]))."' AND gettime<='".date("Y-m-d H:i:s",strtotime($data['time'][1]))."'";
+		}
+		list($info,$pagenums, $pageStart, $pageCount)=$this->oc->order_list($where,$data['page']);
+		if($info){
+			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}else{
+			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}
+	}
 }
 ?>
