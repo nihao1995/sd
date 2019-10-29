@@ -114,6 +114,7 @@ include $this->admin_tpl('header', 'admin');
                             二级会员佣金：22元
                             三级会员佣金：11元
                         </td>
+                        <i-Time :time="time1">
                     </tr>
                     <tr>
                         <th style="width: 120px">任务总数</th>
@@ -161,7 +162,8 @@ include $this->admin_tpl('header', 'admin');
             img:[],
             thumb:"",
             num:"",
-            endtime:""
+            endtime:"",
+            time1:(new Date()).getTime() + 60*3*1000
         },
         methods:{
             upload:function()
