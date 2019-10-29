@@ -28,11 +28,14 @@ class OrderControl
      * @return array
      */
     function order_list($where,$page=1,$pagesize=20){
+
         list($info, $count) = mf::dbFactory("notice")->moreTableSelect(array('zy_order'=>array("*"), 'zy_zyshop'=>array('*')), array("SID"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "gettime DESC,status asc","1");
         list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         if($info) {
             foreach ($info as $key => $item) {
                 $info[$key]['end_timestamp'] = strtotime($info[$key]['endtime']);
+                $config=$this->sd->get_system_config();
+                $info[$key]['freeze_timestamp'] = strtotime($info[$key]['gettime'])+$config['freeze_time'];
             }
         }
         return [$info,$pagenums, $pageStart, $pageCount];
@@ -65,6 +68,8 @@ class OrderControl
     function task_detail($where){
         $info = mf::dbFactory("zyshop")->get_one($where);
         $info['end_timestamp']=strtotime($info['endtime']);
+        $config=$this->sd->get_system_config();
+        $info['freeze_timestamp'] = strtotime($info['endtime'])+$config['freeze_time'];
         return $info;
     }
 
@@ -81,7 +86,7 @@ class OrderControl
             'SID'=>$SID,
             'gettime'=>date("Y-m-d H:i:s",time()),
             'ADID'=>$ADID,
-            'status'=>0,
+            'status'=>1,
         ];
         $goods=mf::dbFactory("zyshop")->get_one(array('SID'=>$SID));
         if($goods['residueNum']<=0){
@@ -98,10 +103,16 @@ class OrderControl
     }
 
     function statis($userid){
+        $data['commission']=0;
         $where="gettime = to_days(now()) AND userid=".$userid;
-        $all=mf::dbFactory("order")->get_one($where,'count(*) as count');
-        $where.=" AND status=0";
-        $fr=mf::dbFactory("order")->get_one($where,'sum()');
+        $data['all_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
+        $where.=" AND status=1";
+        $data['frozen_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
+        //$sql="select sum(money) as num from zy_order LEFT JOIN zy_zyshop ON zy_order.SID=zy_zyshop.SID WHERE ".$where;
+        //mf::dbFactory("order")->spcSql($sql,1,1);
+        $data['frozen_amount']=mf::dbFactory("member")->get_one(['userid'=>$userid])['frozen_amount'];
+        $data['total_team_amount']=0;
+        return $data;
     }
 
 

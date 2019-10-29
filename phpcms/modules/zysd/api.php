@@ -181,9 +181,9 @@ class api{
 	}
 	//公告列表
 	function notice_list(){
-		$data=checkArg(["siteid"=>[true,1,"请输入类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		$data=checkArg(["siteid"=>[true,1,"请输入类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
 		$where=["passed"=>1,'siteid'=>$data['siteid']];
-		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->notice_list($where,$data['page']);
+		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->notice_list($where,$data['page'],$data['pagesize']);
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}else{
@@ -216,12 +216,16 @@ class api{
 
 	//订单列表
 	function order_list(){
-		$parm=checkArg(["userid"=>[true,6,"请先登录"],"page"=>[true,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
-		list($info,$pagenums, $pageStart, $pageCount)=$this->oc->order_list(['userid'=>$parm['userid']],$parm['page']);
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"status"=>[false,0,"请传参数"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
+		$where['userid']=$parm['userid'];
+		if($parm['status']) {
+			$where['status'] = $parm['status'];
+		}
+		list($info,$pagenums, $pageStart, $pageCount)=$this->oc->order_list($where,$parm['page'],$parm['pagesize']);
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}else{
-			returnAjaxData(-200,"操作失败",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+			returnAjaxData(-200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
 	//自动抢单
@@ -258,7 +262,7 @@ class api{
 	//数据统计
 	function data_statistics(){
 		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_POST);
-		$res=$this->oc->task_detail(['SID',$parm['SID']]);
+		$res=$this->oc->statis($parm['userid']);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{
