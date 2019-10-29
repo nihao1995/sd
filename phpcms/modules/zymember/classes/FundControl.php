@@ -149,7 +149,7 @@ class FundControl
     /**
      * 添加资金记录
      * @param $userid 用户id
-     * @param $account_type 账变类型 1 充值 2 提现 3 购买 4 卖出
+     * @param $account_type 账变类型 1 充值 2 提现 3 购买
      * @param $money 金额
      * @param $type 金额类型 1 收入 2 支出
      * @param $is_update_member 是否更新资金 true/false
@@ -163,16 +163,28 @@ class FundControl
         if($is_update_member){
             $info = mf::dbFactory("zyfxconfig")->get_one();
             if($type==1){
-                $amount=$member_info['amount']+$money;
+                if($account_type==3) {
+                    $amount = $member_info['amount'] + $money;
+                }else{
+                    $amount = $member_info['amount'] + $member_info['frozen_amount'] + $money;
+                }
                 if($amount>$info['fund_toplimit']){
                     returnAjaxData(-102,'超出账户金额上限');
                 }
-                mf::dbFactory('member')->update(['amount'=>"+=".$money],["userid"=>$userid]);
+                if($account_type==3){
+                    mf::dbFactory('member')->update(['amount'=>"+=".$money,'frozen_amount'=>'-='.$money],["userid"=>$userid]);
+                }else {
+                    mf::dbFactory('member')->update(['amount' => "+=" . $money], ["userid" => $userid]);
+                }
             }elseif($type==2){
                 if($money>$member_info['amount']){
                     returnAjaxData(-102,'账户金额不足');
                 }
-                mf::dbFactory('member')->update(['amount'=>"-=".$money],["userid"=>$userid]);
+                if($account_type==3){
+                    mf::dbFactory('member')->update(['amount'=>"-=".$money,'frozen_amount'=>'+='.$money],["userid"=>$userid]);
+                }else {
+                    mf::dbFactory('member')->update(['amount'=>"-=".$money],["userid"=>$userid]);
+                }
             }else{
                 returnAjaxData(-101,'金额类型错误');
             }

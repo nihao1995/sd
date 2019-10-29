@@ -213,6 +213,17 @@ class api{
 		}
 	}
 
+
+	//订单列表
+	function order_list(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"page"=>[true,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		list($info,$pagenums, $pageStart, $pageCount)=$this->oc->order_list(['userid'=>$parm['userid']],$parm['page']);
+		if($info){
+			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}else{
+			returnAjaxData(-200,"操作失败",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}
+	}
 	//自动抢单
 	function auto_grab_order(){
 		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_POST);
@@ -223,11 +234,20 @@ class api{
 			returnAjaxData(-200,"操作失败");
 		}
 	}
-
 	//接取任务
 	function get_task(){
-		$parm=checkArg(["userid"=>[true,6,"请先登录"],"SID"=>[true,1,"请先选择任务"]],$_POST);
-		$res=$this->oc->get_task($parm['userid'],$parm['SID']);
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"SID"=>[true,1,"请先选择任务"],"ADID"=>[true,1,"请先选择地址"]],$_POST);
+		$res=$this->oc->get_task($parm['userid'],$parm['SID'],$parm['ADID']);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+	//任务详情
+	function task_detail(){
+		$parm=checkArg(["SID"=>[true,1,"请先选择任务"]],$_POST);
+		$res=$this->oc->task_detail(['SID',$parm['SID']]);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{
@@ -235,9 +255,9 @@ class api{
 		}
 	}
 
-	//任务详情
-	function task_detail(){
-		$parm=checkArg(["SID"=>[true,1,"请先选择任务"]],$_POST);
+	//数据统计
+	function data_statistics(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_POST);
 		$res=$this->oc->task_detail(['SID',$parm['SID']]);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
