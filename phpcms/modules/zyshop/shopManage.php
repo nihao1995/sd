@@ -77,19 +77,16 @@ class shopManage extends admin
     {
         if(!empty($_POST))
         {
-            $neadArg =  ['EID'=>[true, 0],'titlename'=>[true, 0], "examTime"=>[true, 0],"SCID"=>[false, 0],"MCID"=>[false, 0],'TFCID'=>[false, 0], 'RCID'=>[false, 0],"dateStart"=>[true, 0], "dateEnd"=>[true, 0],"member"=>[true, 0]];
-            $info = checkArg($neadArg, "POST");
-            $where["EID"] = array_shift($info);
-            $info["timestampStart"] = strtotime($info["dateStart"]);
-            $info["timestampEnd"] = strtotime($info["dateEnd"]);
-            if(isset($info["SCID"]))  $info["SCID"] = json_encode($info["SCID"], JSON_UNESCAPED_UNICODE ); else $info["SCID"] = '';
-            if(isset($info["RCID"]))  $info["RCID"] = json_encode($info["RCID"], JSON_UNESCAPED_UNICODE );else $info["RCID"] = '';
-            if(isset($info["MCID"]))  $info["MCID"] = json_encode($info["MCID"], JSON_UNESCAPED_UNICODE );else $info["MCID"] = '';
-            if(isset($info["TFCID"]))  $info["TFCID"] = json_encode($info["TFCID"], JSON_UNESCAPED_UNICODE );else $info["TFCID"] = '';
-            if(isset($info["member"]))  $info["member"] = json_encode($info["member"], JSON_UNESCAPED_UNICODE );
-            $item = new items("zyexam");
-            $item->easySql->changepArg($info, $where);
-            returnAjaxData('1','修改成功');
+
+            $neadArg = ["SID"=>[true, 0],"residueNum"=>[true, 0],'titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            $where["SID"] = array_shift($info);
+            if(isset($info["thumbs"]))
+                $info["thumbs"] = json_encode($info["thumbs"]);
+//            $info["residueNum"] = $info["num"];
+            $item = new items("zyshop");
+            $item->easySql->changepArg($info,$where);
+            returnAjaxData('200','修改成功');
         }
         else
         {

@@ -128,6 +128,13 @@ include $this->admin_tpl('header', 'admin');
 
                         </td>
                     </tr>
+                    <tr>
+                        <th style="width: 120px">剩余任务数</th>
+                        <td>
+                            <i-input v-model="residueNum"  placeholder="请输入数量" type="number" style="width: 300px"></i-input>
+
+                        </td>
+                    </tr>
                     <tr >
                         <th style="width: 120px">截止时间</th>
                         <th>
@@ -168,12 +175,13 @@ include $this->admin_tpl('header', 'admin');
             thumb:"<?php echo $dataInfo['thumb']?>",
             num:"<?php echo $dataInfo['num']?>",
             residueNum:"<?php echo $dataInfo['residueNum']?>",
-            endtime:"<?php echo $dataInfo['endtime']?>"
+            endtime:"<?php echo $dataInfo['endtime']?>",
+            SID:"<?php echo $dataInfo['SID']?>"
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime},function(data){
+                aj.post("index.php?m=zyshop&c=shopManage&a=editShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:this.SID,residueNum:this.residueNum,titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime},function(data){
                     if(data.code == 200)
                     {
                         var index = parent.layer.getFrameIndex(window.name);
