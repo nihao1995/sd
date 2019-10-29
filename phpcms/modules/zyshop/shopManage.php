@@ -49,6 +49,8 @@ class shopManage extends admin
             $info = checkArg($neadArg, $_POST);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
+            else
+                $info["thumbs"] = json_encode([]);
             $info["addtime"] = date("Y-m-d H:i:s", time());
             $info["residueNum"] = $info["num"];
             $item = new items("zyshop");
@@ -83,6 +85,8 @@ class shopManage extends admin
             $where["SID"] = array_shift($info);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
+            else
+                $info["thumbs"] = json_encode([]);
 //            $info["residueNum"] = $info["num"];
             $item = new items("zyshop");
             $item->easySql->changepArg($info,$where);

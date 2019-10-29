@@ -171,7 +171,7 @@ include $this->admin_tpl('header', 'admin');
             titlename:"<?php echo $dataInfo['titlename']?>",
             description:"<?php echo $dataInfo['description']?>",
             money:"<?php echo $dataInfo['money']?>",
-            img:[],
+            img:"<?php echo json_decode($dataInfo['thumbs'], true)?>",
             thumb:"<?php echo $dataInfo['thumb']?>",
             num:"<?php echo $dataInfo['num']?>",
             residueNum:"<?php echo $dataInfo['residueNum']?>",
