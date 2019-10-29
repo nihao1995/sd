@@ -14,7 +14,7 @@ use zymember\classes\FundControl as fc;
 
 class OrderControl
 {
-    function __construct($type)
+    function __construct()
     {
         $this->sd=new sd();
         $this->fc=new fc();
@@ -48,7 +48,7 @@ class OrderControl
             $goods[$random_keys]['end_timestamp']=strtotime($goods[$random_keys]['endtime']);
             return $goods[$random_keys];
         }else{
-            returnAjaxData(-200,"抢单失败");
+            returnAjaxData(-200,"订单抢完了");
         }
     }
 
@@ -89,9 +89,11 @@ class OrderControl
         }
         $id=mf::dbFactory("zyshop")->update(['residueNum'=>'-=1'],['SID'=>$SID]);
         $id=mf::dbFactory("order")->insert($data,true);
-        $id=mf::dbFactory("member")->update(['amount'=>'-='.$goods['money']],['userid'=>$userid]);
+        $id=mf::dbFactory("member")->update(['amount'=>'-='.$goods['money'],'frozen_amount'=>'+='.$goods['money']],['userid'=>$userid]);
         return $id;
     }
+
+
 
 
 
