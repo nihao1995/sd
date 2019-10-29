@@ -167,7 +167,11 @@ class FundControl
                 if($amount>$info['fund_toplimit']){
                     returnAjaxData(-102,'超出账户金额上限');
                 }
-                mf::dbFactory('member')->update(['amount'=>"+=".$money],["userid"=>$userid]);
+                if($account_type==3){
+                    mf::dbFactory('member')->update(['amount'=>"+=".$money],["userid"=>$userid]);
+                }else {
+                    mf::dbFactory('member')->update(['amount' => "+=" . $money], ["userid" => $userid]);
+                }
             }elseif($type==2){
                 if($money>$member_info['amount']){
                     returnAjaxData(-102,'账户金额不足');
