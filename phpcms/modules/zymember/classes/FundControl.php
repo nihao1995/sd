@@ -149,7 +149,7 @@ class FundControl
     /**
      * 添加资金记录
      * @param $userid 用户id
-     * @param $account_type 账变类型 1 充值 2 提现 3 购买 4 卖出
+     * @param $account_type 账变类型 1 充值 2 提现 3 购买
      * @param $money 金额
      * @param $type 金额类型 1 收入 2 支出
      * @param $is_update_member 是否更新资金 true/false

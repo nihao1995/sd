@@ -245,5 +245,16 @@ class api{
 			returnAjaxData(-200,"操作失败");
 		}
 	}
+
+	//数据统计
+	function data_statistics(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"]],$_POST);
+		$res=$this->oc->task_detail(['SID',$parm['SID']]);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
 }
 ?>
