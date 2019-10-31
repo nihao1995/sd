@@ -24,6 +24,7 @@ class modelFactory
             case "zyfxconfig": return \pc_base::load_model("zyfxconfig_model");
             case "zyshop": return \pc_base::load_model("zyshop_model");
             case "order": return \pc_base::load_model("order_model");
+            case "zyaddress": return \pc_base::load_model("zyaddress_model");
             default:\Res::Error("没有这个model");
         }
     }
