@@ -51,9 +51,27 @@ include $this->admin_tpl('header', 'admin');
                 <table  class="table_form">
                     <tbody>
                     <tr>
-                        <th style="width: 120px">单笔充值/提现金额上限</th>
+                        <th style="width: 120px">单笔充值金额上限</th>
                         <td>
-                            <i-input v-model="fund_toplimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
+                            <i-input v-model="cz_toplimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">单笔充值金额下限</th>
+                        <td>
+                            <i-input v-model="cz_lowerlimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">单笔提现金额上限</th>
+                        <td>
+                            <i-input v-model="tx_toplimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">单笔提现金额下限</th>
+                        <td>
+                            <i-input v-model="tx_lowerlimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
                         </td>
                     </tr>
                     <tr>
@@ -107,16 +125,19 @@ include $this->admin_tpl('header', 'admin');
     window.parent.app12 = new Vue({
         el:"#app",
         data:{
-            fund_toplimit:"<?php echo $dataInfo['fund_toplimit']?>",
-            task_toplimit:"<?php echo $dataInfo['task_toplimit'] ?>",
-            task_lowerlimit:"<?php echo $dataInfo['task_lowerlimit'] ?>",
-            freeze_time:"<?php echo $dataInfo['freeze_time'] ?>",
-            order_limit_times:"<?php echo $dataInfo['order_limit_times'] ?>",
+            cz_toplimit: "<?php echo $dataInfo['cz_toplimit']?>",
+            cz_lowerlimit: "<?php echo $dataInfo['cz_lowerlimit']?>",
+            tx_toplimit: "<?php echo $dataInfo['tx_toplimit']?>",
+            tx_lowerlimit: "<?php echo $dataInfo['tx_lowerlimit']?>",
+            task_toplimit: "<?php echo $dataInfo['task_toplimit'] ?>",
+            task_lowerlimit: "<?php echo $dataInfo['task_lowerlimit'] ?>",
+            freeze_time: "<?php echo $dataInfo['freeze_time'] ?>",
+            order_limit_times: "<?php echo $dataInfo['order_limit_times'] ?>",
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_toplimit:this.fund_toplimit, task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time,order_limit_times:this.order_limit_times},function(data){
+                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{cz_toplimit:this.cz_toplimit,cz_lowerlimit:this.cz_lowerlimit, tx_toplimit:this.tx_toplimit, tx_lowerlimit:this.tx_lowerlimit,  task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time,order_limit_times:this.order_limit_times},function(data){
                     if(data.code == 200)
                     {
                         layer.msg(data.message);

@@ -28,7 +28,7 @@ class OrderControl
      * @return array
      */
     function order_list($where,$page=1,$pagesize=20){
-
+        $this->update_order_status($where['userid']);
         list($info, $count) = mf::dbFactory("notice")->moreTableSelect(array('zy_order'=>array("*"), 'zy_zyshop'=>array('*')), array("SID"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "gettime DESC,status asc","1");
         list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         if($info) {
@@ -91,6 +91,7 @@ class OrderControl
             ];
             $id=mf::dbFactory("zyshop")->update(['residueNum'=>'-=1'],['SID'=>$goods[$random_keys]['SID']]);
             $id=mf::dbFactory("order")->insert($data,true);
+            $goods[$random_keys]['OID']=$id;
             returnAjaxData(200,"抢单成功",$goods[$random_keys]);
         }else{
             returnAjaxData(-200,"订单抢完了");
@@ -104,6 +105,7 @@ class OrderControl
      * @return mixed
      */
     function get_task($userid,$SID,$ADID){
+        returnAjaxData(404,"该接口已弃用");
         $data=[
             'order_sn'=>create_transaction_code(),
             'userid'=>$userid,
@@ -161,7 +163,7 @@ class OrderControl
         LIST($order,$count)=mf::dbFactory("order")->moreTableSelect(array('zy_order'=>array("*"), 'zy_zyshop'=>array('*')), array("SID"), ['OID'=>$OID,'userid'=>$userid],'','');
         if($order) {
             $id = $this->fc->add_account_record($userid, 3, $order['money'], 1, true);
-            $id = mf::dbFactory("order")->update(['status'=>2],['OID'=>$OID]);
+            $id = mf::dbFactory("order")->update(['status'=>3],['OID'=>$OID]);
             //分销代码
         }else{
             returnAjaxData(-200,"无效订单");
@@ -175,6 +177,7 @@ class OrderControl
      * @return mixed
      */
     function statis($userid){
+        $this->update_order_status($userid);
         $data['commission']=0;
         $where="TO_DAYS(gettime) = to_days(now()) AND userid=".$userid;
         $data['all_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
@@ -187,5 +190,22 @@ class OrderControl
         return $data;
     }
 
+    /**
+     * 更新订单状态
+     * @param $userid
+     * @return mixed
+     */
+    function update_order_status($userid){
+        if(empty($userid)){
+            returnAjaxData(-1,"缺少参数");
+        }
+        $order=mf::dbFactory("order")->select(['status'=>1,'userid'=>$userid]);
+        $config=$this->sd->get_system_config();
+        foreach($order as $key=>$value){
+            if(strtotime($value['gettime'])+600<=time()){
+                $info = mf::dbFactory("order")->update(['is_freeze'=>1,'status'=>2,'gettime'=>date("Y-m-d H:i:s",(strtotime($value['gettime'])+600))],['OID'=>$value['OID']]);
+            }
+        }
+    }
 
 }
