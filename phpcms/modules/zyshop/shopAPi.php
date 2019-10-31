@@ -5,6 +5,7 @@ pc_base::load_app_func('global');
 pc_base::load_sys_class('Res', '', 0);
 use zyshop\classes\items as items;
 use zyshop\classes\testItems as testItems;
+use zymember\classes\FundControl as fc;
 
 class shopApi {
 
@@ -88,5 +89,25 @@ class shopApi {
         $uploadPath = APP_PATH.'uploadfile/'.$time.'/'.$str.'.'.$file_type;
         $returnData = ['name'=>$file_name, 'url'=>$uploadPath];
         returnAjaxData('1', 'success', $returnData);
+    }
+
+    function getUserInfo()
+    {
+        $neadArg = ["userid"=>[true, 6]];
+        $info = checkArg($neadArg, $_POST);
+        $item = new items("fxconfig");
+        $where="1";
+        if($info['userid']){
+            $where.=" AND B1.`userid`=".$info['userid'];
+        }
+        list($data,$count) = $item->DB->moreTableSelect(["zy_member"=>["amount"], "zy_bankcard"=>["BID", "bank_cardid", "owner_name","bank_name"], "zy_zyfxmoney"=>["WTXmoney"]], ["userid", "userid"], $where );
+        if(empty($data))
+            returnAjaxData("-1","暂无数据");
+        elseif(empty($data["bank_cardid"]))
+            returnAjaxData("-1", "没有银行卡数据，请先绑定");
+        $data['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $data['bank_cardid']);
+        $config = $item->easySql->get_one(["ID"=>1], "tx_toplimit,tx_lowerlimit");
+        $data = array_merge($data, $config);
+        returnAjaxData("200", "成功", $data);
     }
 }

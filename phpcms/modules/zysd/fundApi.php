@@ -78,6 +78,7 @@ class fundApi
 
     }
 
+
     //银行卡详情
     public function get_one_bank_card()
     {
