@@ -51,9 +51,15 @@ include $this->admin_tpl('header', 'admin');
                 <table  class="table_form">
                     <tbody>
                     <tr>
-                        <th style="width: 120px">账户金额上限</th>
+                        <th style="width: 120px">单笔充值/提现金额上限</th>
                         <td>
                             <i-input v-model="fund_toplimit"  placeholder="请输入" type="number" style="width: 300px"></i-input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th style="width: 120px">每日抢单次数上限</th>
+                        <td>
+                            <i-input v-model="order_limit_times"  placeholder="请输入" type="number" style="width: 300px"></i-input>
                         </td>
                     </tr>
                     <tr>
@@ -105,11 +111,12 @@ include $this->admin_tpl('header', 'admin');
             task_toplimit:"<?php echo $dataInfo['task_toplimit'] ?>",
             task_lowerlimit:"<?php echo $dataInfo['task_lowerlimit'] ?>",
             freeze_time:"<?php echo $dataInfo['freeze_time'] ?>",
+            order_limit_times:"<?php echo $dataInfo['order_limit_times'] ?>",
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_toplimit:this.fund_toplimit, task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time},function(data){
+                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_toplimit:this.fund_toplimit, task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time,order_limit_times:this.order_limit_times},function(data){
                     if(data.code == 200)
                     {
                         layer.msg(data.message);

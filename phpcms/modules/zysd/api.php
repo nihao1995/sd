@@ -251,7 +251,27 @@ class api{
 	//任务详情
 	function task_detail(){
 		$parm=checkArg(["SID"=>[true,1,"请先选择任务"]],$_POST);
-		$res=$this->oc->task_detail(['SID',$parm['SID']]);
+		$res=$this->oc->task_detail(['SID'=>$parm['SID']]);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+	//订单详情
+	function order_detail(){
+		$parm=checkArg(["OID"=>[true,1,"请先选择订单"]],$_POST);
+		$res=$this->oc->order_detail(['OID'=>$parm['OID']]);
+		if($res){
+			returnAjaxData(200,"操作成功",$res);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+	//完成任务
+	function finish_task(){
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"OID"=>[true,1,"请先选择订单"]],$_POST);
+		$res=$this->oc->finish_task($parm['userid'],$parm['OID']);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{

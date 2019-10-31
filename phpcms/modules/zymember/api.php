@@ -636,6 +636,47 @@ class api{
 		returnAjaxData("200","修改成功");
 	}
 
+	public function changeTradePassword()
+	{
+		$neadArg = ["userid"=>[true, 6,"请登录"], "password"=>[true, 0, "请传入支付密码"], "repassword"=>[true, 0, "请传入确认支付密码"], "verify_code"=>[true, 0,"请传入验证码"]];
+		$info = checkArg($neadArg, $_POST);
+		$memberinfo = $this->member_db->get_one(array('userid'=>$info["userid"]));
+		if($info["password"] != $info["repassword"])
+			returnAjaxData("-1", "两次密码不相同");
+		//==================	获取其他接口-接口 START
+		$config = $this->zyconfig_db->get_one(array('key'=>'zymessagesys4'),"url");
+		$curl = [
+			'mobile'=>$memberinfo['mobile'],
+			'verify_code'=>$info['verify_code'],
+			'clear'=>2,
+		];
+		$sms_verify = _crul_post($config['url'],$curl);
+		$sms_verify=json_decode($sms_verify,true);
+		//==================	获取其他接口-接口 END
+
+		if($sms_verify['status']=='error') {	//false,进入
+			$result = [
+				'status'=>'error',
+				'code'=>-4,
+				'message'=>$sms_verify['message'],	//短信验证码错误
+			];
+			exit(json_encode($result,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT));
+		}
+		$trade_encrypt = create_randomstr(6);
+		$newpassword = password($info["password"], $trade_encrypt);
+		$this->member_db->update(array('trade_password'=>$newpassword,'trade_encrypt'=>$trade_encrypt),array('userid'=>$memberinfo['userid']));
+		//调用通讯模块-短信接口-清空此账号的短信验证码
+		//操作成功之后删除遗留的短信验证码
+		//==================	获取其他接口-接口 START
+		$config = $this->zyconfig_db->get_one(array('key'=>'zymessagesys5'),"url");
+		$curl = [
+			'mobile'=>$memberinfo['mobile']
+		];
+		_crul_post($config['url'],$curl);
+		//==================	获取其他接口-接口 END
+		returnAjaxData("200","修改成功");
+	}
+
 	/**
 	* 安全中心_密码修改
 	* @status [状态] -1帐号、密码、验证码不能为空/-2用户名格式错误/-3密码格式错误/-4验证码错误/-5帐号不存在/-11 密码输入不一致/-100操作错误，进度错误

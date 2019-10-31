@@ -230,7 +230,7 @@ class zysd extends admin {
 	{
 		if(!empty($_POST))
 		{
-			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"]];
+			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"],"order_limit_times"=>[true, 1,"请输入每日抢单次数上限"]];
 			$data = checkArg($neadArg, $_POST);
 			$bool=$this->sd->edit_system_config($data);
 			if($bool) {
