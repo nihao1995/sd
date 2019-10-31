@@ -65,10 +65,19 @@ class fundApi
         if($data['userid']){
             $where.=" AND userid=".$data['userid'];
         }
-        $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
-        returnAjaxData(200,"操作成功",["platform_bankcard"=>$config]);
+        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($where,1,50,"BID,bank_cardid,bank_name,owner_name,bank_branch");
+        if($info){
+            foreach ($info as $key=> $item) {
+                $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
+            }
+            $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
+            returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount,"platform_bankcard"=>$config]);
+        }else{
+            returnAjaxData(-1,"暂无银行卡数据，请先绑定",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+        }
 
     }
+
 
     //银行卡详情
     public function get_one_bank_card()
