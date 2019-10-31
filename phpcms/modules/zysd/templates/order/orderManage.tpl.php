@@ -331,9 +331,10 @@ $show_header = 1;
                     },
                     replace_status:function(status){
                         switch (status){
-                            case '0':return "冻结中";
-                            case '1':return "<span style='color: green'>已完成</span>";
-                            //case '2':return "<span style='color: red'>已完成</span>";
+                            // 1正在进行中  2 冻结中 3 已完成
+                            case '1':return "<span style='color: yellowgreen'>正在进行中</span>";
+                            case '2':return "<span style='color: red'>冻结中</span>";
+                            case '3':return "<span style='color: green'>已完成</span>";
                         }
                     },
                     photo:function(){
