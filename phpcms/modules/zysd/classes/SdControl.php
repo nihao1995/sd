@@ -12,7 +12,7 @@ use zymember\classes\modelFactory as mf;
 
 class SdControl
 {
-    function __construct($type)
+    function __construct()
     {
 
     }

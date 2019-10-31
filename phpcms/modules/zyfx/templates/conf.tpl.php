@@ -7,7 +7,7 @@
 .clear{ clear: both; }
 .fjpz{ margin: 5px 0; float: left; width: 80%; }
 .fjpz label{}
-.fjpz span{ width: 50px; float: left;}
+.fjpz span{ width: 60px; float: left;}
 .fjpzs{ margin: 5px 0; float: left; width: 100%; }
 td input{
     text-align: center;
@@ -74,24 +74,10 @@ input[type="radio"] { position: absolute; clip: rect(0, 0, 0, 0);}
 				        <legend>基本配置</legend>
 						<table width="100%" class="table_form">
 							<tbody>
-								<tr> 
-									<th>分销级数</th>  
-									<td><input id="rankval" type="text" name="tier" class="input-text" required="" pattern="^[1-9]{1}[0-9]*$" value="<?php echo $info['tier']?>" onchange="change()"> 级</td>
-								</tr>
-
-
-
-								<tr id='gjfhlss'>
-									<th width="120">分红方式</th>
-									<td>
-										<input type="radio" name="awardType"  <?php if ($info['awardType']==1) {?>checked <?php }?> id="fhmet1" value="1"><label for="fhmet1">固定金额（元）</label>
-										<input type="radio" name="awardType"  <?php if ($info['awardType']==2) {?>checked <?php }?> id="fhmet2" value="2"><label for="fhmet2">百分比（%）</label>
-									</td>
-								</tr>
-                                <tr>
-                                    <th>提现手续费（不收取设置为0）</th>
-                                    <td><input id="TXcharge" type="text" name="TXcharge" class="input-text" required="" pattern="^[1-9]{3}[0-9]*$" value="<?php echo $info['TXcharge']?>" "> %</td>
-                                </tr>
+<!--								<tr> -->
+<!--									<th>分销级数</th>  -->
+<!--									<td><input id="rankval" type="text" name="tier" class="input-text" required="" pattern="^[1-9]{1}[0-9]*$" value="--><?php //echo $info['tier']?><!--" onchange="change()"> 级</td>-->
+<!--								</tr>-->
 				                <tr id='gjfhl' ">
 									<th>各级基础分红设置</th>
 
@@ -101,99 +87,15 @@ input[type="radio"] { position: absolute; clip: rect(0, 0, 0, 0);}
                                             foreach($info["awardNumber"] as $key => $value){
 										?>
 										<div class="fjpz cont">
-											<span><?php echo $key?>级成员</span>
-											<input  type="text" style="width: 70px; text-align: center" name="awardNumber[<?php echo $key?>]" value="<?php echo $value?>">
+											<span>上<?php echo $key?>级成员</span>
+											<input  type="text" style="width: 70px; text-align: center" name="awardNumber[<?php echo $key?>]" value="<?php echo $value?>">%
 										</div>
 										<?php
 
 										}
 										?>
-
 									</td>
-
 								</tr>
-
-								<tr id='gjfhls'>
-									<th>是否统一头衔</th>
-                                    <input type="hidden" value="<?php echo $info['gradeTitleType']?>" name="gradeTitleType" id="gradeTitleType">
-									<td>
-										<?php
-							                if($info['gradeTitleType']==1){
-							            ?>        
-							            <p class="myradio mropen">
-								            <label class="open">
-								                <input type="radio" value="open"  data-val="mdpstatus" />
-								            </label>
-								            <label class="close hidden">
-								                <input type="radio" value="close" data-val="mdpstatus" />
-								            </label>
-								        </p>
-							            <?php
-							                }else{ 
-							            ?>
-							            <p class="myradio mrclose">
-								            <label class="open hidden">
-								                <input type="radio" value="open" data-val="mdpstatus" />
-								            </label>
-								            <label class="close">
-								                <input type="radio" value="close" data-val="mdpstatus" />
-								            </label>
-								        </p>
-							            <?php
-							                }
-							            ?> 
-							            (一般适用于后台添加客户的情况,统一头衔模式为多)
-
-								    </td>
-								</tr>
-
-                                <tr>
-                                    <th width="120">成员头衔</th>
-                                    <td>
-                                        <div id='mnam1' style="display: <?php if ($info['gradeTitleType']==1) {?>none<?php }?>;">
-                                            <input type="button" class="btn btn-info btn-sm addinput" value="增加" >
-                                            <input type="button" class="btn btn-info btn-sm delinput" value="减少">
-                                            <table style="width: 100%;text-align: center">
-                                                <tr >
-                                                    <th style="text-align: center">
-                                                        头衔等级
-                                                    </th>
-                                                    <th style="text-align: center">
-                                                        头衔名称
-                                                    </th>
-                                                    <th style="text-align: center">
-                                                        需要人数
-                                                    </th>
-                                                    <th style="text-align: center">
-                                                        奖励金额
-                                                    </th>
-                                                </tr>
-                                            <tbody class="father">
-                                            <input type="hidden" value="<?php echo $info["gradeNumber"]?>" name="gradeNumber" id="gradeNumber">
-                                            <?php $num = 1;
-                                                foreach($grideInfo as $key => $value){ if($num > $info["gradeNumber"]) break;
-                                                    ?>
-                                                    <tr class="fixinput">
-                                                        <div class="fjpz" style=" width: 50%;">
-    <!--                                                                <span style=" margin:0 10px;">--><?php //echo $value['tname']?><!--</span>-->
-                                                            <td>等级<?php echo $value['titleID']?></td>
-                                                            <td><input type="text" name="titleID[<?php echo $key+1?>][TitleName]" required=""  value="<?php echo $value['TitleName']?>"></td>
-                                                            <td><input type="text" name="titleID[<?php echo $key+1?>][neadMember]" value="<?php echo $value['neadMember']?>"></td>
-                                                            <td><input type="text" name="titleID[<?php echo $key+1?>][gradeAward]" value="<?php echo $value['gradeAward']?>"></td>
-                                                        </div>
-                                                    </tr>
-                                                    <?php $num++;
-                                                }
-                                            ?>
-                                            </tbody>
-                                            </table>
-
-                                        </div>
-                                        <div id='mnam2' style="display: <?php if ($info['gradeTitleType']==2) {?>none<?php }?>;">
-                                            <input type="text" name="titleID[<?php echo 0?>][TitleName]" value="<?php echo $unifyTitle['TitleName']?>">
-                                        </div>
-                                    </td>
-                                </tr>
 						</tbody>
 					</table>
 					<div class="bk15"></div>
@@ -224,44 +126,30 @@ input[type="radio"] { position: absolute; clip: rect(0, 0, 0, 0);}
 
 </body>
 </html>
-<script type="text/javascript">
-	$('.addinput').on('click',function(){
-		var index = $(".fixinput").size()+1;
-		if(index<=10){
-		var imgshow =' <tr class="fixinput"> <div class="fjpz" style=" width: 50%;" > <td>等级'+index+'</td> <td><input type="text" name="titleID['+index+'][TitleName]" class="input-text" required=""  value="等级'+index+'"></td> <td><input type="text" class="input-text" name="titleID['+index+'][neadMember]" value="0""></td> <td><input type="text" class="input-text" name="titleID['+index+'][gradeAward]" value="0"></td> </div> </tr>';
-		$('.father').append(imgshow);
-		}else{
-			alert("等级不能超过十");
-		}
-		$("#gradeNumber").val(index);
-	});
-	$('.delinput').on('click',function(){
-        //var index = $(".father").size();
-        $('.fixinput').last().remove();
-        $("#gradeNumber").val($(".fixinput").size());
-    });
-
-    function change() {
-        $s = $('#rankval').val();
-        $num = $('.cont').size();
-        $a = 1;
-        while($s != $num)
-        {
-            if($s > $num)
-            {
-                var imgshow ='<div class="fjpz cont"> <span>'+($num+1)+'级成员</span> <input class="input-text" type="text" style="width: 70px; text-align: center" name="awardNumber['+($num + 1)+']" value=" "> </div>'
-                $('.rankfather').append(imgshow);
-            }
-            else if($s < $num)
-                $('.cont').last().remove();
-            $s = $('#rankval').val();
-            $num = $('.cont').size();
-            $a =$a+1;
-            if($a >50)
-                break;
-        }
-    }
-</script>
+<!--<script type="text/javascript">-->
+<!---->
+<!---->
+<!--    function change() {-->
+<!--        $s = $('#rankval').val();-->
+<!--        $num = $('.cont').size();-->
+<!--        $a = 1;-->
+<!--        while($s != $num)-->
+<!--        {-->
+<!--            if($s > $num)-->
+<!--            {-->
+<!--                var imgshow ='<div class="fjpz cont"> <span>'+($num+1)+'级成员</span> <input class="input-text" type="text" style="width: 70px; text-align: center" name="awardNumber['+($num + 1)+']" value=" "> </div>'-->
+<!--                $('.rankfather').append(imgshow);-->
+<!--            }-->
+<!--            else if($s < $num)-->
+<!--                $('.cont').last().remove();-->
+<!--            $s = $('#rankval').val();-->
+<!--            $num = $('.cont').size();-->
+<!--            $a =$a+1;-->
+<!--            if($a >50)-->
+<!--                break;-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
 <script>
 	onload = function(){
 	  //单选	  

@@ -45,7 +45,7 @@ class shopManage extends admin
     {
         if(!empty($_POST))
         {
-            $neadArg = ['titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
+            $neadArg = ['titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0], "awardMoney"=>[true, 1]];
             $info = checkArg($neadArg, $_POST);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
@@ -71,7 +71,8 @@ class shopManage extends admin
             $upload_allowext = 'gif|jpg|jpeg|png|bmp';
             $isselectimage = '0';
             $authkeys = upload_key("$upload_number,$upload_allowext,$isselectimage");
-
+            $fxConfig = new items("fxconfig");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
             include $this->admin_tpl('zyshop\shopAdd');
         }
     }
@@ -80,9 +81,17 @@ class shopManage extends admin
         if(!empty($_POST))
         {
 
-            $neadArg = ["SID"=>[true, 0],"residueNum"=>[true, 0],'titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
+            $neadArg = ["SID"=>[true, 0],"residueNum"=>[true, 0],'titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0], "awardMoney"=>[true, 1]];
             $info = checkArg($neadArg, $_POST);
             $where["SID"] = array_shift($info);
+            $fxConfig = new items("fxconfig");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $awardNumber = json_decode($fxC["awardNumber"], true);
+            foreach ($awardNumber as $key =>$value)
+            {
+                $info["brokerage"][$key] = $value* $info["money"] /100;
+            }
+            $info["brokerage"] = json_encode($info["brokerage"]);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
             else
@@ -103,6 +112,8 @@ class shopManage extends admin
             $images_width = '';
             $images_height = '';
             $watermark = '0';
+            $fxConfig = new items("fxconfig");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
             $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
 
 
