@@ -114,11 +114,18 @@ include $this->admin_tpl('header', 'admin');
                         </td>
                     </tr>
                     <tr>
+                        <th style="width: 120px">商品奖励金</th>
+                        <td>
+                            <i-input v-model="awardMoney"  placeholder="请输入金额" type="number" style="width: 300px"></i-input>
+
+                        </td>
+                    </tr>
+                    <tr>
                         <th style="width: 120px">商品佣金</th>
                         <td>
-                            一级会员佣金：43元
-                            二级会员佣金：22元
-                            三级会员佣金：11元
+                            <li>上一级会员佣金：{{money * fxC[1] / 100}}元</li>
+                            <li>上二级会员佣金：{{money * fxC[2] / 100}}元</li>
+                            <li>上三级会员佣金：{{money * fxC[3] / 100}}元</li>
                         </td>
                     </tr>
                     <tr>
@@ -171,17 +178,19 @@ include $this->admin_tpl('header', 'admin');
             titlename:"<?php echo $dataInfo['titlename']?>",
             description:"<?php echo $dataInfo['description']?>",
             money:"<?php echo $dataInfo['money']?>",
-            img:[],
+            img:<?php if(empty($dataInfo['thumbs'])) echo "[]"; else print_r($dataInfo['thumbs'])?>,
             thumb:"<?php echo $dataInfo['thumb']?>",
             num:"<?php echo $dataInfo['num']?>",
             residueNum:"<?php echo $dataInfo['residueNum']?>",
             endtime:"<?php echo $dataInfo['endtime']?>",
-            SID:"<?php echo $dataInfo['SID']?>"
+            SID:"<?php echo $dataInfo['SID']?>",
+            awardMoney:"<?php echo $dataInfo['awardMoney']?>",
+            fxC:<?php echo $fxC["awardNumber"]?>
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zyshop&c=shopManage&a=editShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:this.SID,residueNum:this.residueNum,titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime},function(data){
+                aj.post("index.php?m=zyshop&c=shopManage&a=editShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{SID:this.SID,residueNum:this.residueNum,titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime, awardMoney:this.awardMoney},function(data){
                     if(data.code == 200)
                     {
                         var index = parent.layer.getFrameIndex(window.name);

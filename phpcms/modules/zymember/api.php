@@ -459,7 +459,13 @@ class api{
 			//$userinfo['overduedate'] = strtotime($_POST['info']['overduedate']);
 			$userinfo['mobile'] = $mobile;
 
-			
+			$userinfo['MID'] = random(6);
+			$memberinfo = $this->member_db->get_one(array('MID'=>$userinfo));
+			while ($memberinfo)
+			{
+				$userinfo['MID'] = random(6);
+				$memberinfo = $this->member_db->get_one(array('MID'=>$userinfo));
+			}
 			//传入phpsso为明文密码，加密后存入phpcms_v9
 			$password = $userinfo['password'];
 			$userinfo['password'] = password($userinfo['password'], $userinfo['encrypt']);

@@ -114,10 +114,11 @@ $show_header = 1;
             <th>ID</th>
             <th>用户ID</th>
             <th>充值金额（￥）</th>
-            <th>转账卡号信息</th>
+<!--            <th>转账卡号信息</th>-->
             <th>凭证截图</th>
             <th>申请时间</th>
             <th>状态</th>
+            <th>备注</th>
             <th>操作</th>
         </tr>
         </thead>
@@ -127,22 +128,25 @@ $show_header = 1;
              <tr>
                  <td><Checkbox :label="item.FRID"><span></span></Checkbox></td>
                  <td>{{item.FRID}}</td>
-                 <td>{{item.userid}}</td>
+                 <td>{{item.MID}}</td>
                  <td>{{item.fund_money}}</td>
+<!--                 <td >-->
+<!--                     银行卡号：{{item.bank_cardid||"——"}}<br>-->
+<!--                     银行名称：{{item.bank_name||"——"}}<br>-->
+<!--                     持卡人姓名：{{item.owner_name||"——"}}<br>-->
+<!--                     所属支行：{{item.bank_branch||"——"}}<br>-->
+<!--                 </td>-->
                  <td >
-                     银行卡号：{{item.bank_cardid||"——"}}<br>
-                     银行名称：{{item.bank_name||"——"}}<br>
-                     持卡人姓名：{{item.owner_name||"——"}}<br>
-                     所属支行：{{item.bank_branch||"——"}}<br>
-                 </td>
-                 <td >
-                    <img :src="item.proof_thumb" width="100px"/>
+                     <div class="layer-photos-demo" >
+                            <img :src="item.proof_thumb" width="100px"/>
+                     </div>
                  </td>
                  <td>{{item.addtime}}</td>
                  <td><span v-html="replace_status(item.status)"></span></td>
+                 <td>{{item.note}}</td>
                  <td align="center">
                      <template v-if="item.status==0">
-                         <i-button type="info" @click="pass(item.FRID)" >通过</i-button>
+                         <i-button type="info" @click="pass(item.FRID, item.SID)" >通过</i-button>
                          <i-button type="error" @click="reject(item.FRID)" >驳回</i-button>
                      </template>
 <!--                     <i-button type="info" @click="edit(item.FRID)" >编辑</i-button>-->
@@ -264,7 +268,7 @@ $show_header = 1;
                         if (this.checkAll) {
                             var cd = [];
                             for(var i in this.itemGet)
-                                cd.push(this.itemGet[i].SID)
+                                cd.push(this.itemGet[i].FRID)
                             this.IDI = cd;
                         } else {
                             this.IDI = [];
@@ -313,18 +317,27 @@ $show_header = 1;
                         });
 
                     },
-                    pass:function(ID){
+                    pass:function(ID, SID){
                         var that = this;
-                        layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
-                            //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{FRID:ID},function(data){
+                        //layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
+                        //    //do something
+                        //    aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php //echo $_GET["pc_hash"]?>//",{FRID:ID},function(data){
+                        //        if(data.code == 200)
+                        //            that.getData(that.page);
+                        //        else
+                        //            layer.msg(data.message);
+                        //    });
+                        //    layer.close(index);
+                        //});
+                        layer.prompt({title:"请输入充值账户ID"},function(value, index , elem){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{FRID:ID, SID:SID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
                                     layer.msg(data.message);
                             });
                             layer.close(index);
-                        });
+                        })
                     },
                     reject:function(ID){
                         var that = this;
