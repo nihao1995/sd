@@ -108,13 +108,20 @@ include $this->admin_tpl('header', 'admin');
                         </td>
                     </tr>
                     <tr>
+                        <th style="width: 120px">商品奖励金</th>
+                        <td>
+                            <i-input v-model="awardMoney"  placeholder="请输入金额" type="number" style="width: 300px"></i-input>
+
+                        </td>
+                    </tr>
+                    <tr>
                         <th style="width: 120px">商品佣金</th>
                         <td>
-                            一级会员佣金：43元
-                            二级会员佣金：22元
-                            三级会员佣金：11元
+                            <li>上一级会员佣金：{{money * fxC[1] / 100}}元</li>
+                            <li>上二级会员佣金：{{money * fxC[2] / 100}}元</li>
+                            <li>上三级会员佣金：{{money * fxC[3] / 100}}元</li>
                         </td>
-                        <i-Time :time="time1">
+<!--                        <i-Time :time="time1">-->
                     </tr>
                     <tr>
                         <th style="width: 120px">任务总数</th>
@@ -163,12 +170,14 @@ include $this->admin_tpl('header', 'admin');
             thumb:"",
             num:"",
             endtime:"",
-            time1:(new Date()).getTime() + 60*3*1000
+            awardMoney:"",
+            fxC:<?php echo $fxC["awardNumber"]?>
+            // time1:(new Date()).getTime() + 60*3*1000
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime},function(data){
+                aj.post("index.php?m=zyshop&c=shopManage&a=addShop&pc_hash=<?php echo $_GET["pc_hash"]?>",{titlename:this.titlename, description:this.description,money:this.money, thumbs:this.img , thumb:this.thumb, num:this.num, endtime:this.endtime, awardMoney:this.awardMoney},function(data){
                     if(data.code == 200)
                     {
                         var index = parent.layer.getFrameIndex(window.name);

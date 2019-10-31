@@ -65,16 +65,9 @@ class fundApi
         if($data['userid']){
             $where.=" AND userid=".$data['userid'];
         }
-        list($info,$pagenums, $pageStart, $pageCount)=$this->fund->bank_card_list($where,1,50,"BID,bank_cardid,bank_name,owner_name,bank_branch");
-        if($info){
-            foreach ($info as $key=> $item) {
-                $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
-            }
-            $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
-            returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount,"platform_bankcard"=>$config]);
-        }else{
-            returnAjaxData(-1,"暂无银行卡数据，请先绑定",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
-        }
+        $config=$this->sd->get_system_config("platform_bankcard_number,platform_bankcard_name,platform_bankcard_keeper");
+        returnAjaxData(200,"操作成功",["platform_bankcard"=>$config]);
+
     }
 
     //银行卡详情
@@ -108,22 +101,16 @@ class fundApi
     //充值申请
     public function cz_apply()
     {
-        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"proof_thumb"=>[true,0,"请上传凭证"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
-        $bankcard=$this->fund->bank_card_list(["BID"=>$data['bankcard_id']])[0];
-        if(!$bankcard[0]){
-            returnAjaxData(-1,"银行卡不存在");
-        }else{
-            if($bankcard[0]['userid']!=$data['userid']) returnAjaxData(-100,"非法操作");
-        }
-        $info=[
-            'userid'=>$data['userid'],
-            'fund_type'=>1,
-            'proof_thumb'=>$data['proof_thumb'],
-            'fund_money'=>$data['fund_money'],
-            'bankcard_id'=>$data['bankcard_id'],
-            'addtime'=>date("Y-m-d H:i:s",time()),
-        ];
-        $id=$this->fund->fund_application($info);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"proof_thumb"=>[true,0,"请上传凭证"],"fund_money"=>[true,1,"请输入提现金额"],"note"=>[false,0]],$_POST);
+//        $bankcard=$this->fund->bank_card_list(["BID"=>$data['bankcard_id']])[0];
+//        if(!$bankcard[0]){
+//            returnAjaxData(-1,"银行卡不存在");
+//        }else{
+//            if($bankcard[0]['userid']!=$data['userid']) returnAjaxData(-100,"非法操作");
+//        }
+        $data["addtime"] = date("Y-m-d H:i:s",time());
+        $data["fund_type"] = 1;
+        $id=$this->fund->fund_application($data);
         if($id){
             returnAjaxData(200,"操作成功",$id);
         }else{

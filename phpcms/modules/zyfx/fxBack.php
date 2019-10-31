@@ -37,16 +37,16 @@ class fxBack extends admin
     }
     function config()//拿到配置文件，暂时没时间更新配置，JS代码还在改善
     {
-        if($_POST["tier"])
+        if($_POST["awardNumber"])
         {
-            $neadArg = ["tier"=>[true, 0], "awardType"=>[true, 0], "TXcharge"=>[true, 1],"awardNumber"=>[true, 0], "gradeTitleType"=>[true, 0], "gradeNumber"=>[true, 0]];
+            $neadArg = ["tier"=>[false, 0], "awardType"=>[false, 0], "TXcharge"=>[false, 1],"awardNumber"=>[true, 0], "gradeTitleType"=>[false, 0], "gradeNumber"=>[false, 0]];
             $info = checkArgBcak($neadArg, "POST");
             if($info["TXcharge"] > 100 || $info["TXcharge"] < 0)
                 showmessage("提现手续费错误","index.php?m=zyfx&c=fxBack&a=config", "2000");
-            $neadArg = ["titleID"=>[true, 0]];
-            $gradeTitleInfo = checkArgBcak($neadArg, "POST");
+//            $neadArg = ["titleID"=>[f, 0]];
+//            $gradeTitleInfo = checkArgBcak($neadArg, "POST");
             $this->config->updateConfig($info);
-            $this->config->updateGradetitle($gradeTitleInfo["titleID"]);
+//            $this->config->updateGradetitle($gradeTitleInfo["titleID"]);
             showmessage("更新成功", "index.php?m=zyfx&c=fxBack&a=config", "1000");
         }
         else

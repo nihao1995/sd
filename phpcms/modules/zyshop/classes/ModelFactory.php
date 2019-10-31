@@ -25,6 +25,7 @@ class modelList implements model_List
             case "zyslideshow": return \pc_base::load_model("zyslideshow_model");
             case "member": return \pc_base::load_model("member_model");
             case "zyaddress": return \pc_base::load_model("zyaddress_model");
+            case "fxconfig": return \pc_base::load_model("zyfxconfig_model");
             default:\Res::Error("没有这个model");
         }
         // TODO: Implement getModel() method.
