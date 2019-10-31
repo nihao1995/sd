@@ -221,7 +221,7 @@ class api{
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}else{
-			returnAjaxData(-200,"操作失败",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+			returnAjaxData(-200,"暂无订单",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
 	//自动抢单
