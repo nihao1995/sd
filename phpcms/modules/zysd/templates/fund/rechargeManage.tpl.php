@@ -146,7 +146,7 @@ $show_header = 1;
                  <td>{{item.note}}</td>
                  <td align="center">
                      <template v-if="item.status==0">
-                         <i-button type="info" @click="pass(item.FRID, item.SID)" >通过</i-button>
+                         <i-button type="info" @click="pass(item.FRID, item.MID)" >通过</i-button>
                          <i-button type="error" @click="reject(item.FRID)" >驳回</i-button>
                      </template>
 <!--                     <i-button type="info" @click="edit(item.FRID)" >编辑</i-button>-->
@@ -317,7 +317,7 @@ $show_header = 1;
                         });
 
                     },
-                    pass:function(ID, SID){
+                    pass:function(ID, MID){
                         var that = this;
                         //layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
                         //    //do something
@@ -330,7 +330,7 @@ $show_header = 1;
                         //    layer.close(index);
                         //});
                         layer.prompt({title:"请输入充值账户ID"},function(value, index , elem){
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{FRID:ID, SID:SID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{FRID:ID, MID:value},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else

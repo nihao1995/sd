@@ -241,7 +241,7 @@ class api{
 	//接取任务
 	function get_task(){
 		$parm=checkArg(["userid"=>[true,6,"请先登录"],"SID"=>[true,1,"请先选择任务"],"ADID"=>[true,1,"请先选择地址"]],$_POST);
-		$res=$this->oc->get_task($parm['userid'],$parm['SID'],$parm['ADID']);
+		$res=$this->oc->auto_grab_order($parm['userid'],$parm['SID'],$parm['ADID']);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{

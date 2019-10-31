@@ -230,7 +230,7 @@ class zysd extends admin {
 	{
 		if(!empty($_POST))
 		{
-			$neadArg = ['fund_toplimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"],"order_limit_times"=>[true, 1,"请输入每日抢单次数上限"]];
+			$neadArg = ['cz_toplimit'=>[true, 1,"请输入账户金额上限"],'cz_lowerlimit'=>[true, 1,"请输入账户金额上限"],'tx_toplimit'=>[true, 1,"请输入账户金额上限"],'tx_lowerlimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"],"order_limit_times"=>[true, 1,"请输入每日抢单次数上限"]];
 			$data = checkArg($neadArg, $_POST);
 			$bool=$this->sd->edit_system_config($data);
 			if($bool) {
@@ -298,9 +298,8 @@ class zysd extends admin {
 	//提现充值--审核通过
 	public function fund_pass()
 	{
-		$data=checkArg(["FRID"=>[true,1,"请输入ID", "SID"=>[true, 1, "请输入充值账户ID"]]],$_POST);
-		$SID = array_pop($data);
-		$info=$this->fund->fund_pass($data['FRID'], $SID);
+		$data=checkArg(["FRID"=>[true,1,"请输入ID"],"MID"=>[true, 1, "请输入充值账户ID"]],$_POST);
+		$info=$this->fund->fund_pass($data['FRID'], $data['MID']);
 		if($info){
 			returnAjaxData(200,"操作成功");
 		}else{
