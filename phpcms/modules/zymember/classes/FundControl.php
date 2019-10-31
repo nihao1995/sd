@@ -67,9 +67,6 @@ class FundControl
      * @return bool
      */
     function check_user($userid){
-        if(empty($userid)){
-            returnAjaxData(-1,"缺少参数");
-        }
         $member=mf::dbFactory('member')->get_one(['userid'=>$userid]);
         if($member){
             if($member["islock"]==1){
@@ -163,26 +160,30 @@ class FundControl
         if($is_update_member){
             $info = mf::dbFactory("zyfxconfig")->get_one();
             if($type==1){
-                if($account_type==3) {
-                    $amount = $member_info['amount'] + $money;
-                }else{
-                    $amount = $member_info['amount'] + $member_info['frozen_amount'] + $money;
-                }
-                if($amount>$info['fund_toplimit']){
-                    returnAjaxData(-102,'超出账户金额上限');
-                }
                 if($account_type==3){
                     mf::dbFactory('member')->update(['amount'=>"+=".$money,'frozen_amount'=>'-='.$money],["userid"=>$userid]);
                 }else {
+                    if($money>$info['cz_toplimit']){
+                        returnAjaxData(-102,'超出单笔充值上限');
+                    }
+                    if($money<$info['cz_lowerlimit']){
+                        returnAjaxData(-103,'少于单笔充值下限');
+                    }
                     mf::dbFactory('member')->update(['amount' => "+=" . $money], ["userid" => $userid]);
                 }
             }elseif($type==2){
                 if($money>$member_info['amount']){
-                    returnAjaxData(-102,'账户金额不足');
+                    returnAjaxData(-102,'账户可用余额不足');
                 }
                 if($account_type==3){
                     mf::dbFactory('member')->update(['amount'=>"-=".$money,'frozen_amount'=>'+='.$money],["userid"=>$userid]);
                 }else {
+                    if($money>$info['tx_toplimit']){
+                        returnAjaxData(-102,'超出单笔提现上限');
+                    }
+                    if($money<$info['tx_lowerlimit']){
+                        returnAjaxData(-103,'少于单笔提现下限');
+                    }
                     mf::dbFactory('member')->update(['amount'=>"-=".$money],["userid"=>$userid]);
                 }
             }else{
@@ -209,6 +210,22 @@ class FundControl
         if(empty($data)){
             returnAjaxData(-1,"缺少参数");
         }
+        $info = mf::dbFactory("zyfxconfig")->get_one();
+        if($data['fund_type']==1){//充值判断
+            if($data['fund_money']>$info['cz_toplimit']){
+                returnAjaxData(-102,'超出单笔充值上限');
+            }
+            if($data['fund_money']<$info['cz_lowerlimit']){
+                returnAjaxData(-103,'少于单笔充值下限');
+            }
+        }elseif($data['fund_type']==2){//提现判断
+            if($data['fund_money']>$info['tx_toplimit']){
+                returnAjaxData(-102,'超出单笔提现上限');
+            }
+            if($data['fund_money']<$info['tx_lowerlimit']){
+                returnAjaxData(-103,'少于单笔提现下限');
+            }
+        }
         $id=mf::dbFactory('fund_record')->insert($data);
         return $id;
     }
@@ -218,21 +235,21 @@ class FundControl
      * @param $frid
      * @return mixed
      */
-    function fund_pass($frid, $SID){
-        if(empty($frid)){
-            returnAjaxData(-1,"缺少参数");
-        }
-        $info=mf::dbFactory('fund_record')->get_one(['frid'=>$frid]);
-        if(!$info||$info['status']!=0){
-            returnAjaxData(-1,"状态错误");
+    function fund_pass($frid, $MID){
+        if(empty($frid)||empty($MID)){
+            returnAjaxData(-1,"1缺少参数".$frid.$MID);
         }
         $fund_record=mf::dbFactory('fund_record')->get_one(['frid'=>$frid]);
-
+        if(!$fund_record||$fund_record['status']!=0){
+            returnAjaxData(-1,"状态错误");
+        }
+        $member=mf::dbFactory('member')->get_one(['MID'=>$MID]);
+        $this->check_user($member['userid']);
         //添加资金记录及资金
         if($fund_record['fund_type']==1) {
-            $this->add_account_record($fund_record['userid'], 1, $fund_record['fund_money'], 1, true);
+            $this->add_account_record($member['userid'], 1, $fund_record['fund_money'], 1, true);
         } elseif($fund_record['fund_type']==2) {
-            $this->add_account_record($fund_record['userid'], 2, $fund_record['fund_money'], 2, true);
+            $this->add_account_record($member['userid'], 2, $fund_record['fund_money'], 2, true);
         }
         $id=mf::dbFactory('fund_record')->update(['status'=>1],['frid'=>$frid]);
         return $id;
