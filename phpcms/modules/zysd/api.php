@@ -238,7 +238,7 @@ class api{
 			returnAjaxData(-200,"操作失败");
 		}
 	}
-	//接取任务
+	//接取任务--没用到
 	function get_task(){
 		$parm=checkArg(["userid"=>[true,6,"请先登录"],"SID"=>[true,1,"请先选择任务"],"ADID"=>[true,1,"请先选择地址"]],$_POST);
 		$res=$this->oc->auto_grab_order($parm['userid'],$parm['SID'],$parm['ADID']);
@@ -248,7 +248,7 @@ class api{
 			returnAjaxData(-200,"操作失败");
 		}
 	}
-	//任务详情
+	//任务详情--没用到
 	function task_detail(){
 		$parm=checkArg(["SID"=>[true,1,"请先选择任务"]],$_POST);
 		$res=$this->oc->task_detail(['SID'=>$parm['SID']]);
@@ -265,13 +265,13 @@ class api{
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{
-			returnAjaxData(-200,"操作失败");
+			returnAjaxData(-200,"无此订单");
 		}
 	}
 	//完成任务
 	function finish_task(){
-		$parm=checkArg(["userid"=>[true,6,"请先登录"],"OID"=>[true,1,"请先选择订单"]],$_POST);
-		$res=$this->oc->finish_task($parm['userid'],$parm['OID']);
+		$parm=checkArg(["userid"=>[true,6,"请先登录"],"OID"=>[true,1,"请先选择订单"],"ADID"=>[false,1,"请先选择地址"]],$_POST);
+		$res=$this->oc->finish_task($parm['userid'],$parm['OID'],$parm['ADID']);
 		if($res){
 			returnAjaxData(200,"操作成功",$res);
 		}else{

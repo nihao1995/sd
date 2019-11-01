@@ -165,6 +165,18 @@ class fundApi
         }
     }
 
+    //个人资金
+    public function fund_info()
+    {
+        $neadArg = ["userid"=>[true,6,"请输入用户ID"]];
+        $data=checkArg($neadArg,$_POST);
+        $info=$this->fund->fund_info($data['userid']);
+        if($info){
+            returnAjaxData(200,"操作成功",$info);
+        }else{
+            returnAjaxData(-200,"操作失败");
+        }
+    }
     /**
      * 完善资料
      * @status [状态] -1手机号码不能为空/-2用户名格式错误/-3帐号不存在/-4短信验证码错误/-5密码格式错误/-11 密码输入不一致/-100操作错误，进度错误

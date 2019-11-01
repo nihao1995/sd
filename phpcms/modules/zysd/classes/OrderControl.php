@@ -36,6 +36,7 @@ class OrderControl
                 $info[$key]['end_timestamp'] = strtotime($info[$key]['endtime']);
                 $config=$this->sd->get_system_config();
                 $info[$key]['freeze_timestamp'] = strtotime($info[$key]['gettime'])+$config['freeze_time'];
+                $info[$key]['left_timestamp'] = strtotime($info[$key]['gettime'])+$config['limit_time'];
             }
         }
         return [$info,$pagenums, $pageStart, $pageCount];
@@ -91,7 +92,11 @@ class OrderControl
             ];
             $id=mf::dbFactory("zyshop")->update(['residueNum'=>'-=1'],['SID'=>$goods[$random_keys]['SID']]);
             $id=mf::dbFactory("order")->insert($data,true);
+            $order=mf::dbFactory("order")->get_one(['OID'=>$id]);
             $goods[$random_keys]['OID']=$id;
+            $goods[$random_keys]['thumbs']=json_decode($goods[$random_keys]['thumbs'],true);
+            $goods[$random_keys]['brokerage']=json_decode($goods[$random_keys]['brokerage'],true);
+            $goods[$random_keys]['left_time']=strtotime($order['gettime'])+$config['limit_time'];
             returnAjaxData(200,"抢单成功",$goods[$random_keys]);
         }else{
             returnAjaxData(-200,"订单抢完了");
@@ -146,10 +151,15 @@ class OrderControl
      */
     function order_detail($where){
         list($info,$count) = mf::dbFactory("notice")->moreTableSelect(array('zy_order'=>array("*"), 'zy_zyshop'=>array('*'), 'zy_zyaddress'=>array('*')), array("SID","ADID"), $where,'','');
-        $info['end_timestamp']=strtotime($info['endtime']);
+        if(!$info){
+            return false;
+        }
         $config=$this->sd->get_system_config();
+        $info['end_timestamp']=strtotime($info['endtime']);
         $info['freeze_timestamp'] = strtotime($info['gettime'])+$config['freeze_time'];
         $info['thumbs']=json_decode($info['thumbs'],true);
+        $info['brokerage']=json_decode($info['brokerage'],true);
+        $info['left_time']=strtotime($info['gettime'])+$config['limit_time'];
         return $info;
     }
 
@@ -159,12 +169,23 @@ class OrderControl
      * @param $OID
      * @return mixed
      */
-    function finish_task($userid,$OID){
+    function finish_task($userid,$OID,$ADID){
+        $this->update_order_status($userid);
         LIST($order,$count)=mf::dbFactory("order")->moreTableSelect(array('zy_order'=>array("*"), 'zy_zyshop'=>array('*')), array("SID"), ['OID'=>$OID,'userid'=>$userid],'','');
         if($order) {
-            $id = $this->fc->add_account_record($userid, 3, $order['money'], 1, true);
+            if($ADID){
+                $id = mf::dbFactory("order")->update(['ADID'=>$ADID],['OID'=>$OID]);
+            }
+            if($order['status']==1){//完成订单
+                $id = $this->fc->add_account_record($userid, 5, $order['awardMoney'], 1, true);
+                //分销代码++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            }elseif($order['status']==2){//解冻
+                $id = $this->fc->add_account_record($userid, 4, $order['money'], 1, true);
+            }else{
+                returnAjaxData(-201,"状态错误");
+            }
+
             $id = mf::dbFactory("order")->update(['status'=>3],['OID'=>$OID]);
-            //分销代码
         }else{
             returnAjaxData(-200,"无效订单");
         }
@@ -202,8 +223,10 @@ class OrderControl
         $order=mf::dbFactory("order")->select(['status'=>1,'userid'=>$userid]);
         $config=$this->sd->get_system_config();
         foreach($order as $key=>$value){
-            if(strtotime($value['gettime'])+600<=time()){
-                $info = mf::dbFactory("order")->update(['is_freeze'=>1,'status'=>2,'gettime'=>date("Y-m-d H:i:s",(strtotime($value['gettime'])+600))],['OID'=>$value['OID']]);
+            if(strtotime($value['gettime'])+$config['limit_time']<=time()){
+                $info = mf::dbFactory("order")->update(['is_freeze'=>1,'status'=>2,'gettime'=>date("Y-m-d H:i:s",(strtotime($value['gettime'])+$config['limit_time']))],['OID'=>$value['OID']]);
+                $goods=mf::dbFactory("zyshop")->get_one(array('SID'=>$value['SID']));
+                $this->fc->add_account_record($userid,3,$goods['money'],2,true);
             }
         }
     }
