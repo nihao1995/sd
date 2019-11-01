@@ -298,7 +298,7 @@ class zysd extends admin {
 	//提现充值--审核通过
 	public function fund_pass()
 	{
-		$data=checkArg(["FRID"=>[true,1,"请输入ID"],"MID"=>[true, 1, "请输入充值账户ID"]],$_POST);
+		$data=checkArg(["FRID"=>[true,1,"请输入ID"],"MID"=>[false, 1, "请输入充值账户ID"]],$_POST);
 		$info=$this->fund->fund_pass($data['FRID'], $data['MID']);
 		if($info){
 			returnAjaxData(200,"操作成功");

@@ -22,6 +22,7 @@ class modelFactory
             case "notice": return \pc_base::load_model("announce_model");
             case "notice_type": return \pc_base::load_model("notice_type_model");
             case "zyfxconfig": return \pc_base::load_model("zyfxconfig_model");
+            case "zyfxmoney": return \pc_base::load_model("zyfxmoney_model");
             case "zyshop": return \pc_base::load_model("zyshop_model");
             case "order": return \pc_base::load_model("order_model");
             case "zyaddress": return \pc_base::load_model("zyaddress_model");
