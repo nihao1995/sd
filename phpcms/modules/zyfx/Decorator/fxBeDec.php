@@ -19,12 +19,7 @@ class fxBeDec implements FxIn//被装饰函数
 
     function returnAwardMoney($memberInfo, $i, $shopPrice) //返回需要添加的金额.可装饰
     {
-        $awardMoney = json_decode($this->config->returnConfig("awardNumber"), true);
-        $awardType = $this->config->returnConfig("awardType");
-        if ($awardType == '1')
-            $info["WTXmoney"] = "+=".$awardMoney[$i];
-        else
-            $info["WTXmoney"] = "+=".$awardMoney[$i] * $shopPrice;
+        $info["WTXmoney"] = "+=".$shopPrice[$i];
         $info["moneyCount"] = "DJ WTXmoney+TXmoney";
         return $info;
     }

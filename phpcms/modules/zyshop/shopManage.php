@@ -51,6 +51,14 @@ class shopManage extends admin
                 $info["thumbs"] = json_encode($info["thumbs"]);
             else
                 $info["thumbs"] = json_encode([]);
+            $fxConfig = new items("fxconfig");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $awardNumber = json_decode($fxC["awardNumber"], true);
+            foreach ($awardNumber as $key =>$value)
+            {
+                $info["brokerage"][$key] = $value* $info["money"] /100;
+            }
+            $info["brokerage"] = json_encode($info["brokerage"]);
             $info["addtime"] = date("Y-m-d H:i:s", time());
             $info["residueNum"] = $info["num"];
             $item = new items("zyshop");

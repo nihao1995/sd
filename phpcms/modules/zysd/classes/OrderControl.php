@@ -178,6 +178,8 @@ class OrderControl
             }
             if($order['status']==1){//完成订单
                 $id = $this->fc->add_account_record($userid, 5, $order['awardMoney'], 1, true);
+                $param = ["userid"=>$userid, "SID"=>$order["SID"]];
+                $val = json_decode(_crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=awardMoney", $param));
                 //分销代码++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             }elseif($order['status']==2){//解冻
                 $id = $this->fc->add_account_record($userid, 4, $order['money'], 1, true);
