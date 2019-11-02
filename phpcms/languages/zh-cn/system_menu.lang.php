@@ -498,4 +498,5 @@ $LANG['zymessagesys_configs'] = '通讯配置';
 $LANG['qtlb'] = '前台轮播';
 $LANG['xxpz'] = '系统配置';
 $LANG['ddgl'] = '订单管理';
+$LANG['kflx'] = '客服联系';
 ?>

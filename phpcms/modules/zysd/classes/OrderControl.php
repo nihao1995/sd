@@ -12,6 +12,7 @@ use zymember\classes\modelFactory as mf;
 use zysd\classes\SdControl as sd;
 use zymember\classes\FundControl as fc;
 
+
 class OrderControl
 {
     function __construct()
@@ -67,7 +68,7 @@ class OrderControl
                 ];
                 $ADID = mf::dbFactory("zyaddress")->get_one($where2);
                 if(!$ADID) {
-                    returnAjaxData(-1,"请先填写地址");
+                    returnAjaxData(-199,"请先填写地址");
                 }
             }
             if($goods[$random_keys]['residueNum']<=0){
@@ -99,7 +100,7 @@ class OrderControl
             $goods[$random_keys]['left_time']=strtotime($order['gettime'])+$config['limit_time'];
             returnAjaxData(200,"抢单成功",$goods[$random_keys]);
         }else{
-            returnAjaxData(-200,"订单抢完了");
+            returnAjaxData(-200,"暂无合适的订单");
         }
     }
 
@@ -178,8 +179,11 @@ class OrderControl
             }
             if($order['status']==1){//完成订单
                 $id = $this->fc->add_account_record($userid, 5, $order['awardMoney'], 1, true);
-                $param = ["userid"=>$userid, "SID"=>$order["SID"]];
-                $val = json_decode(_crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=awardMoney", $param));
+                require_once PC_PATH.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'zyfx/frontApi.php';
+                $s  = new \frontApi();
+                $s->awardMoney($userid,$order["SID"]);
+//                $param = ["userid"=>$userid, "SID"=>$order["SID"]];
+//                $val = json_decode(_crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=awardMoney", $param));
                 //分销代码++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             }elseif($order['status']==2){//解冻
                 $id = $this->fc->add_account_record($userid, 4, $order['money'], 1, true);
@@ -201,7 +205,9 @@ class OrderControl
      */
     function statis($userid){
         $this->update_order_status($userid);
-        $data['commission']=0;
+        $where="SELECT sum(awardMoney) as num FROM zy_order LEFT JOIN zy_zyshop on zy_order.SID=zy_zyshop.SID WHERE TO_DAYS(gettime) = to_days(now()) AND userid=".$userid;
+        $commission=mf::dbFactory("order")->spcSql($where,1,0)['num'];
+        $data['commission']=$commission ? $commission:0 ;
         $where="TO_DAYS(gettime) = to_days(now()) AND userid=".$userid;
         $data['all_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
         $where.=" AND status=2";
@@ -209,7 +215,7 @@ class OrderControl
         //$sql="select sum(money) as num from zy_order LEFT JOIN zy_zyshop ON zy_order.SID=zy_zyshop.SID WHERE ".$where;
         //mf::dbFactory("order")->spcSql($sql,1,1);
         $data['frozen_amount']=mf::dbFactory("member")->get_one(['userid'=>$userid])['frozen_amount'];
-        $data['total_team_amount']=0;
+        $data['total_team_amount']=mf::dbFactory("zyfxmoney")->get_one(['userid'=>$userid])['WTXmoney'];
         return $data;
     }
 

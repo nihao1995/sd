@@ -9,7 +9,7 @@
 /*
  *
  */
-require_once "/../functions/global.func.php";
+//require_once "/../functions/global.func.php";
 class Res
 {
     public $ok;
@@ -31,13 +31,7 @@ class Res
     {
         if($res->ok == false)
         {
-            switch ($type)
-            {
-                case "1":
-                    showmessage($res->info);break;
-                case "2":
-                    returnAjaxData("-1", $res->info);
-            }
+             returnAjaxData("-1", $res->info);
         }
         else{
             if($res->info != null)
