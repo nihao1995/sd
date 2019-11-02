@@ -98,9 +98,10 @@ class fundApi
     public function account_records()
     {
         $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"type"=>[true,1,"请输入类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
-        $info=$this->fund->account_list(['userid'=>$data['userid'],'type'=>$data['type']],$data['page'],$data['pagesize']);
+        $where="userid=".$data['userid']." AND type=".$data['type']." AND account_type IN (1,2)";
+        $info=$this->fund->account_list($where,$data['page'],$data['pagesize']);
         if($info){
-            returnAjaxData(200,"操作成功",$info);
+            returnAjaxData(200,"操作成功",['data'=>$info[0], 'pageCount'=>$info[1]]);
         }else{
             returnAjaxData(-200,"暂无数据");
         }
@@ -157,9 +158,10 @@ class fundApi
     {
         $neadArg = ["userid"=>[true,6,"请输入用户ID"],"fund_type"=>[true,1,"请输入金额类型"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]];
         $data=checkArg($neadArg,$_POST);
+        $member=$this->fund->check_user($data['userid']);
         list($info,$pagenums, $pageStart, $pageCount)=$this->fund->fund_list("B1.userid=".$data['userid']." and fund_type=".$data['fund_type'],1,$data['page'],$data['pagesize']);
         if($info){
-            returnAjaxData(200,"操作成功",['data'=>$info, 'pageCount'=>$pageCount]);
+            returnAjaxData(200,"操作成功",['data'=>$info, 'pageCount'=>$pageCount,'middle_station'=>$member['middle_station']]);
         }else{
             returnAjaxData(-200,"操作失败");
         }
