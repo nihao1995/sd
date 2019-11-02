@@ -350,13 +350,13 @@ class FundControl
     function fund_list($where,$type=0,$page=1,$pagesize=20){
         $msg='';
         if($type==1){
-            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*')), array(["bankcard_id","BID"]), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,status asc","1");
+            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*')), array(["bankcard_id","BID"]), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
             list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
             foreach ($info as $key=> $item) {
                 $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
             }
         }elseif($type==2){
-            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,status asc","1");
+            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
             list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         }else{
             $info=mf::dbFactory('fund_record')->listinfo($where,"addtime DESC",$page,$pagesize);
