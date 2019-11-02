@@ -19,6 +19,7 @@ class frontApi
     function __construct()
     {
         $this->member = new Fx();
+
     }
     function insertMember()//创建用户的时候插入分销用户表和提现中，
     {
@@ -69,6 +70,7 @@ class frontApi
         if($userid["userid"] == $pid["pid"])
             returnAjaxData("-1", "无法添加自己为上级");
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
+        $member_db->update(["extra_times"=>"+=2"],["userid"=>$info["userid"]]);
         returnAjaxData("200", "添加成功");
     }
     function addchild_yqm()//添加下级队员
@@ -86,12 +88,16 @@ class frontApi
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
         returnAjaxData("200", "添加成功");
     }
-    function awardMoney()//奖励钱****
+    function awardMoney($userid, $SID)//奖励钱****
     {
-        $neadArg = ["userid"=>[true, 6], "shopprice"=>[false, 1]];
-        $info = checkArg($neadArg, $_POST);
-        $shopprice = isset($info["shopprice"])?array_pop($info):0;
-        Res::AssertOk($this->member->awardMoney($info,$shopprice),"2");
+//        $neadArg = ["userid"=>[true, 1, "真的吗"], "SID"=>[true, 0]];
+//        $info = checkArg($neadArg, $_POST);
+//        $SID = array_pop($info);
+        $shopDB = pc_base::load_model("zyshop_model");
+        $shopInfo = $shopDB->get_one(["SID"=>$SID], "brokerage");
+        $shopprice = json_decode($shopInfo["brokerage"], true);
+//        returnAjaxData("-1","d",$shopprice);
+        Res::AssertOk($this->member->awardMoney(["userid"=>$userid],$shopprice),"2");
         returnAjaxData("200", "奖励成功");
     }
     function TX()

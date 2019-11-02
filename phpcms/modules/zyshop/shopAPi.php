@@ -110,4 +110,9 @@ class shopApi {
         $data = array_merge($data, $config);
         returnAjaxData("200", "成功", $data);
     }
+    function getService(){
+        $item = new items("zyservice");
+        $data = $item->easySql->select("1");
+        returnAjaxData("1","成功", $data);
+    }
 }

@@ -60,14 +60,16 @@ class Fx
             if($memberInfo == null)
                 Error("没有该用户信息");
             $fxMoney = modelFactory::Create()->getModel("zyfxmoney");
-            for($i=1; $i<= $this->gride; $i++)
+            for($i=1; $i<= 3; $i++)
             {
+
                 if($memberInfo["pid"] == 0)//如果没有pid的话break;
                     break;
                 $memberInfo = $this->getMemberInfo(array('userid'=>$memberInfo["pid"]));
                 if($memberInfo != null) //计算各个pid应该发放多少奖励
                 {
                     $info = $this->fxBeDec->returnAwardMoney($memberInfo, $i, $shopPrice);//修改用户表的金额
+                    //Error(json_encode($shopPrice));
                     $fxMoney->update($info, array("userid"=>$memberInfo['userid']));
 //                $sql = "update `fxBack`.`zy_tx_table` set `WTXmoney`=WTXmoney+".$money.", `moneyCount`=WTXmoney+TXmoney where `userid`=".$memberInfo["userid"].";";
 //                $this->tx_table->spcSql($sql);
