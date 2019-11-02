@@ -88,6 +88,10 @@ class FundControl
             returnAjaxData(-1,"缺少参数");
         }
         $this->check_user($data['userid']);
+        $card2=mf::dbFactory('bankcard')->get_one(['userid'=>$data['userid']]);
+        if($card2){
+            returnAjaxData(-3,"只能绑定一张银行卡");
+        }
         $card=mf::dbFactory('bankcard')->get_one(['bank_cardid'=>$data['bank_cardid']]);
         if($card){
             returnAjaxData(-2,"银行卡已绑定");
@@ -111,6 +115,14 @@ class FundControl
         if($card&&$card['BID']!=$BID){
             returnAjaxData(-2,"银行卡已绑定");
         }
+        $cardinfo=mf::dbFactory('bankcard')->get_one(['BID'=>$BID]);
+        $data['status']=1;
+        $data['before']=json_encode([
+            'bank_cardid'=> $cardinfo['bank_cardid'],
+            'bank_name'=> $cardinfo['bank_name'],
+            'owner_name'=> $cardinfo['owner_name'],
+            'bank_branch'=> $cardinfo['bank_branch'],
+        ],JSON_UNESCAPED_SLASHES|JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
         $id=mf::dbFactory('bankcard')->update($data,['BID'=>$BID]);
         return $id;
     }
@@ -137,10 +149,53 @@ class FundControl
      * @return array
      */
     function bank_card_list($where,$page=1,$pagesize=20,$filed="*"){
-        $info = mf::dbFactory("bankcard")->listinfo($where,"BID DESC",$page,$pagesize,'','','','',$filed);
+        $info = mf::dbFactory("bankcard")->listinfo($where,"status asc,BID DESC",$page,$pagesize,'','','','',$filed);
         $count= mf::dbFactory("bankcard")->number;
         list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         return [$info,$pagenums, $pageStart, $pageCount];
+    }
+
+    /**
+     * 银行卡修改申请--通过
+     * @param $BID
+     * @return mixed
+     */
+    function bank_card_pass($BID){
+        if(empty($BID)){
+            returnAjaxData(-1,"缺少参数");
+        }
+        $bank_card=mf::dbFactory('bankcard')->get_one(['BID'=>$BID]);
+        if(!$bank_card||$bank_card['status']!=1){
+            returnAjaxData(-1,"状态错误");
+        }
+        //通过
+        $id=mf::dbFactory('bankcard')->update(['status'=>0,'before'=>''],['BID'=>$BID]);
+        return $id;
+    }
+
+    /**
+     * 银行卡修改申请--驳回
+     * @param $BID
+     * @return mixed
+     */
+    function bank_card_dismiss($BID){
+        if(empty($BID)){
+            returnAjaxData(-1,"缺少参数");
+        }
+        $bank_card=mf::dbFactory('bankcard')->get_one(['BID'=>$BID]);
+        if(!$bank_card||$bank_card['status']!=1){
+            returnAjaxData(-1,"状态错误");
+        }
+        //通过
+        $before= json_decode($bank_card['before'],true);
+        $data['bank_cardid']=$before['bank_cardid'];
+        $data['bank_name']=$before['bank_name'];
+        $data['owner_name']=$before['owner_name'];
+        $data['bank_branch']=$before['bank_branch'];
+        $data['status']=0;
+        $data['before']='';
+        $id=mf::dbFactory('bankcard')->update($data,['BID'=>$BID]);
+        return $id;
     }
 
     /**

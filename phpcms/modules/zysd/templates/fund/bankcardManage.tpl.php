@@ -136,10 +136,10 @@ $show_header = 1;
                  <td>{{item.owner_name}}</td>
                  <td>{{item.bank_branch}}</td>
                  <td align="center">
-<!--                     <template v-if="item.status==0">-->
-<!--                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>-->
-<!--                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>-->
-<!--                     </template>-->
+                     <template v-if="item.status==1">
+                         <i-button type="info" @click="pass(item.BID)" >通过</i-button>
+                         <i-button type="error" @click="reject(item.BID)" >驳回</i-button>
+                     </template>
 
 <!--                     <i-button type="info" @click="edit(item.BID)" >编辑</i-button>-->
 <!--                     <i-button type="error"  @click="del(item.BID)">删除</i-button>-->
@@ -306,7 +306,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定通过？', {icon: 1, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=bankcard_pass&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -319,7 +319,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定驳回？', {icon: 2, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=fund_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=bankcard_dismiss&pc_hash=<?php echo $_GET["pc_hash"]?>",{BID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else

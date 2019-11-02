@@ -230,7 +230,7 @@ class zysd extends admin {
 	{
 		if(!empty($_POST))
 		{
-			$neadArg = ['cz_toplimit'=>[true, 1,"请输入账户金额上限"],'cz_lowerlimit'=>[true, 1,"请输入账户金额上限"],'tx_toplimit'=>[true, 1,"请输入账户金额上限"],'tx_lowerlimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"],"order_limit_times"=>[true, 1,"请输入每日抢单次数上限"]];
+			$neadArg = ['cz_toplimit'=>[true, 1,"请输入账户金额上限"],'cz_lowerlimit'=>[true, 1,"请输入账户金额上限"],'tx_toplimit'=>[true, 1,"请输入账户金额上限"],'tx_lowerlimit'=>[true, 1,"请输入账户金额上限"],'task_toplimit'=>[true, 1,"请输入任务上限"], "task_lowerlimit"=>[true, 1,"请输入任务下限"],"freeze_time"=>[true, 1,"请输入冻结时间"],"limit_time"=>[true, 1,"请输入完成订单限制时间"],"order_limit_times"=>[true, 1,"请输入每日抢单次数上限"]];
 			$data = checkArg($neadArg, $_POST);
 			$bool=$this->sd->edit_system_config($data);
 			if($bool) {
@@ -358,6 +358,29 @@ class zysd extends admin {
 			returnAjaxData(-200,"操作失败");
 		}
 	}
+	//银行卡修改--审核通过
+	public function bankcard_pass()
+	{
+		$data=checkArg(["BID"=>[true,1,"请输入ID"]],$_POST);
+		$info=$this->fund->bank_card_pass($data['BID']);
+		if($info){
+			returnAjaxData(200,"操作成功");
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+	//银行卡修改--审核驳回
+	public function bankcard_dismiss()
+	{
+		$data=checkArg(["BID"=>[true,1,"请输入ID"]],$_POST);
+		$info=$this->fund->bank_card_dismiss($data['BID']);
+		if($info){
+			returnAjaxData(200,"操作成功");
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
+
 
 	//公告类型记录
 	public function notice_type_list()
