@@ -102,6 +102,12 @@ include $this->admin_tpl('header', 'admin');
                             <i-input v-model="freeze_time"  placeholder="请输入" type="number" style="width: 300px"></i-input>秒/s
                         </td>
                     </tr>
+                    <tr>
+                        <th style="width: 120px">完成订单限定时间</th>
+                        <td>
+                            <i-input v-model="limit_time"  placeholder="请输入" type="number" style="width: 300px"></i-input>秒/s
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </fieldset>
@@ -132,12 +138,13 @@ include $this->admin_tpl('header', 'admin');
             task_toplimit: "<?php echo $dataInfo['task_toplimit'] ?>",
             task_lowerlimit: "<?php echo $dataInfo['task_lowerlimit'] ?>",
             freeze_time: "<?php echo $dataInfo['freeze_time'] ?>",
+            limit_time: "<?php echo $dataInfo['limit_time'] ?>",
             order_limit_times: "<?php echo $dataInfo['order_limit_times'] ?>",
         },
         methods:{
             upload:function()
             {
-                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{cz_toplimit:this.cz_toplimit,cz_lowerlimit:this.cz_lowerlimit, tx_toplimit:this.tx_toplimit, tx_lowerlimit:this.tx_lowerlimit,  task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time,order_limit_times:this.order_limit_times},function(data){
+                aj.post("index.php?m=zysd&c=zysd&a=system_config&pc_hash=<?php echo $_GET["pc_hash"]?>",{cz_toplimit:this.cz_toplimit,cz_lowerlimit:this.cz_lowerlimit, tx_toplimit:this.tx_toplimit, tx_lowerlimit:this.tx_lowerlimit,  task_toplimit:this.task_toplimit,task_lowerlimit:this.task_lowerlimit,freeze_time:this.freeze_time,order_limit_times:this.order_limit_times,limit_time:this.limit_time},function(data){
                     if(data.code == 200)
                     {
                         layer.msg(data.message);
