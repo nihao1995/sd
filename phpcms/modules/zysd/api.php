@@ -161,7 +161,7 @@ class api{
 		returnAjaxData(1);
 	}
 	public function set(){
-		$cookie = param::set_app_cookie("_userid", 1);
+		$cookie = param::set_app_cookie("_userid", 8);
 		echo($cookie);
 	}
 	public function get(){
