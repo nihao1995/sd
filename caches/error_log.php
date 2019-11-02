@@ -121,3 +121,8 @@
 <?php exit;?>11-02 16:00:39 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
 <?php exit;?>11-02 16:00:40 | 2 | require_once(../zyfx/frontApi.php): failed to open stream: No such file or directory | phpcms\modules\zysd\api.php | 5
 <?php exit;?>11-02 16:00:40 | 2 | require_once(../zyfx/frontApi.php): failed to open stream: No such file or directory | phpcms\modules\zysd\api.php | 5
+<?php exit;?>11-02 16:20:06 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-02 16:20:36 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-02 16:22:27 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-02 16:33:16 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-02 16:33:21 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
