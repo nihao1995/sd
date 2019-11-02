@@ -51,6 +51,14 @@ class shopManage extends admin
                 $info["thumbs"] = json_encode($info["thumbs"]);
             else
                 $info["thumbs"] = json_encode([]);
+            $fxConfig = new items("fxconfig");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $awardNumber = json_decode($fxC["awardNumber"], true);
+            foreach ($awardNumber as $key =>$value)
+            {
+                $info["brokerage"][$key] = $value* $info["money"] /100;
+            }
+            $info["brokerage"] = json_encode($info["brokerage"]);
             $info["addtime"] = date("Y-m-d H:i:s", time());
             $info["residueNum"] = $info["num"];
             $item = new items("zyshop");
@@ -281,5 +289,55 @@ class shopManage extends admin
         $exam = new items("zyexam");
         $exam->easySql->del_or($info);
         returnAjaxData('1', '成功');
+    }
+
+
+//客服配置
+
+    function serverInit(){
+        include $this->admin_tpl('slideshow\slideshow');
+    }
+    function getServerInfo(){
+        $item = new items("zyservice");
+        $data = $item->easySql->select("1");
+        returnAjaxData("1","成功", $data);
+    }
+    function serverAdd(){
+        if(!empty($_POST))
+        {
+            $neadArg = ['val'=>[true, 0], 'type'=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            $info["addtime"] = date("Y-m-d H:i:s",time());
+            $item = new items("zyservice");
+            $item->easySql->add($info);
+        }
+        else {
+            include $this->admin_tpl('slideshow\addSlideshow');
+        }
+    }
+    function delService(){
+        $neadArg = ["SEID"=>[true, 0]];
+        $info = checkArg($neadArg, $_POST);
+        $item = new items("zyservice");
+        $item->easySql->del($info);
+        returnAjaxData("1", "成功");
+    }
+    function serverEdit(){
+        if(!empty($_POST))
+        {
+            $neadArg = ["SEID"=>[true, 0],'val'=>[true, 0], 'type'=>[true, 0]];
+            $info = checkArg($neadArg, $_POST);
+            $where["SEID"] = array_shift($info);
+//            $info["addtime"] = date("Y-m-d H:i:s",time());
+            $item = new items("zyservice");
+            $item->easySql->changepArg($info, $where);
+        }
+        else {
+            $neadArg = ["SEID"=>[true, 0]];
+            $info = checkArg($neadArg, $_GET);
+            $item = new items("zyservice");
+            $data = $item->easySql->get_one($info);
+            include $this->admin_tpl('slideshow\editSlideshow');
+        }
     }
 }

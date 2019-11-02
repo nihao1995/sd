@@ -91,8 +91,8 @@
         <thead>
             <tr>
                 <th>分类ID</th>
-                <th>类型</th>
-                <th>号码</th>
+                <th>图片查看</th>
+                <th>是否显示到前台</th>
                 <th>添加时间</th>
                 <th>管理操作</th>
             </tr>
@@ -100,17 +100,24 @@
         <tbody>
         <template v-for="item in itemGet" v-model="itemGet">
             <tr>
-                <td>{{item.SEID}}</td>
+                <td>{{item.SSID}}</td>
                 <td>
-                    <template v-if="item.type==1">QQ</template> <template v-else-if="item.type==2">微信</template>
+                    <div class="layer-photos-demo" >
+                    <img :src="item.thumb" />
+                    </div>
                 </td>
                 <td align="center">
-                   {{item.val}}
+                    <template v-if="item.isshow==1">
+                        <img src="<?php echo IMG_PATH?>/right.png" />
+                    </template>
+                    <template v-else>
+                        <img src="<?php echo IMG_PATH?>/wrong.png" />
+                    </template>
                 </td>
                 <td>{{item.addtime}}</td>
                 <td align="center">
-                    <a class="btn btn-info btn-sm" @click="edit(item.SEID)">编辑</a>
-                    <a class="btn btn-danger btn-sm" @click="del(item.SEID)">删除</a>
+                    <a class="btn btn-info btn-sm" @click="edit(item.SSID)">编辑</a>
+                    <a class="btn btn-danger btn-sm" @click="del(item.SSID)">删除</a>
                 </td>
             </tr>
         </template>
@@ -123,7 +130,7 @@
         $ = layui.jquery,
         upload = layui.upload,
         table = layui.table;
-    aj.post("index.php?m=zyshop&c=shopManage&a=getServerInfo&pc_hash=<?php echo $_GET["pc_hash"]?>",{},function(data){
+    aj.post("index.php?m=zyshop&c=shopManage&a=getTypeData&pc_hash=<?php echo $_GET["pc_hash"]?>",{},function(data){
         if(data.code=='1')
         {
             console.log(data);
@@ -135,14 +142,14 @@
                 methods:{
                     refresh:function(){
                         var that = this;
-                        aj.post("index.php?m=zyshop&c=shopManage&a=getServerInfo&pc_hash=<?php echo $_GET["pc_hash"]?>",{},function(data) {
+                        aj.post("index.php?m=zyshop&c=shopManage&a=getTypeData&pc_hash=<?php echo $_GET["pc_hash"]?>",{},function(data) {
                             that.itemGet = data.data;
                         })
                     },
                     del:function(SSID){
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index) {
-                            aj.post("index.php?m=zyshop&c=shopManage&a=delService&pc_hash=<?php echo $_GET["pc_hash"]?>", {SEID: SSID}, function (data) {
+                            aj.post("index.php?m=zyshop&c=shopManage&a=delType&pc_hash=<?php echo $_GET["pc_hash"]?>", {SSID: SSID}, function (data) {
                                 that.refresh();
                             })
                         })
@@ -155,7 +162,7 @@
                             shadeClose: true,
                             shade: 0.8,
                             area: ['500px', '50%'],
-                            content: 'index.php?m=zyshop&c=shopManage&a=serverEdit&pc_hash=<?php echo $_GET["pc_hash"]?>&SEID='+SSID, //iframe的url
+                            content: 'index.php?m=zyshop&c=shopManage&a=editSlideshow&pc_hash=<?php echo $_GET["pc_hash"]?>&SSID='+SSID, //iframe的url
                             end: function () {
                                 console.log(1);
                                 that.refresh();
@@ -170,7 +177,7 @@
                             shadeClose: true,
                             shade: 0.8,
                             area: ['500px', '50%'],
-                            content: 'index.php?m=zyshop&c=shopManage&a=serverAdd&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
+                            content: 'index.php?m=zyshop&c=shopManage&a=addSlideshow&pc_hash=<?php echo $_GET["pc_hash"]?>', //iframe的url
                             end: function () {
                                 console.log(1);
                                 that.refresh();
