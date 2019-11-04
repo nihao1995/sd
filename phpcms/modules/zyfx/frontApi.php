@@ -73,9 +73,9 @@ class frontApi
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
         $member_db->update(["extra_times"=>"+=2"],["userid"=>$info["userid"]]);
         $sd = new sd();
-        $sd->add_messafe($info["userid"],"成功添加".$data["nickname"]."为上级");
-        $data_2=$member_db->get_one(["username"=>$info["userid"]], "userid,nickname");
-        $sd->add_messafe($info["pid"],"成功添加".$data_2["nickname"]."为下级");
+        $sd->add_message($info["userid"],"成功添加".$data["nickname"]."为上级");
+        $data_2=$member_db->get_one(["userid"=>$info["userid"]], "userid,nickname");
+        $sd->add_message($info["pid"],"成功添加".$data_2["nickname"]."为下级");
         returnAjaxData("200", "添加成功");
     }
     function addchild_yqm()//添加下级队员
