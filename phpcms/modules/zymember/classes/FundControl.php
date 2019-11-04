@@ -300,9 +300,9 @@ class FundControl
      */
     function fund_pass($frid, $MID){
         if(empty($frid)){
-            returnAjaxData(-1,"1缺少参数".$frid.$MID);
+            returnAjaxData(-1,"缺少参数");
         }
-        $fund_record=mf::dbFactory('fund_record')->get_one(['frid'=>$frid]);
+        $fund_record=mf::dbFactory('fund_record')->get_one(['FRID'=>$frid]);
         if(!$fund_record||$fund_record['status']!=0){
             returnAjaxData(-1,"状态错误");
         }
@@ -316,7 +316,7 @@ class FundControl
         } elseif($fund_record['fund_type']==2) {
             $bool=mf::dbFactory('member')->update(['middle_station'=>"-=".$fund_record['fund_money']],['userid'=>$fund_record['userid']]);
         }
-        $id=mf::dbFactory('fund_record')->update(['status'=>1],['frid'=>$frid]);
+        $id=mf::dbFactory('fund_record')->update(['status'=>1],['FRID'=>$frid]);
         return $id;
     }
 
@@ -329,15 +329,15 @@ class FundControl
         if(empty($frid)){
             returnAjaxData(-1,"缺少参数");
         }
-        $info=mf::dbFactory('fund_record')->get_one(['frid'=>$frid]);
+        $info=mf::dbFactory('fund_record')->get_one(['FRID'=>$frid]);
         if(!$info||$info['status']!=0){
-            returnAjaxData(-1,"状态错误");
+            returnAjaxData(-1,"状态错误".print_r($info));
         }
         if($info['fund_type']==1) {
         } elseif($info['fund_type']==2) {
             $id=mf::dbFactory('member')->update(['amount' => "+=".$info['fund_money'],'middle_station'=>"-=".$info['fund_money']],['userid'=>$info['userid']]);
         }
-        $id=mf::dbFactory('fund_record')->update(['status'=>2],['frid'=>$frid]);
+        $id=mf::dbFactory('fund_record')->update(['status'=>2],['FRID'=>$frid]);
         return $id;
     }
 
@@ -350,13 +350,13 @@ class FundControl
     function fund_list($where,$type=0,$page=1,$pagesize=20){
         $msg='';
         if($type==1){
-            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*')), array(["bankcard_id","BID"]), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
+            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('BID','userid','bank_cardid','bank_name','owner_name','bank_branch','before')), array(["bankcard_id","BID"]), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
             list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
             foreach ($info as $key=> $item) {
                 $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
             }
         }elseif($type==2){
-            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('*'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
+            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('BID','userid','bank_cardid','bank_name','owner_name','bank_branch','before'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
             list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         }else{
             $info=mf::dbFactory('fund_record')->listinfo($where,"addtime DESC",$page,$pagesize);

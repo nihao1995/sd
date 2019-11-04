@@ -131,7 +131,14 @@ class fundApi
     //提现申请
     public function tx_apply()
     {
-        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"]],$_POST);
+        $data=checkArg(["userid"=>[true,6,"请输入用户ID"],"fund_money"=>[true,1,"请输入提现金额"],"bankcard_id"=>[true,0,"请选择银行卡"],"password"=>[true,0,"请输入提现密码"]],$_POST);
+        $member=$this->fund->check_user($data['userid']);
+        if(empty($member['trade_password'])||empty($member['trade_encrypt'])){
+            returnAjaxData(-199,"请先设置提现密码");
+        }
+        if($member['trade_password']!=password($data['password'],$member['trade_encrypt'])){
+            returnAjaxData(-198,"密码错误");
+        }
         $bankcard=$this->fund->bank_card_list(["BID"=>$data['bankcard_id']])[0];
         if(!$bankcard[0]){
             returnAjaxData(-1,"银行卡不存在");

@@ -116,8 +116,8 @@ $show_header = 1;
             <th>ID</th>
             <th>用户ID</th>
             <th>标题</th>
-            <th>内容</th>
-            <th>缩略图</th>
+<!--            <th>内容</th>-->
+<!--            <th>缩略图</th>-->
             <th>添加时间</th>
             <th>操作</th>
         </tr>
@@ -130,8 +130,8 @@ $show_header = 1;
                  <td>{{item.MSID}}</td>
                  <td>{{item.userid}}</td>
                  <td>{{item.title}}</td>
-                 <td>{{item.content}}</td>
-                 <td><img :src="item.thumb" alt="" style="height: 50px"></td>
+<!--                 <td>{{item.content}}</td>-->
+<!--                 <td><img :src="item.thumb" alt="" style="height: 50px"></td>-->
                  <td>{{item.addtime}}</td>
 <!--                 <td><span v-html="replace_status(item.status)"></span></td>-->
                  <td align="center">
@@ -289,7 +289,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_notice_type&pc_hash=<?php echo $_GET["pc_hash"]?>",{MSID:ID},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_message&pc_hash=<?php echo $_GET["pc_hash"]?>",{MSID:ID},function(data){
                                 if(data.code == 200)
                                     that.getData(that.page);
                                 else
@@ -395,7 +395,7 @@ $show_header = 1;
                         var that = this;
                         layer.confirm('确定删除？', {icon: 3, title:'提示'}, function(index){
                             //do something
-                            aj.post("index.php?m=zysd&c=zysd&a=del_notice_type&pc_hash=<?php echo $_GET["pc_hash"]?>",{MSID:that.IDI},function(data){
+                            aj.post("index.php?m=zysd&c=zysd&a=del_message&pc_hash=<?php echo $_GET["pc_hash"]?>",{MSID:that.IDI},function(data){
                                 if(data.code == 200) {
                                     that.getData(that.page);
                                     that.IDI = [];
