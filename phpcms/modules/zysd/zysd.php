@@ -64,7 +64,6 @@ class zysd extends admin {
 			include $this->admin_tpl('fund/bankcardAdd');
 		}
 	}
-
 	/**
 	 * 编辑银行卡
 	 */
@@ -153,7 +152,6 @@ class zysd extends admin {
 			include $this->admin_tpl('notice/noticeEdit');
 		}
 	}
-
 	/**
 	 * 公告类型-列表
 	 */
@@ -161,12 +159,11 @@ class zysd extends admin {
 		include $this->admin_tpl('notice/noticeType');
 	}
 	/**
-	 * 公告类型-列表
+	 * 公告预览
 	 */
 	public function notice_view(){
 		include $this->admin_tpl('notice/noticeShow');
 	}
-
 	/**
 	 * 添加公告类型
 	 */
@@ -192,7 +189,6 @@ class zysd extends admin {
 			include $this->admin_tpl('notice/noticeTypeAdd');
 		}
 	}
-
 	/**
 	 * 编辑公告类型
 	 */
@@ -273,6 +269,14 @@ class zysd extends admin {
 	public function order_manage()
 	{
 			include $this->admin_tpl('order/orderManage');
+	}
+
+	/**
+	 * 消息管理
+	 */
+	public function message_manage()
+	{
+		include $this->admin_tpl('notice/messageManage');
 	}
 
 	//---------------------------------------------------后台模板--------------------------------------------------------
@@ -405,8 +409,7 @@ class zysd extends admin {
 			returnAjaxData(-200,"操作失败");
 		}
 	}
-
-	//公告类型记录
+	//公告记录
 	public function notice_list()
 	{
 		$data=checkArg(["title"=>[false,0,"请输入标题"],"time"=>[false,0,"请输入时间"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
@@ -424,7 +427,7 @@ class zysd extends admin {
 			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
-	//删除公告类型
+	//删除公告
 	public function del_notice()
 	{
 		$data=checkArg(["aid"=>[true,0,"请输入ID"]],$_POST);
@@ -437,7 +440,7 @@ class zysd extends admin {
 	}
 
 
-	//公告类型记录
+	//订单记录
 	public function order_list()
 	{
 		$data=checkArg(["userid"=>[false,0,"请输入用户id"],"order_sn"=>[false,0,"请输入任务编号"],"time"=>[false,0,"请输入时间"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
@@ -452,6 +455,27 @@ class zysd extends admin {
 			$where.=" AND gettime>='".date("Y-m-d H:i:s",strtotime($data['time'][0]))."' AND gettime<='".date("Y-m-d H:i:s",strtotime($data['time'][1]))."'";
 		}
 		list($info,$pagenums, $pageStart, $pageCount)=$this->oc->order_list($where,$data['page']);
+		if($info){
+			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}else{
+			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}
+	}
+	//消息记录
+	public function message_list()
+	{
+		$data=checkArg(["userid"=>[false,0,"请输入用户id"],"title"=>[false,0,"请输入标题"],"time"=>[false,0,"请输入时间"],"page"=>[false,0,"请输入page"],"pagesize"=>[false,0,"请输入pagesize"]],$_POST);
+		$where="1";
+		if($data['userid']){
+			$where.=" AND userid = ".$data['userid'];
+		}
+		if($data['order_sn']){
+			$where.=" AND title like '%".$data['title']."%'";
+		}
+		if($data['time']){
+			$where.=" AND addtime>='".date("Y-m-d H:i:s",strtotime($data['time'][0]))."' AND addtime<='".date("Y-m-d H:i:s",strtotime($data['time'][1]))."'";
+		}
+		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->message_list($where,$data['page']);
 		if($info){
 			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}else{

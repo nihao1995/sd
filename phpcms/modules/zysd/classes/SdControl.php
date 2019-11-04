@@ -142,6 +142,55 @@ class SdControl
         return $info;
     }
 
+    /**
+     * 消息列表
+     * @param $where
+     * @param int $page
+     * @param int $pagesize
+     * @return array
+     */
+    function message_list($where,$page=1,$pagesize=20){
+        if(isset($where['MSID'])){
+            mf::dbFactory("zymessage")->update(['is_read'=>1],$where);
+        }
+        $info = mf::dbFactory("zymessage")->listinfo($where,"MSID ASC",$page,$pagesize);
+        $count= mf::dbFactory("zymessage")->number;
+        list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
+        return [$info,$pagenums, $pageStart, $pageCount];
+    }
+
+    /**
+     * 添加消息
+     * @param $userid
+     * @param $title
+     * @param string $content
+     * @param string $thumb
+     */
+    function add_message($userid,$title,$content='',$thumb=''){
+        $data=[
+            'userid'=>$userid,
+            'title'=>$title,
+            'content'=>$content,
+            'thumb'=>$thumb,
+            'addtime'=>date("Y-m-d H:i:s",time()),
+        ];
+        $id=mf::dbFactory("zymessage")->insert($data,true);
+        return $id;
+    }
+
+    /**
+     * 删除消息
+     * @param $userid
+     * @param $MSID
+     */
+    function del_message($userid,$MSID){
+        if($MSID=="ALL"){
+            $id=mf::dbFactory("zymessage")->delete(['userid'=>$userid]);
+        }else{
+            $id=mf::dbFactory("zymessage")->delete(['MSID'=>$MSID]);
+        }
+        return $id;
+    }
 
 
 
