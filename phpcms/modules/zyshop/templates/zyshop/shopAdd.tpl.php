@@ -110,7 +110,7 @@ include $this->admin_tpl('header', 'admin');
                     <tr>
                         <th style="width: 120px">商品奖励金</th>
                         <td>
-                            <i-input v-model="awardMoney"  placeholder="请输入金额" type="number" style="width: 300px"></i-input>
+                            {{(awardShopMoney*money/100).toFixed(2)}}
 
                         </td>
                     </tr>
@@ -171,7 +171,8 @@ include $this->admin_tpl('header', 'admin');
             num:"",
             endtime:"",
             awardMoney:"",
-            fxC:<?php echo $fxC["awardNumber"]?>
+            fxC:<?php echo $fxC["awardNumber"]?>,
+            awardShopMoney:<?php echo $fxC["awardShopMoney"]?>
             // time1:(new Date()).getTime() + 60*3*1000
         },
         methods:{

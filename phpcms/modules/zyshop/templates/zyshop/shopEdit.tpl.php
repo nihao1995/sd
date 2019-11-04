@@ -116,7 +116,7 @@ include $this->admin_tpl('header', 'admin');
                     <tr>
                         <th style="width: 120px">商品奖励金</th>
                         <td>
-                            <i-input v-model="awardMoney"  placeholder="请输入金额" type="number" style="width: 300px"></i-input>
+                            {{(awardShopMoney*money/100).toFixed(2)}}
 
                         </td>
                     </tr>
@@ -185,7 +185,8 @@ include $this->admin_tpl('header', 'admin');
             endtime:"<?php echo $dataInfo['endtime']?>",
             SID:"<?php echo $dataInfo['SID']?>",
             awardMoney:"<?php echo $dataInfo['awardMoney']?>",
-            fxC:<?php echo $fxC["awardNumber"]?>
+            fxC:<?php echo $fxC["awardNumber"]?>,
+            awardShopMoney:<?php echo $fxC["awardShopMoney"]?>
         },
         methods:{
             upload:function()
@@ -211,7 +212,7 @@ include $this->admin_tpl('header', 'admin');
             {
                 console.log(index);
                 this.img.splice(index, 1);
-            }
+            },
 
         },
 
