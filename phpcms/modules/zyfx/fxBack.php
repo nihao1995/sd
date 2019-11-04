@@ -39,7 +39,7 @@ class fxBack extends admin
     {
         if($_POST["awardNumber"])
         {
-            $neadArg = ["tier"=>[false, 0], "awardType"=>[false, 0], "TXcharge"=>[false, 1],"awardNumber"=>[true, 0], "gradeTitleType"=>[false, 0], "gradeNumber"=>[false, 0]];
+            $neadArg = ["tier"=>[false, 0], "awardType"=>[false, 0],"awardShopMoney"=>[false, 0], "TXcharge"=>[false, 1],"awardNumber"=>[true, 0], "gradeTitleType"=>[false, 0], "gradeNumber"=>[false, 0]];
             $info = checkArgBcak($neadArg, "POST");
             if($info["TXcharge"] > 100 || $info["TXcharge"] < 0)
                 showmessage("提现手续费错误","index.php?m=zyfx&c=fxBack&a=config", "2000");
