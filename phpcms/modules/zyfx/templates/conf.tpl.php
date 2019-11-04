@@ -74,10 +74,10 @@ input[type="radio"] { position: absolute; clip: rect(0, 0, 0, 0);}
 				        <legend>基本配置</legend>
 						<table width="100%" class="table_form">
 							<tbody>
-<!--								<tr> -->
-<!--									<th>分销级数</th>  -->
-<!--									<td><input id="rankval" type="text" name="tier" class="input-text" required="" pattern="^[1-9]{1}[0-9]*$" value="--><?php //echo $info['tier']?><!--" onchange="change()"> 级</td>-->
-<!--								</tr>-->
+								<tr>
+									<th>奖励金</th>
+									<td><input  type="text" name="awardShopMoney" class="input-text" required="" pattern="^[1-9]{1}[0-9]*$" value="<?php echo $info['awardShopMoney']?>"> %</td>
+								</tr>
 				                <tr id='gjfhl' ">
 									<th>各级基础分红设置</th>
 

@@ -45,14 +45,14 @@ class shopManage extends admin
     {
         if(!empty($_POST))
         {
-            $neadArg = ['titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0], "awardMoney"=>[true, 1]];
+            $neadArg = ['titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
             $info = checkArg($neadArg, $_POST);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
             else
                 $info["thumbs"] = json_encode([]);
             $fxConfig = new items("fxconfig");
-            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             $awardNumber = json_decode($fxC["awardNumber"], true);
             foreach ($awardNumber as $key =>$value)
             {
@@ -61,6 +61,7 @@ class shopManage extends admin
             $info["brokerage"] = json_encode($info["brokerage"]);
             $info["addtime"] = date("Y-m-d H:i:s", time());
             $info["residueNum"] = $info["num"];
+            $info["awardMoney"] = round($info["money"]*$fxC["awardShopMoney"]/100, 2);
             $item = new items("zyshop");
             $item->easySql->add($info);
             returnAjaxData('200','添加成功');
@@ -80,7 +81,7 @@ class shopManage extends admin
             $isselectimage = '0';
             $authkeys = upload_key("$upload_number,$upload_allowext,$isselectimage");
             $fxConfig = new items("fxconfig");
-            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             include $this->admin_tpl('zyshop\shopAdd');
         }
     }
@@ -89,11 +90,11 @@ class shopManage extends admin
         if(!empty($_POST))
         {
 
-            $neadArg = ["SID"=>[true, 0],"residueNum"=>[true, 0],'titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0], "awardMoney"=>[true, 1]];
+            $neadArg = ["SID"=>[true, 0],"residueNum"=>[true, 0],'titlename'=>[true, 0,"请输入商品标题"], "endtime"=>[true, 0, "请选择结束时间"],"num"=>[true, 1, "请输入商品数量"],"thumb"=>[true, 0],'thumbs'=>[false, 0], "money"=>[true, 0],  "description"=>[true, 0]];
             $info = checkArg($neadArg, $_POST);
             $where["SID"] = array_shift($info);
             $fxConfig = new items("fxconfig");
-            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             $awardNumber = json_decode($fxC["awardNumber"], true);
             foreach ($awardNumber as $key =>$value)
             {
@@ -105,6 +106,7 @@ class shopManage extends admin
             else
                 $info["thumbs"] = json_encode([]);
 //            $info["residueNum"] = $info["num"];
+            $info["awardMoney"] = round($info["money"]*$fxC["awardShopMoney"]/100, 2);
             $item = new items("zyshop");
             $item->easySql->changepArg($info,$where);
             returnAjaxData('200','修改成功');
@@ -121,7 +123,7 @@ class shopManage extends admin
             $images_height = '';
             $watermark = '0';
             $fxConfig = new items("fxconfig");
-            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber");
+            $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             $authkey = upload_key("1,$upload_allowext,$isselectimage,$images_width,$images_height,$watermark");
 
 
