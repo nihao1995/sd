@@ -63,3 +63,15 @@
 <?php exit;?>11-04 14:50:52 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 40
 <?php exit;?>11-04 14:50:59 | 2 | Illegal string offset 'userid' | phpcms\modules\zysd\classes\OrderControl.php | 32
 <?php exit;?>11-04 14:51:02 | 2 | Illegal string offset 'userid' | phpcms\modules\zysd\classes\OrderControl.php | 32
+<?php exit;?>11-04 14:51:55 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:54:01 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 40
+<?php exit;?>11-04 14:54:01 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 41
+<?php exit;?>11-04 14:55:23 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 40
+<?php exit;?>11-04 14:55:23 | 2 | mkdir(): File exists           | phpcms\modules\zysd\api.php | 41
+<?php exit;?>11-04 14:55:30 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:57:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:57:00 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:58:04 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:58:13 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:58:27 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 14:58:32 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
