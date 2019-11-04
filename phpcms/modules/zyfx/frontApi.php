@@ -13,6 +13,7 @@ defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_func('global');
 pc_base::load_sys_class('form', '', 0);
 pc_base::load_sys_class('format', '', 0);
+use zysd\classes\SdControl as sd;
 //Api函数(返回数据暂时没处理)
 class frontApi
 {
@@ -63,7 +64,7 @@ class frontApi
         $neadArg = ["userid"=>[true, 6], "pid"=>[true, 0]];
         $info = checkArg($neadArg, $_POST);
         $member_db=pc_base::load_model("member_model");
-        $data=$member_db->get_one(["username"=>$info["pid"]], "userid");
+        $data=$member_db->get_one(["username"=>$info["pid"]], "userid,nickname");
         $info["pid"] = $data["userid"];
         $userid["userid"] = $info["userid"];
         $pid["pid"] = $info["pid"];
@@ -71,6 +72,10 @@ class frontApi
             returnAjaxData("-1", "无法添加自己为上级");
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
         $member_db->update(["extra_times"=>"+=2"],["userid"=>$info["userid"]]);
+        $sd = new sd();
+        $sd->add_messafe($info["userid"],"成功添加".$data["nickname"]."为上级");
+        $data_2=$member_db->get_one(["username"=>$info["userid"]], "userid,nickname");
+        $sd->add_messafe($info["pid"],"成功添加".$data_2["nickname"]."为下级");
         returnAjaxData("200", "添加成功");
     }
     function addchild_yqm()//添加下级队员
