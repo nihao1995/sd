@@ -295,7 +295,7 @@ class shopManage extends admin
 //客服配置
 
     function serverInit(){
-        include $this->admin_tpl('slideshow\slideshow');
+        include $this->admin_tpl('service\service');
     }
     function getServerInfo(){
         $item = new items("zyservice");
@@ -312,7 +312,7 @@ class shopManage extends admin
             $item->easySql->add($info);
         }
         else {
-            include $this->admin_tpl('slideshow\addSlideshow');
+            include $this->admin_tpl('service\addService');
         }
     }
     function delService(){
@@ -337,7 +337,7 @@ class shopManage extends admin
             $info = checkArg($neadArg, $_GET);
             $item = new items("zyservice");
             $data = $item->easySql->get_one($info);
-            include $this->admin_tpl('slideshow\editSlideshow');
+            include $this->admin_tpl('service\editService');
         }
     }
 }

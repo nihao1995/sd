@@ -98,7 +98,7 @@ class frontApi
         $shopprice = json_decode($shopInfo["brokerage"], true);
 //        returnAjaxData("-1","d",$shopprice);
         Res::AssertOk($this->member->awardMoney(["userid"=>$userid],$shopprice),"2");
-        returnAjaxData("200", "奖励成功");
+//        returnAjaxData("200", "奖励成功");
     }
     function TX()
     {
