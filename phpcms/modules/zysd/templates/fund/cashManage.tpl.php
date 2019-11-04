@@ -137,7 +137,7 @@ $show_header = 1;
                  <td>{{item.addtime}}</td>
                  <td><span v-html="replace_status(item.status)"></span></td>
                  <td align="center">
-                     <template v-if="item.status==0">
+                     <template v-if="item.status=='0'">
                          <i-button type="info" @click="pass(item.FRID)" >通过</i-button>
                          <i-button type="error" @click="reject(item.FRID)" >驳回</i-button>
                      </template>
@@ -225,6 +225,7 @@ $show_header = 1;
     var app12 = '2';
 
     aj.post("index.php?m=zysd&c=zysd&a=fund_records&pc_hash=<?php echo $_GET["pc_hash"]?>",{fund_type:2,type:2,page:'1'},function(data){
+        console.log(data);
         if(data.code=='200')
         {
             app = new Vue({
@@ -338,9 +339,9 @@ $show_header = 1;
                     },
                     replace_status:function(status){
                         switch (status){
-                            case '0':return "待审核";
-                            case '1':return "<span style='color: green'>已通过</span>";
-                            case '2':return "<span style='color: red'>驳回</span>";
+                            case 0 :return "待审核";
+                            case 1 :return "<span style='color: green'>已通过</span>";
+                            case 2 :return "<span style='color: red'>驳回</span>";
                         }
                     },
                     photo:function(){

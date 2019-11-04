@@ -482,5 +482,16 @@ class zysd extends admin {
 			returnAjaxData(200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
 		}
 	}
+	//删除公告
+	public function del_message()
+	{
+		$data=checkArg(["MSID"=>[true,0,"请输入ID"]],$_POST);
+		$info=$this->fund->del("zymessage","MSID",$data['MSID']);
+		if($info){
+			returnAjaxData(200,"操作成功");
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
 }
 ?>
