@@ -19,8 +19,9 @@ class api{
 	 * @param  string $file_url [文件夹]
 	 */
 	function uploadfile_img(){
+		$msg = [0=>"上传成功", 1=>"上传图片过大",4=>"文件没有被上传"];
 		if($_FILES["file"]["error"]!=0){
-			$result = array('status'=>0,'msg'=>$_FILES["file"]["error"]);
+			$result = array('status'=>0,'msg'=>$msg[$_FILES["file"]["error"]]);
 			echo json_encode($result);exit();
 		}
 
