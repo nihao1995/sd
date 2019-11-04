@@ -289,5 +289,37 @@ class api{
 			returnAjaxData(-200,"操作失败");
 		}
 	}
+
+	//消息列表
+	function message_list(){
+		$data=checkArg(["userid"=>[true,6,"请先登录"],"page"=>[true,0,"请输入page"],"pagesize"=>[true,0,"请输入pagesize"]],$_POST);
+		$where=['userid'=>$data['userid']];
+		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->message_list($where,$data['page'],$data['pagesize']);
+		if($info){
+			returnAjaxData(200,"操作成功",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}else{
+			returnAjaxData(-200,"暂无数据",['data'=>$info,'pagenums'=>$pagenums, 'pageStart'=>$pageStart, 'pageCount'=>$pageCount]);
+		}
+	}
+	//消息详请
+	function message_detail(){
+		$data=checkArg(["userid"=>[true,6,"请先登录"],"MSID"=>[true,1,"请输入ID"]],$_POST);
+		list($info,$pagenums, $pageStart, $pageCount)=$this->sd->message_list($data);
+		if($info){
+			returnAjaxData(200,"操作成功",$info);
+		}else{
+			returnAjaxData(-200,"暂无数据");
+		}
+	}
+	//单个/批量删除消息
+	function message_del(){
+		$data=checkArg(["userid"=>[true,6,"请先登录"],"MSID"=>[true,0,"请输入ID"]],$_POST);
+		$info=$this->sd->del_message($data['userid'],$data['MSID']);
+		if($info){
+			returnAjaxData(200,"操作成功",$info);
+		}else{
+			returnAjaxData(-200,"操作失败");
+		}
+	}
 }
 ?>

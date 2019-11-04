@@ -130,3 +130,10 @@
 <?php exit;?>11-02 16:34:35 | 2 | Missing argument 4 for api::account_login() | phpcms\modules\zymember\api.php | 125
 <?php exit;?>11-02 16:34:36 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
 <?php exit;?>11-02 16:36:16 | 2 | Missing argument 2 for zymember_api::pub_memberinfo() | phpcms\modules\zymember\zymember_api.php | 97
+<?php exit;?>11-04 10:49:13 | 2 | Illegal string offset 'userid' | phpcms\modules\zysd\classes\OrderControl.php | 32
+<?php exit;?>11-04 10:55:16 | 2 | include(E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php): failed to open stream: No such file or directory | phpcms\modules\zysd\zysd.php | 279
+<?php exit;?>11-04 10:55:16 | 2 | include(): Failed opening 'E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php' for inclusion (include_path='.;C:\php\pear') | phpcms\modules\zysd\zysd.php | 279
+<?php exit;?>11-04 10:55:17 | 2 | include(E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php): failed to open stream: No such file or directory | phpcms\modules\zysd\zysd.php | 279
+<?php exit;?>11-04 10:55:17 | 2 | include(): Failed opening 'E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php' for inclusion (include_path='.;C:\php\pear') | phpcms\modules\zysd\zysd.php | 279
+<?php exit;?>11-04 10:55:35 | 2 | include(E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php): failed to open stream: No such file or directory | phpcms\modules\zysd\zysd.php | 279
+<?php exit;?>11-04 10:55:35 | 2 | include(): Failed opening 'E:\wamp\www\thinkcmf\public\sd\phpcms\modules\zysd\templates\order/messageManage.tpl.php' for inclusion (include_path='.;C:\php\pear') | phpcms\modules\zysd\zysd.php | 279
