@@ -64,7 +64,7 @@ class frontApi
         $neadArg = ["userid"=>[true, 6], "pid"=>[true, 0]];
         $info = checkArg($neadArg, $_POST);
         $member_db=pc_base::load_model("member_model");
-        $data=$member_db->get_one(["username"=>$info["pid"]], "userid,nickname");
+        $data=$member_db->get_one(["MID"=>$info["pid"]], "userid,nickname");
         $info["pid"] = $data["userid"];
         $userid["userid"] = $info["userid"];
         $pid["pid"] = $info["pid"];
@@ -83,7 +83,7 @@ class frontApi
         $neadArg = ["userid"=>[true, 1], "pid"=>[true, 0]];
         $info = checkArg($neadArg, $info);
         $member_db=pc_base::load_model("member_model");
-        $data=$member_db->get_one(["username"=>$info["pid"]], "userid,nickname");
+        $data=$member_db->get_one(["userid"=>$info["pid"]], "userid,nickname");
         $info["pid"] = $data["userid"];
         $userid["userid"] = $info["userid"];
         $pid["pid"] = $info["pid"];
@@ -95,7 +95,6 @@ class frontApi
         $sd->add_message($info["userid"],"成功添加".$data["nickname"]."为上级");
         $data_2=$member_db->get_one(["userid"=>$info["userid"]], "userid,nickname");
         $sd->add_message($info["pid"],"成功添加".$data_2["nickname"]."为下级");
-        returnAjaxData("200", "添加成功");
     }
     function addchild_yqm()//添加下级队员
     {
