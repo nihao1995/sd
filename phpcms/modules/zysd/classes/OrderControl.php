@@ -205,12 +205,12 @@ class OrderControl
      */
     function statis($userid){
         $this->update_order_status($userid);
-        $where="SELECT sum(awardMoney) as num FROM zy_order LEFT JOIN zy_zyshop on zy_order.SID=zy_zyshop.SID WHERE TO_DAYS(gettime) = to_days(now()) AND userid=".$userid;
+        $where="SELECT sum(awardMoney) as num FROM zy_order LEFT JOIN zy_zyshop on zy_order.SID=zy_zyshop.SID WHERE TO_DAYS(gettime) = to_days(now()) AND status=3 AND is_freeze=0 AND userid=".$userid;
         $commission=mf::dbFactory("order")->spcSql($where,1,0)['num'];
         $data['commission']=$commission ? $commission:0 ;
         $where="TO_DAYS(gettime) = to_days(now()) AND userid=".$userid;
         $data['all_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
-        $where.=" AND status=2";
+        $where.=" AND is_freeze=1";
         $data['frozen_num']=mf::dbFactory("order")->get_one($where,'count(*) as num')['num'];
         //$sql="select sum(money) as num from zy_order LEFT JOIN zy_zyshop ON zy_order.SID=zy_zyshop.SID WHERE ".$where;
         //mf::dbFactory("order")->spcSql($sql,1,1);

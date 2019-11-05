@@ -139,8 +139,8 @@ class Fx
             if($data !=null)
                 Error("用户已存在");
             $money->insert($_userid);
-            $_userid["addTime"] = date("Y-m-d H:s:i",time());
-            $_userid["updateTime"] = date("Y-m-d H:s:i",time());
+            $_userid["addTime"] = date("Y-m-d",time());
+            $_userid["updateTime"] = date("Y-m-d",time());
             $this->zyfxmember->insert($_userid);
 
         }
