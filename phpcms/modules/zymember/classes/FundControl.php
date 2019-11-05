@@ -9,12 +9,13 @@
 namespace zymember\classes;
 
 use zymember\classes\modelFactory as mf;
+use zysd\classes\SdControl as sd;
 
 class FundControl
 {
     function __construct()
     {
-
+        $this->sd=new sd();
     }
 
     /**
@@ -313,8 +314,10 @@ class FundControl
         //添加资金记录及资金
         if($fund_record['fund_type']==1) {
             $this->add_account_record($member['userid'], 1, $fund_record['fund_money'], 1, true);
+            $this->sd->add_message($member['userid'],"充值成功！充值金额￥".$fund_record['fund_money']."已到账，请注意查收");
         } elseif($fund_record['fund_type']==2) {
             $bool=mf::dbFactory('member')->update(['middle_station'=>"-=".$fund_record['fund_money']],['userid'=>$fund_record['userid']]);
+            $this->sd->add_message($fund_record['userid'],"提现成功！提现金额￥".$fund_record['fund_money']."将在24小时内到账");
         }
         $id=mf::dbFactory('fund_record')->update(['status'=>1],['FRID'=>$frid]);
         return $id;
@@ -334,8 +337,10 @@ class FundControl
             returnAjaxData(-1,"状态错误".print_r($info));
         }
         if($info['fund_type']==1) {
+            $this->sd->add_message($info['userid'],"充值失败！充值金额与实际不符");
         } elseif($info['fund_type']==2) {
             $id=mf::dbFactory('member')->update(['amount' => "+=".$info['fund_money'],'middle_station'=>"-=".$info['fund_money']],['userid'=>$info['userid']]);
+            $this->sd->add_message($info['userid'],"提现失败！请重新核对银行卡号及信息");
         }
         $id=mf::dbFactory('fund_record')->update(['status'=>2],['FRID'=>$frid]);
         return $id;
@@ -356,7 +361,7 @@ class FundControl
                 $info[$key]['bank_cardid']=preg_replace('/^(.{4})(?:\d+)(.{4})$/', '$1****$2', $item['bank_cardid']);
             }
         }elseif($type==2){
-            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('BID','userid','bank_cardid','bank_name','owner_name','bank_branch','before'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.addtime DESC,B1.status asc","1");
+            list($info, $count) = mf::dbFactory("fund_record")->moreTableSelect(array('zy_fund_record'=>array("*"), 'zy_bankcard'=>array('BID','userid','bank_cardid','bank_name','owner_name','bank_branch','before'), 'zy_member'=>["MID", "nickname"]), array(["bankcard_id","BID"], "userid"), $where, ((string)($page-1)*$pagesize).",".$pagesize, "B1.status asc,B1.addtime DESC","1");
             list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         }else{
             $info=mf::dbFactory('fund_record')->listinfo($where,"addtime DESC",$page,$pagesize);

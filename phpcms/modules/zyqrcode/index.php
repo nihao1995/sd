@@ -43,7 +43,6 @@ class index{
 	{
 	    if($_GET['obj']){
 	        $project=$_GET['obj'];
-	        //echo $project;
         }
 	    //echo $this->strget(APP_PATH.'uploadfile/qrcode/1552286253.png');
         //echo $this->scerweima1('https://www.baidu.com');
