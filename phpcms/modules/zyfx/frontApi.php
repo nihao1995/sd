@@ -97,7 +97,6 @@ class frontApi
         $sd->add_message($info["pid"],"成功添加".$data_2["nickname"]."为下级");
         returnAjaxData("200", "添加成功");
     }
-
     function addchild_yqm()//添加下级队员
     {
         $neadArg = ["userid"=>[true, 6], "yqm"=>[true, 0]];
@@ -113,6 +112,7 @@ class frontApi
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
         returnAjaxData("200", "添加成功");
     }
+
     function awardMoney($userid, $SID)//奖励钱****
     {
 //        $neadArg = ["userid"=>[true, 1, "真的吗"], "SID"=>[true, 0]];
