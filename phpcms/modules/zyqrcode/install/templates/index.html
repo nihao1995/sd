@@ -51,7 +51,7 @@
 	}
 </style>
 <body>
-	{pc:get sql="SELECT * FROM zy_zyqrcode WHERE isshow=1 AND project='$project' ORDER BY id DESC" page="$page" return="data"}
+	{pc:get sql="SELECT * FROM zy_zyqrcode WHERE isshow=1 AND {if $project}project='$project'{/if} ORDER BY id DESC" page="$page" return="data"}
 	{loop $data $key $val}
 	<div class="jy-con">
 		<div class="h3"></div>

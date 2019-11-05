@@ -943,3 +943,4 @@
 <?php exit;?>11-05 11:17:36 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
 <?php exit;?>11-05 11:17:36 | 2 | db_mysqli::errno(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 472
 <?php exit;?>11-05 11:17:36 | 2 | db_mysqli::error(): Couldn't fetch mysqli | phpcms\libs\classes\db_mysqli.class.php | 465
+<?php exit;?>11-05 13:17:55 | 2 | Illegal string offset 'userid' | phpcms\modules\zysd\classes\OrderControl.php | 32
