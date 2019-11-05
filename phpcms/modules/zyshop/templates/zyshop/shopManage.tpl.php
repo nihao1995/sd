@@ -116,7 +116,7 @@ $show_header = 1;
             <th>缩略图</th>
             <th>金额(元)</th>
             <th>奖励金(元)</th>
-            <th>佣金(元)</th>
+<!--            <th>佣金(元)</th>-->
             <th>任务总数</th>
             <th>待接数量</th>
             <th>添加任务时间</th>
@@ -143,13 +143,13 @@ $show_header = 1;
                  <td >
                      {{item.awardMoney}}
                  </td>
-                 <td >
-                     <template v-if = "item.brokerage">
-                         <li>上一级会员佣金：{{JSON.parse(item.brokerage)[1]}}元</li>
-                         <li>上二级会员佣金：{{JSON.parse(item.brokerage)[2]}}元</li>
-                         <li>上三级会员佣金：{{JSON.parse(item.brokerage)[3]}}元</li>
-                     </template>
-                 </td>
+<!--                 <td >-->
+<!--                     <template v-if = "item.brokerage">-->
+<!--                         <li>上一级会员佣金：{{JSON.parse(item.brokerage)[1]}}元</li>-->
+<!--                         <li>上二级会员佣金：{{JSON.parse(item.brokerage)[2]}}元</li>-->
+<!--                         <li>上三级会员佣金：{{JSON.parse(item.brokerage)[3]}}元</li>-->
+<!--                     </template>-->
+<!--                 </td>-->
                  <td >
                     {{item.num}}
                  </td>

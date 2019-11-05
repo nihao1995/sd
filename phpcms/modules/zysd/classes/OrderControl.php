@@ -181,7 +181,7 @@ class OrderControl
                 $id = $this->fc->add_account_record($userid, 5, $order['awardMoney'], 1, true);
                 require_once PC_PATH.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'zyfx/frontApi.php';
                 $s  = new \frontApi();
-                $s->awardMoney($userid,$order["SID"]);
+                $s->awardMoney($userid,$order['awardMoney']);
 //                $param = ["userid"=>$userid, "SID"=>$order["SID"]];
 //                $val = json_decode(_crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=awardMoney", $param));
                 //分销代码++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
