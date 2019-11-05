@@ -54,11 +54,11 @@ class shopManage extends admin
             $fxConfig = new items("fxconfig");
             $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             $awardNumber = json_decode($fxC["awardNumber"], true);
-            foreach ($awardNumber as $key =>$value)
-            {
-                $info["brokerage"][$key] = $value* $info["money"] /100;
-            }
-            $info["brokerage"] = json_encode($info["brokerage"]);
+//            foreach ($awardNumber as $key =>$value)
+//            {
+//                $info["brokerage"][$key] = $value* $info["money"] /100;
+//            }
+//            $info["brokerage"] = json_encode($info["brokerage"]);
             $info["addtime"] = date("Y-m-d H:i:s", time());
             $info["residueNum"] = $info["num"];
             $info["awardMoney"] = round($info["money"]*$fxC["awardShopMoney"]/100, 2);
@@ -96,11 +96,11 @@ class shopManage extends admin
             $fxConfig = new items("fxconfig");
             $fxC = $fxConfig->easySql->get_one(["ID"=>1], "awardNumber,awardShopMoney");
             $awardNumber = json_decode($fxC["awardNumber"], true);
-            foreach ($awardNumber as $key =>$value)
-            {
-                $info["brokerage"][$key] = $value* $info["money"] /100;
-            }
-            $info["brokerage"] = json_encode($info["brokerage"]);
+//            foreach ($awardNumber as $key =>$value)
+//            {
+//                $info["brokerage"][$key] = $value* $info["money"] /100;
+//            }
+//            $info["brokerage"] = json_encode($info["brokerage"]);
             if(isset($info["thumbs"]))
                 $info["thumbs"] = json_encode($info["thumbs"]);
             else

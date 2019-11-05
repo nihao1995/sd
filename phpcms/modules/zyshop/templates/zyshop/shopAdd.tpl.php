@@ -114,15 +114,14 @@ include $this->admin_tpl('header', 'admin');
 
                         </td>
                     </tr>
-                    <tr>
-                        <th style="width: 120px">商品佣金</th>
-                        <td>
-                            <li>上一级会员佣金：{{money * fxC[1] / 100}}元</li>
-                            <li>上二级会员佣金：{{money * fxC[2] / 100}}元</li>
-                            <li>上三级会员佣金：{{money * fxC[3] / 100}}元</li>
-                        </td>
-<!--                        <i-Time :time="time1">-->
-                    </tr>
+<!--                    <tr>-->
+<!--                        <th style="width: 120px">商品佣金</th>-->
+<!--                        <td>-->
+<!--                            <li>上一级会员佣金：{{money * fxC[1] / 100}}元</li>-->
+<!--                            <li>上二级会员佣金：{{money * fxC[2] / 100}}元</li>-->
+<!--                            <li>上三级会员佣金：{{money * fxC[3] / 100}}元</li>-->
+<!--                        </td>-->
+<!--                    </tr>-->
                     <tr>
                         <th style="width: 120px">任务总数</th>
                         <td>
@@ -171,7 +170,7 @@ include $this->admin_tpl('header', 'admin');
             num:"",
             endtime:"",
             awardMoney:"",
-            fxC:<?php echo $fxC["awardNumber"]?>,
+            //fxC:<?php //echo $fxC["awardNumber"]?>//,
             awardShopMoney:<?php echo $fxC["awardShopMoney"]?>
             // time1:(new Date()).getTime() + 60*3*1000
         },
