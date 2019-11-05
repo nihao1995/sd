@@ -122,6 +122,7 @@
                 }
                 if (data.field.mobile && data.field.password && data.field.verify_code) {
                     data.field.type = '1';
+                    data.field.token = '{$_GET[token]}';
                     aj.post('index.php?m=zymember&c=api&a=sms_registered', data.field, function (data) {
                         console.log(data);
                         if (data.status == 'error') {
