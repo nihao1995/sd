@@ -98,9 +98,15 @@ class frontApi
 //        $neadArg = ["userid"=>[true, 1, "真的吗"], "SID"=>[true, 0]];
 //        $info = checkArg($neadArg, $_POST);
 //        $SID = array_pop($info);
-        $shopDB = pc_base::load_model("zyshop_model");
-        $shopInfo = $shopDB->get_one(["SID"=>$SID], "brokerage");
-        $shopprice = json_decode($shopInfo["brokerage"], true);
+//        $shopDB = pc_base::load_model("zyshop_model");
+//        $shopInfo = $shopDB->get_one(["SID"=>$SID], "brokerage");
+        $config = new fxConfig();
+        $cof = $config->returnConfig("awardNumber");
+        $shopprice = json_decode($cof, true);
+        foreach ($shopprice as $key=>$value)
+        {
+            $shopprice[$key] = $value * $SID/100;
+        }
 //        returnAjaxData("-1","d",$shopprice);
         Res::AssertOk($this->member->awardMoney(["userid"=>$userid],$shopprice),"2");
 //        returnAjaxData("200", "奖励成功");
