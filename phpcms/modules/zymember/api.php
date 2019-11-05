@@ -364,7 +364,7 @@ class api{
 		$verify_code = $_POST['verify_code'];	//短信验证码
 		$password = $_POST['password'];	//密码
 		$type = $_POST['type'];	//类型：1web端、2APP端
-		$forward = $_POST['forward'] ? urldecode($_POST['forward']) : APP_PATH.'index.php?m=zyqrcode&c=index&a=index_show&obj=www';	//接下来该跳转的页面链接
+		$forward = $_POST['forward'] ? urldecode($_POST['forward']) : APP_PATH.'index.php?m=zyqrcode&c=index&a=index_show';	//接下来该跳转的页面链接
 
 		//用手机号码查出用户账号
 		$memberinfo = $this->member_db->get_one(array('mobile'=>$mobile));
