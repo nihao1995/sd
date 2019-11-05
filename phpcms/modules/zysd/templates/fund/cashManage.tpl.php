@@ -339,9 +339,9 @@ $show_header = 1;
                     },
                     replace_status:function(status){
                         switch (status){
-                            case 0 :return "待审核";
-                            case 1 :return "<span style='color: green'>已通过</span>";
-                            case 2 :return "<span style='color: red'>驳回</span>";
+                            case '0' :return "待审核";
+                            case '1' :return "<span style='color: green'>已通过</span>";
+                            case '2' :return "<span style='color: red'>驳回</span>";
                         }
                     },
                     photo:function(){

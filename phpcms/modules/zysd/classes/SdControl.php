@@ -153,7 +153,7 @@ class SdControl
         if(isset($where['MSID'])){
             mf::dbFactory("zymessage")->update(['is_read'=>1],$where);
         }
-        $info = mf::dbFactory("zymessage")->listinfo($where,"MSID ASC",$page,$pagesize);
+        $info = mf::dbFactory("zymessage")->listinfo($where,"MSID desc",$page,$pagesize);
         $count= mf::dbFactory("zymessage")->number;
         list($page, $pagenums, $pageStart, $pageCount) = getPage($page, $pagesize, $count);
         return [$info,$pagenums, $pageStart, $pageCount];
