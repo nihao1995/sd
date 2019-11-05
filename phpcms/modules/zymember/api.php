@@ -505,6 +505,8 @@ class api{
 			}
 
         	$url_userid = ["userid"=>$memberinfo['userid']];
+			$sms_verify = _crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=insertMember",$url_userid);
+			//$sms_verify=json_decode($sms_verify,true);
 			if($token){
 				$pid=$this->member_db->get_one(['MID'=>$_POST['token']]);
 				$url_userid['pid']=$pid['userid'];
@@ -512,8 +514,7 @@ class api{
 				$s  = new \frontApi();
 				$s->addchild_2($url_userid);
 			}
-			$sms_verify = _crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=insertMember",$url_userid);
-			//$sms_verify=json_decode($sms_verify,true);
+
 			//调用通讯模块-短信接口-清空此账号的短信验证码
 			//操作成功之后删除遗留的短信验证码
 			//==================	获取其他接口-接口 START
