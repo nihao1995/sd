@@ -505,13 +505,14 @@ class api{
 			}
 
         	$url_userid = ["userid"=>$memberinfo['userid']];
-			$sms_verify = _crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=insertMember",$url_userid);
+			require_once PC_PATH.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'zyfx/frontApi.php';
+			$s  = new \frontApi();
+			$s->insertMember($url_userid);
+//			$sms_verify = _crul_post(APP_PATH."index.php?m=zyfx&c=frontApi&a=insertMember",$url_userid);
 			//$sms_verify=json_decode($sms_verify,true);
 			if($token){
-				$pid=$this->member_db->get_one(['MID'=>$_POST['token']]);
+				$pid=$this->member_db->get_one(['username'=>$_POST['token']]);
 				$url_userid['pid']=$pid['userid'];
-				require_once PC_PATH.DIRECTORY_SEPARATOR.'modules'.DIRECTORY_SEPARATOR.'zyfx/frontApi.php';
-				$s  = new \frontApi();
 				$s->addchild_2($url_userid);
 			}
 
@@ -526,7 +527,6 @@ class api{
 			//==================	获取其他接口-接口 END
 
 			//添加上级
-
 
 			$result = [
 				'status'=>'success',
