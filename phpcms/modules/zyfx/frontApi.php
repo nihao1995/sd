@@ -91,7 +91,7 @@ class frontApi
             returnAjaxData("-1", "无法添加自己为上级");
         Res::AssertOk($this->member->addchild($userid, $pid) ,"2");
         $member_db->update(["extra_times"=>"+=2"],["userid"=>$info["userid"]]);
-        $sd = new sd();
+        $sd = new sd() ;
         $sd->add_message($info["userid"],"成功添加".$data["nickname"]."为上级");
         $data_2=$member_db->get_one(["userid"=>$info["userid"]], "userid,nickname");
         $sd->add_message($info["pid"],"成功添加".$data_2["nickname"]."为下级");
